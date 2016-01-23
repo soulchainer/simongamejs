@@ -41,9 +41,9 @@ gulp.task('styles', function () {
 // Serve and watch for changes in files
 gulp.task('serve', function() {
   bs.init({
-    server: "./app"
+    server: "."
   });
-  var appFiles = ['./app/*', './app/js/*', './app/css/*'];
+  var appFiles = ['index.html', './app/*', './app/js/*', './app/css/*'];
   gulp.watch('./src/js/*.js', ['scripts']);
   gulp.watch(['./src/sass/*.scss', './src/sass/*/*.scss'], ['styles']);
   gulp.watch(appFiles).on('change',bs.reload);

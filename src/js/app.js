@@ -7,7 +7,7 @@
       musicBtns[i] = document.getElementById("tap"+i);
     }
     // create and load the sounds
-    var assetPath = "/assets/audio/";
+    var assetPath = "app/assets/audio/";
     var sounds = [
       {id: "0", src: "tap0.ogg"},
       {id: "1", src: "tap1.ogg"},
