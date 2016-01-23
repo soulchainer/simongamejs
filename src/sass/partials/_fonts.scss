@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    #FONTS AND TYPOGRAPHY
+\*------------------------------------*/
+
+/* VARIABLES */
+
+$font-infobar: 'Press Start 2P', cursive;
+$font-trademark: 'Sarpanch', sans-serif;
+$font-trademark-sup: sans-serif;
+$font-label: 'Homenaje', sans-serif;
+$font-forkongithub: helvetica, sans-serif;
+
+/* RULES */
+
+body {
+  font-size: 1rem;
+}
+
+.info-bar {
+  font-family: $font-infobar;
+}
+
+.trademark>span {
+  font: {
+    family: $font-trademark;
+    size: 2rem;
+  }
+
+  &>sup {
+    font: {
+      family: $font-trademark-sup;
+      size: .8rem;
+    }
+  }
+}
+
+.label {
+  font: {
+    family: $font-label;
+    size: 1.1rem;
+    weight: bold;
+  }
+}
+
+.forkongithub>a {
+  font: {
+    family: $font-forkongithub;
+    size: 1rem;
+    weight: bold;
+  }
+}

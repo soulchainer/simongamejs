@@ -1,0 +1,77 @@
+/*------------------------------------*\
+    #MEDIA QUERIES
+\*------------------------------------*/
+
+/* VARIABLES */
+
+$mobile-portrait: "(max-width:550px), (max-device-width:550px)";
+$mobile-landscape: "(max-device-height:550px) and (orientation: landscape)";
+
+/* RULES */
+
+.trademark>span {
+  @media #{$mobile-portrait} {
+    font-size: 4vw;
+  }
+
+  @media #{$mobile-landscape} {
+    font-size: 4vh;
+  }
+
+  &>sup {
+    @media #{$mobile-portrait} {
+      font-size: 2vw;
+    }
+
+    @media #{$mobile-landscape} {
+      font-size: 2vh;
+    }
+  }
+}
+
+.info-bar>span {
+  &:last-child {
+    @media #{$mobile-portrait}, #{$mobile-landscape} {
+      display: block;
+    }
+  }
+}
+
+.label {
+  @media #{$mobile-portrait} {
+    font-size: 2.8vw;
+  }
+
+  @media #{$mobile-landscape} {
+    font-size: 2.8vh;
+  }
+}
+
+.power-switch {
+  @media #{$mobile-portrait}, #{$mobile-landscape}{
+    height: 1rem;
+    max-width: 8vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .forkongithub {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    z-index: 9999;
+
+    &>a {
+      box-shadow: 4px 4px 10px $ribbon-black-shadow;
+      position: absolute;
+      right: -60px;
+      top: 60px;
+      transform: rotate(45deg);
+      width: 200px;
+    }
+  }
+}

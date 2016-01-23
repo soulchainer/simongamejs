@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    #BROWSER HACKS
+\*------------------------------------*/
+
+/* Get rid of the ugly outline in Firefox when a button is pressed */
+:focus {
+  outline: none !important;
+}
+
+::-moz-focus-inner {
+  border: 0 !important;
+}

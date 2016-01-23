@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    #GITHUB RIBBON
+\*------------------------------------*/
+
+/* VARIABLES */
+
+$ribbon-bgcolor-hover: #c11;
+$ribbon-bgcolor: #282828;
+$ribbon-black-shadow: rgba(0, 0, 0, .8);
+$ribbon-color-text-lines: #fff;
+
+/* RULES */
+
+%before-after {
+  background-color: $ribbon-color-text-lines;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 100%;
+}
+
+.forkongithub>a {
+  background-color: $ribbon-bgcolor;
+  color: $ribbon-color-text-lines;
+  line-height: 2rem;
+  padding: 5px 40px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 0 .5rem $ribbon-black-shadow;
+  transition: .5s;
+
+  &::before {
+    @extend %before-after;
+  }
+
+  &::after {
+    @extend %before-after;
+    bottom: 1px;
+    top: auto;
+  }
+
+  &:hover {
+    background-color: $ribbon-bgcolor-hover;
+    color: $ribbon-color-text-lines;
+  }
+}

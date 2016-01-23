@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simon Game</title>
+  <link href='https://fonts.googleapis.com/css?family=Sarpanch:900&text=simon|Homenaje|Press+Start+2P' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="app/css/main.css">
+</head>
+<body>
+  <span class="forkongithub"><a href="https://github.com/soulchainer/simonGameJS">Fork me on GitHub</a></span>
+  <div class="info-bar">
+    <span id="led">--</span>
+    <span>
+      <span id="mode-label">Normal</span> <span id="strict-label"></span>
+    </span>
+    <span id="status">Off</span>
+  </div>
+  <main>
+    <div class="board">
+      <div class="inner-board">
+        <div class="green" id="tap0" data-btn="0"></div>
+        <div class="red" id="tap1" data-btn="1"></div>
+        <div class="yellowy" id="tap2" data-btn="2"></div>
+        <div class="blue" id="tap3" data-btn="3"></div>
+      </div>
+    </div>
+    <div class="control-panel">
+      <div class="control-container">
+        <div class="trademark">
+          <span>Simon<sup>&#174;</sup></span>
+        </div>
+        <div class="controls">
+          <div class="controls-row buttons">
+            <div class="controls-btn">
+              <span class="label">START</span>
+              <button class="controls-btn-item start" id="start"></button>
+            </div>
+            <div class="controls-btn">
+              <span class="label">STRICT</span>
+              <button class="controls-btn-item strict" id="strict"></button>
+            </div>
+            <div class="controls-btn">
+              <span class="label">MODE</span>
+              <button class="controls-btn-item modes" id="modes"></button>
+            </div>
+          </div>
+          <div class="controls-row">
+            <span class="label">OFF</span>
+            <div class="power-switch" id="power">
+              <div class="switch power"></div>
+            </div>
+            <span class="label">ON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
+  <script type="text/javascript">
+  if (typeof createjs == 'undefined') {
+      document.write(unescape("%3Cscript src='app/js/soundjs-0.6.2.min.js' type='text/javascript'%3E%3C/script%3E"));
+  }
+  </script>
+  <script type="text/javascript" src="app/js/app.js"></script>
+</body>
+</html>
