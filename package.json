@@ -1,22 +1,33 @@
 {
   "name": "simon-game",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "My solution for the «Build a Simon Game» freeCodeCamp challenge",
-  "author": "Juan Riquelme <juanriqgon@tutanota.com>",
+  "author": "Juan Riquelme <juanriqgon@protonmail.com>",
+  "config": {
+    "neutrino": {
+      "entry": {
+        "vendor": [
+          "react",
+          "react-dom"
+        ]
+      }
+    },
+    "presets": [
+      "neutrino-preset-airbnb-base",
+      "neutrino-preset-react"
+    ]
+  },
+  "scripts": {
+    "start": "neutrino start",
+    "build": "neutrino build"
+  },
   "devDependencies": {
-    "babel-preset-es2015": "^6.3.13",
-    "babelify": "^7.2.0",
-    "browser-sync": "^2.10.1",
-    "browserify": "^12.0.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-install": "^0.6.0",
-    "gulp-postcss": "^6.0.1",
-    "gulp-sass": "^2.1.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.1",
-    "gulp-util": "^3.0.7",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "neutrino": "^4.0.1",
+    "neutrino-preset-airbnb-base": "^4.0.1",
+    "neutrino-preset-react": "^4.0.1"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
