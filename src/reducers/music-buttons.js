@@ -3,28 +3,28 @@ import { MUSIC_BUTTON_ON, MUSIC_BUTTON_OFF } from '../actions/index';
 const initialState = {
   green: {
     id: "green",
-    playing: false,
+    active: false,
   },
   yellow: {
     id: "yellow",
-    playing: false,
+    active: false,
   },
   blue: {
     id: "blue",
-    playing: false,
+    active: false,
   },
   red: {
     id: "red",
-    playing: false,
+    active: false,
   },
 };
 
 export default function musicButtons(state = initialState, action) {
   switch (action.type) {
     case MUSIC_BUTTON_ON:
-      return { ...state, [action.id]: { id: action.id, playing: true } };
+      return { ...state, [action.id]: { id: action.id, active: true } };
     case MUSIC_BUTTON_OFF:
-      return { ...state, [action.id]: { id: action.id, playing: false } };
+      return { ...state, [action.id]: { id: action.id, active: false } };
     default:
       return state;
   }
