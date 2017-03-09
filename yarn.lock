@@ -104,6 +104,12 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+aria-query@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/aria-query/-/aria-query-0.3.0.tgz#cb8a9984e2862711c83c80ade5b8f5ca0de2b467"
+  dependencies:
+    ast-types-flow "0.0.7"
+
 arr-diff@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/arr-diff/-/arr-diff-2.0.0.tgz#8f3b827f955a8bd669697e4a4256ac3ceae356cf"
@@ -172,6 +178,10 @@ assert@^1.1.1:
   resolved "https://registry.npmjs.org/assert/-/assert-1.3.0.tgz#03939a622582a812cc202320a0b9a56c9b815849"
   dependencies:
     util "0.10.3"
+
+ast-types-flow@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/ast-types-flow/-/ast-types-flow-0.0.7.tgz#f70b735c6bca1a5c9c22d982c3e39e7feba3bdad"
 
 async-each@^1.0.0:
   version "1.0.1"
@@ -1554,6 +1564,10 @@ d@^0.1.1, d@~0.1.1:
   dependencies:
     es5-ext "~0.10.2"
 
+damerau-levenshtein@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.3.tgz#ae4f4ce0b62acae10ff63a01bb08f652f5213af2"
+
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
@@ -1724,6 +1738,10 @@ elliptic@^6.0.0:
     hash.js "^1.0.0"
     inherits "^2.0.1"
 
+emoji-regex@^6.1.0:
+  version "6.1.3"
+  resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-6.1.3.tgz#ec79a3969b02d2ecf2b72254279bf99bc7a83932"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -1856,8 +1874,14 @@ escope@^3.6.0:
     estraverse "^4.1.1"
 
 eslint-config-airbnb-base@^11.1.0:
-  version "11.1.0"
-  resolved "https://registry.npmjs.org/eslint-config-airbnb-base/-/eslint-config-airbnb-base-11.1.0.tgz#dc9b3ec70b8c74dcbe6d6257c9da3992c39ca2ca"
+  version "11.1.1"
+  resolved "https://registry.npmjs.org/eslint-config-airbnb-base/-/eslint-config-airbnb-base-11.1.1.tgz#61e9e89e4eb89f474f6913ac817be9fbb59063e0"
+
+eslint-config-airbnb@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.npmjs.org/eslint-config-airbnb/-/eslint-config-airbnb-14.1.0.tgz#355d290040bbf8e00bf8b4b19f4b70cbe7c2317f"
+  dependencies:
+    eslint-config-airbnb-base "^11.1.0"
 
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
@@ -1884,8 +1908,8 @@ eslint-module-utils@^2.0.0:
     pkg-dir "^1.0.0"
 
 eslint-plugin-babel@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/eslint-plugin-babel/-/eslint-plugin-babel-4.0.1.tgz#77de74dabd67a6bef3b16bf258f5804e971e7349"
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/eslint-plugin-babel/-/eslint-plugin-babel-4.1.1.tgz#ef285c87039b67beb3bbd227f5b0eed4fb376b87"
 
 eslint-plugin-import@^2.2.0:
   version "2.2.0"
@@ -1902,7 +1926,18 @@ eslint-plugin-import@^2.2.0:
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
 
-eslint-plugin-react@^6.9.0:
+eslint-plugin-jsx-a11y@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-4.0.0.tgz#779bb0fe7b08da564a422624911de10061e048ee"
+  dependencies:
+    aria-query "^0.3.0"
+    ast-types-flow "0.0.7"
+    damerau-levenshtein "^1.0.0"
+    emoji-regex "^6.1.0"
+    jsx-ast-utils "^1.0.0"
+    object-assign "^4.0.1"
+
+eslint-plugin-react@^6.10.0, eslint-plugin-react@^6.9.0:
   version "6.10.0"
   resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-6.10.0.tgz#9c48b48d101554b5355413e7c64238abde6ef1ef"
   dependencies:
@@ -1912,9 +1947,9 @@ eslint-plugin-react@^6.9.0:
     jsx-ast-utils "^1.3.4"
     object.assign "^4.0.4"
 
-eslint@^3.14.1:
-  version "3.16.0"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-3.16.0.tgz#4a468ab93618a9eb6e3f1499038b38851f828630"
+eslint@^3.16.1:
+  version "3.17.1"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-3.17.1.tgz#b80ae12d9c406d858406fccda627afce33ea10ea"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -2885,7 +2920,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-jsx-ast-utils@^1.3.4:
+jsx-ast-utils@^1.0.0, jsx-ast-utils@^1.3.4:
   version "1.4.0"
   resolved "https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.4.0.tgz#5afe38868f56bc8cc7aeaef0100ba8c75bd12591"
   dependencies:
@@ -2944,8 +2979,8 @@ loader-utils@0.2.x, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.
     object-assign "^4.0.1"
 
 loader-utils@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-1.0.2.tgz#a9f923c865a974623391a8602d031137fad74830"
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-1.0.3.tgz#566c320c24c33cb3f02db4df83f3dbf60b253de3"
   dependencies:
     big.js "^3.1.3"
     emojis-list "^2.0.0"
@@ -2958,6 +2993,10 @@ lodash-es@^4.2.0, lodash-es@^4.2.1:
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
+
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
 lodash.cond@^4.3.0:
   version "4.5.2"
@@ -3141,16 +3180,28 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-neutrino-preset-airbnb-base@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/neutrino-preset-airbnb-base/-/neutrino-preset-airbnb-base-4.0.1.tgz#2d58b8a164be1e2628e1bd3b811e07972bf892d6"
+neutrino-lint-base@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/neutrino-lint-base/-/neutrino-lint-base-4.3.1.tgz#3f1f37595891ce889f44d03ab6c951d535995ad6"
   dependencies:
     babel-eslint "^7.1.1"
-    eslint "^3.14.1"
-    eslint-config-airbnb-base "^11.1.0"
+    eslint "^3.16.1"
     eslint-loader "^1.6.1"
     eslint-plugin-babel "^4.0.1"
     eslint-plugin-import "^2.2.0"
+    lodash.clonedeep "^4.5.0"
+
+neutrino-preset-airbnb@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/neutrino-preset-airbnb/-/neutrino-preset-airbnb-1.1.0.tgz#46fa6e0671bc95cc83a13e356e1677d3dada4625"
+  dependencies:
+    deepmerge "^1.3.2"
+    eslint "^3.16.1"
+    eslint-config-airbnb "^14.1.0"
+    eslint-plugin-import "^2.2.0"
+    eslint-plugin-jsx-a11y "^4.0.0"
+    eslint-plugin-react "^6.10.0"
+    neutrino-lint-base "^4.3.1"
 
 neutrino-preset-react@^4.0.1:
   version "4.0.1"
@@ -3324,8 +3375,8 @@ object-assign@^4.0.1, object-assign@^4.1.0:
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
 object-hash@^1.1.4:
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/object-hash/-/object-hash-1.1.5.tgz#bdd844e030d0861b692ca175c6cab6868ec233d7"
+  version "1.1.7"
+  resolved "https://registry.npmjs.org/object-hash/-/object-hash-1.1.7.tgz#a8d83fdf5d4583a4e2e7ffc18e8915e08482ef52"
 
 object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
@@ -3489,6 +3540,10 @@ path-is-absolute@^1.0.0:
 path-is-inside@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
+
+path-parse@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
 
 path-to-regexp@0.1.7:
   version "0.1.7"
@@ -4195,8 +4250,10 @@ resolve-from@^1.0.0:
   resolved "https://registry.npmjs.org/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
 
 resolve@^1.1.6:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/resolve/-/resolve-1.3.2.tgz#1f0442c9e0cbb8136e87b9305f932f46c7f28235"
+  dependencies:
+    path-parse "^1.0.5"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -4312,8 +4369,8 @@ sha.js@^2.3.6:
     inherits "^2.0.1"
 
 shelljs@^0.7.5:
-  version "0.7.6"
-  resolved "https://registry.npmjs.org/shelljs/-/shelljs-0.7.6.tgz#379cccfb56b91c8601e4793356eb5382924de9ad"
+  version "0.7.7"
+  resolved "https://registry.npmjs.org/shelljs/-/shelljs-0.7.7.tgz#b2f5c77ef97148f4b4f6e22682e10bba8667cff1"
   dependencies:
     glob "^7.0.0"
     interpret "^1.0.0"
