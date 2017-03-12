@@ -10,14 +10,14 @@ export const UPDATE_GAME_SPEED = 'UPDATE_GAME_SPEED';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
 
 export const UPDATE_PLAYER_TONES = 'UPDATE_PLAYER_TONES';
-export const NEW_TONE ='NEW_TONE';
+export const NEW_TONE = 'NEW_TONE';
 export const SET_MAX_TONES = 'SET_MAX_TONES';
 
 export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
 export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
 
-export const startGame = payload => ({type: START_GAME, tone: randomTone()});
-export const newTone = payload => ({type: NEW_TONE, tone: randomTone()});
+export const startGame = () => ({ type: START_GAME, tone: randomTone() });
+export const newTone = () => ({ type: NEW_TONE, tone: randomTone() });
 
 export const endSequence = createAction(END_SEQUENCE);
 export const setGameMode = createAction(SET_GAME_MODE);

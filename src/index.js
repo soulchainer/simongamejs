@@ -1,5 +1,18 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers/index';
+import App from './components/App';
 
-render(<h1>Hello world!</h1>, document.querySelector('#root'));
+const store = createStore(
+  reducer,
+);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#root'),
+);

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import game from './game';
-import musicButtons from './music-buttons';
+import simonButtons from './simon-buttons';
 import tones from './tones';
 
 export default combineReducers({
   game,
-  musicButtons,
-  tones
+  simonButtons,
+  tones,
 });

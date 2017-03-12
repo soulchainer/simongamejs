@@ -38,4 +38,4 @@ export default function game(state = initialState, action) {
     default:
       return state;
   }
-};
+}

@@ -1,7 +1,7 @@
 import {
   NEW_TONE,
   SET_MAX_TONES,
-  UPDATE_PLAYER_TONES
+  UPDATE_PLAYER_TONES,
 } from '../actions/index';
 
 const initialState = {
@@ -21,4 +21,4 @@ export default function tones(state = initialState, action) {
     default:
       return state;
   }
-};
+}
