@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { AppContainer } from 'react-hot-loader';
 import reducer from './reducers/index';
 import App from './components/App';
 
@@ -13,9 +14,16 @@ const store = createStore(
 );
 /* eslint-enable */
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.querySelector('#root'),
-);
+const load = () => render((
+  <AppContainer>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </AppContainer>
+), document.querySelector('#root'));
+
+if (module.hot) {
+  module.hot.accept('./components/App', load);
+}
+
+load();
