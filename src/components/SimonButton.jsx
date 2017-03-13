@@ -1,8 +1,13 @@
 import React from 'react';
 import { buttonBorder as border, colors } from '../constants';
 
-const SimonButton = ({ active, id }) => (
-  <div className={`${id} ${active}`}>
+const SimonButton = ({ active, id, onMouseDown, onMouseLeave, onMouseUp }) => (
+  <div
+    className={`${id} ${active}`}
+    onMouseDown={onMouseDown}
+    onMouseLeave={onMouseLeave}
+    onMouseUp={onMouseUp}
+  >
     <style jsx>{`
       div {
         border-color: ${colors.black};

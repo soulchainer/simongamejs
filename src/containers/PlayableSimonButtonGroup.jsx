@@ -12,6 +12,11 @@ const mapDispatchToProps = dispatch => (
     onSimonButtonMouseDown: (id) => {
       dispatch(musicButtonOn(id));
     },
+    onSimonButtonMouseLeave: (active, id) => {
+      if (active) {
+        dispatch(musicButtonOff(id));
+      }
+    },
     onSimonButtonMouseUp: (id) => {
       dispatch(musicButtonOff(id));
     },

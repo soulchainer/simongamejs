@@ -22,7 +22,7 @@ const initialState = [
 export default function simonButtons(state = initialState, action) {
   switch (action.type) {
     case MUSIC_BUTTON_ON:
-      return state.map(btn => ({ ...btn, active: action.id === btn.id }));
+      return state.map(btn => ({ ...btn, active: action.payload === btn.id }));
     case MUSIC_BUTTON_OFF:
       return state.map(btn => ({ ...btn, active: false }));
     default:

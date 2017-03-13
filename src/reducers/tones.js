@@ -13,11 +13,11 @@ const initialState = {
 export default function tones(state = initialState, action) {
   switch (action.type) {
     case UPDATE_PLAYER_TONES:
-      return { ...state, player: [...state.player, action.tone] };
+      return { ...state, player: [...state.player, action.payload] };
     case NEW_TONE:
-      return { ...state, currentGame: [...state.currentGame, action.tone] };
+      return { ...state, currentGame: [...state.currentGame, action.payload] };
     case SET_MAX_TONES:
-      return { ...state, max: action.max };
+      return { ...state, max: action.payload };
     default:
       return state;
   }
