@@ -7,7 +7,7 @@ import {
 const initialState = {
   player: [],
   currentGame: [],
-  max: 20,
+  max: 20, // A number or Infinity for «No limit» «mode»
 };
 
 export default function tones(state = initialState, action) {
