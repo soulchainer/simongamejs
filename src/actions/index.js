@@ -27,5 +27,22 @@ export const updateGameSpeed = createAction(UPDATE_GAME_SPEED);
 export const toggleStrictMode = createAction(TOGGLE_STRICT_MODE);
 export const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
 export const setMaxTones = createAction(SET_MAX_TONES);
-export const musicButtonOn = createAction(MUSIC_BUTTON_ON);
-export const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
+
+const musicButtonOn = createAction(MUSIC_BUTTON_ON);
+const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
+
+// Thunks
+
+let gain;
+
+export const playButtonSound = (audio, id) => (dispatch) => {
+  dispatch(musicButtonOn(id));
+  gain = audio[id].start();
+};
+
+export const stopButtonSound = (active, audio, id) => (dispatch) => {
+  if (active) {
+    dispatch(musicButtonOff(id));
+    audio[id].stop(gain);
+  }
+};

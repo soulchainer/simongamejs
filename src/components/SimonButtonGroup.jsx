@@ -16,7 +16,7 @@ const SimonButtonGroup = ({
             key={simonButton.id}
             onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
             onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
-            onMouseUp={() => onSimonButtonMouseUp(simonButton.id)}
+            onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
           />
         ))}
       </div>

@@ -2,17 +2,22 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { AppContainer } from 'react-hot-loader';
-import reducer from './reducers/index';
+import rootReducer from './reducers/index';
 import App from './components/App';
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducer, /* preloadedState, */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
+
+const store = createStore(
+  rootReducer, /* preloadedState, */
+  composeEnhancers(
+    applyMiddleware(thunk),
+  ),
+);
 
 const load = () => render((
   <AppContainer>

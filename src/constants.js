@@ -17,3 +17,10 @@ export const colors = {
   red: '#cd0f0f',
   yellow: '#c9bc03',
 };
+
+export const tones = {
+  blue: 82.407,
+  green: 41.203,
+  red: 110,
+  yellow: 69.296,
+};

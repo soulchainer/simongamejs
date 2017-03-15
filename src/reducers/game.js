@@ -12,7 +12,7 @@ const initialState = {
   highScore: 0, // best score ever
   currentScore: 0, // score from the actual game
   gameOver: false, // the game has ended
-  modei: 'classic', // game mode (classic/no limit/rewind/surprise/swipe/listen!)
+  mode: 'classic', // game mode (classic/no limit/rewind/surprise/swipe/listen!)
   playingSequence: false, // CPU playing a sequence (next turn/player win/player error)
   sound: true, // play sounds or not
   speed: 1, // game speed (changes pauses and sequence steps durations)
