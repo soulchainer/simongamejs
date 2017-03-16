@@ -16,7 +16,6 @@ export const SET_MAX_TONES = 'SET_MAX_TONES';
 export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
 export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
 
-export const startGame = () => ({ type: START_GAME, payload: randomTone() });
 export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
 
 export const endSequence = createAction(END_SEQUENCE);
@@ -32,6 +31,11 @@ const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
 
 // Thunks
+
+export const startGame = () => (dispatch) => {
+  dispatch({ type: START_GAME });
+  dispatch(newTone());
+};
 
 let gain;
 
