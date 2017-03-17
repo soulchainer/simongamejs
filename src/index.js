@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { AppContainer } from 'react-hot-loader';
+import { createStore, applyMiddleware, compose } from 'redux';
+import Root from './containers/Root';
 import rootReducer from './reducers/index';
-import App from './components/App';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -21,14 +20,12 @@ const store = createStore(
 
 const load = () => render((
   <AppContainer>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Root store={store} />
   </AppContainer>
 ), document.querySelector('#root'));
 
 if (module.hot) {
-  module.hot.accept('./components/App', load);
+  module.hot.accept('./containers/Root', load);
 }
 
 load();
