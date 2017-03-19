@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import { playButtonSound, stopButtonSound } from '../actions/index';
+import {
+  handleSimonButton,
+  startGame,
+  stopButtonSound } from '../actions/index';
 import SimonButtonGroup from '../components/SimonButtonGroup';
-import audio from '../utils/audio';
 
 const mapStateToProps = (state) => {
   console.log(state); // eslint-disable-line
@@ -11,14 +13,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => (
   {
     onSimonButtonMouseDown: (id) => {
-      dispatch(playButtonSound(audio, id));
+      dispatch(handleSimonButton(id));
     },
     onSimonButtonMouseLeave: (active, id) => {
-      dispatch(stopButtonSound(active, audio, id));
+      dispatch(stopButtonSound(active, id));
     },
     onSimonButtonMouseUp: (active, id) => {
-      dispatch(stopButtonSound(active, audio, id));
+      dispatch(stopButtonSound(active, id));
     },
+    startGame: () => dispatch(startGame()),
   }
 );
 

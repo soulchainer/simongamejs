@@ -1,48 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { colors } from '../constants';
 import SimonButton from './SimonButton';
 
-const SimonButtonGroup = ({
-  onSimonButtonMouseDown,
-  onSimonButtonMouseLeave,
-  onSimonButtonMouseUp,
-  simonButtons }) => (
-    <div className="board">
-      <div className="inner-board">
-        {simonButtons.map(simonButton => (
-          <SimonButton
-            active={simonButton.active}
-            id={simonButton.id}
-            key={simonButton.id}
-            onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
-            onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
-            onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
-          />
-        ))}
-      </div>
-      <style jsx>{`
-        .board {
-          background-color: ${colors.black};
-          border-radius: 100%;
-          box-sizing: border-box;
-          display: flex;
-          height: 80vmin;
-          margin: auto;
-          top: 10vh;
-          width: 80vmin;
-        }
+class SimonButtonGroup extends Component {
+  componentDidMount() {
+    this.props.startGame();
+  }
 
-        .inner-board {
-          border-radius: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          height: 70vmin;
-          margin: auto;
-          position: relative;
-          width: 70vmin;
-        }
-      `}</style>
-    </div>
-);
+  render() {
+    const { onSimonButtonMouseDown,
+            onSimonButtonMouseLeave,
+            onSimonButtonMouseUp,
+            simonButtons } = this.props;
+    return (
+      <div className="board">
+        <div className="inner-board">
+          {simonButtons.map(simonButton => (
+            <SimonButton
+              active={simonButton.active}
+              id={simonButton.id}
+              key={simonButton.id}
+              onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
+              onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
+              onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
+            />
+          ))}
+        </div>
+        <style jsx>{`
+          .board {
+            background-color: ${colors.black};
+            border-radius: 100%;
+            box-sizing: border-box;
+            display: flex;
+            height: 80vmin;
+            margin: auto;
+            top: 10vh;
+            width: 80vmin;
+          }
+
+          .inner-board {
+            border-radius: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            height: 70vmin;
+            margin: auto;
+            position: relative;
+            width: 70vmin;
+          }
+        `}</style>
+      </div>
+    );
+  }
+}
 
 export default SimonButtonGroup;

@@ -1,4 +1,5 @@
 import {
+  END_GAME,
   END_SEQUENCE,
   SET_GAME_MODE,
   START_GAME,
@@ -21,6 +22,8 @@ const initialState = {
 
 export default function game(state = initialState, action) {
   switch (action.type) {
+    case END_GAME:
+      return { ...state, gameOver: true };
     case END_SEQUENCE:
       return { ...state, playingSequence: false };
     case SET_GAME_MODE:

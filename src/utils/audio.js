@@ -2,13 +2,20 @@ import { tones } from '../constants';
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-const createOscillator = (button, ctx, gain) => {
+const createOscillator = (button, ctx, gain, type = 'sine') => {
   const oscillator = ctx.createOscillator();
   oscillator.connect(gain);
-  oscillator.type = 'sine';
+  oscillator.type = type;
   oscillator.frequency.value = tones[button];
 
   return oscillator;
+};
+
+const createGainNode = (ctx) => {
+  const gainNode = ctx.createGain();
+  gainNode.connect(ctx.destination);
+
+  return gainNode;
 };
 
 const buttonSound = (button) => {
@@ -17,8 +24,7 @@ const buttonSound = (button) => {
 
   const start = (time = 0) => {
     // A gain node for each sound, to avoid unwanted mix of the soundwaves
-    const gainNode = audioCtx.createGain();
-    gainNode.connect(audioCtx.destination);
+    const gainNode = createGainNode(audioCtx);
     gainNode.gain.value = 1;
     oscillator = createOscillator(btn, audioCtx, gainNode);
     oscillator.start(audioCtx.currentTime + time);
@@ -34,7 +40,15 @@ const buttonSound = (button) => {
     oscillator.stop(audioCtx.currentTime + 0.5);
   };
 
-  return { start, stop };
+  const playError = () => {
+    const gainNode = createGainNode(audioCtx);
+    gainNode.gain.value = 0.5;
+    oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 1);
+  };
+
+  return { start, stop, playError };
 };
 
 const oscillators = {
@@ -47,7 +61,5 @@ const oscillators = {
 Object.keys(oscillators).forEach((button) => {
   oscillators[button] = buttonSound(button);
 });
-
-console.log(oscillators); // eslint-disable-line
 
 export default oscillators;
