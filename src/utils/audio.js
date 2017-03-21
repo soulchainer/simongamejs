@@ -31,21 +31,23 @@ const buttonSound = (button) => {
     return gainNode;
   };
 
-  const stop = (gainNode) => {
+  const stop = (gainNode, time = 0.5) => {
     // This avoid the unpleasant ticking noise that happens if the oscillator
     // stops suddenly: gain (volume) decreases gradually, in the given time
     gainNode.gain.exponentialRampToValueAtTime(
-      0.00001, audioCtx.currentTime + 0.4,
+      0.00001, audioCtx.currentTime + (time - 0.1),
     );
-    oscillator.stop(audioCtx.currentTime + 0.5);
+    oscillator.stop(audioCtx.currentTime + time);
+    return oscillator;
   };
 
-  const playError = () => {
+  const playError = (time = 1) => {
     const gainNode = createGainNode(audioCtx);
     gainNode.gain.value = 0.5;
     oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
     oscillator.start();
-    oscillator.stop(audioCtx.currentTime + 1);
+    oscillator.stop(audioCtx.currentTime + time);
+    return time;
   };
 
   return { start, stop, playError };

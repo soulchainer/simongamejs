@@ -37,9 +37,30 @@ const musicButtonError = createAction(MUSIC_BUTTON_ERROR);
 
 // Thunks
 
+const playTones = (currentGame, time, dispatch) => {
+  const tone = currentGame.shift();
+  const gain = audio[tone].start();
+  const oscillator = audio[tone].stop(gain, time);
+
+  oscillator.onended = () => {
+    if (currentGame.length) {
+      playTones(currentGame, time, dispatch);
+    } else {
+      dispatch(endSequence());
+    }
+  };
+};
+
+const playSequence = () => (dispatch, getState) => {
+  const currentGame = getState().tones.currentGame;
+  dispatch(startSequence());
+  setTimeout(() => playTones([...currentGame], 1, dispatch), 500);
+};
+
 export const startGame = () => (dispatch) => {
   dispatch({ type: START_GAME });
   dispatch(newTone());
+  dispatch(playSequence());
 };
 
 let gain;
@@ -61,12 +82,22 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
     if (playerTones === state.tones.currentGame.length) {
       if (!lastTone) {
         dispatch(newTone());
-        dispatch(startSequence());
+        dispatch(playSequence());
       } else {
+        dispatch(endSequence());
         dispatch(endGame());
       }
     }
   }
+};
+
+const handleSimonButtonError = (id, strict) => (dispatch) => {
+  dispatch(musicButtonError(id));
+  const time = audio[id].playError();
+  setTimeout(() => {
+    dispatch(endSequence());
+    if (strict) dispatch(endGame());
+  }, time * 1000);
 };
 
 export const handleSimonButton = id => (dispatch, getState) => {
@@ -76,9 +107,6 @@ export const handleSimonButton = id => (dispatch, getState) => {
     dispatch(updatePlayerTones(id));
     dispatch(playButtonSound(id));
   } else {
-    // disable click/touch in Simon, avoids mix of sounds
-    // evitar que se clique si está ya reproduciéndose mensaje de error
-    dispatch(musicButtonError({ id, strict: state.game.strict }));
-    audio[id].playError();
+    dispatch(handleSimonButtonError(id, state.game.strict));
   }
 };

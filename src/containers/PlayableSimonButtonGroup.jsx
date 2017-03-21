@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import {
-  handleSimonButton,
-  startGame,
-  stopButtonSound } from '../actions/index';
+import { handleSimonButton,
+         startGame,
+         stopButtonSound } from '../actions/index';
 import SimonButtonGroup from '../components/SimonButtonGroup';
 
 const mapStateToProps = (state) => {
   console.log(state); // eslint-disable-line
-  return { simonButtons: state.simonButtons };
+  return {
+    allowUserInteraction: state.simonButtons.allowUserInteraction,
+    simonButtons: state.simonButtons.buttons,
+  };
 };
 
 const mapDispatchToProps = dispatch => (

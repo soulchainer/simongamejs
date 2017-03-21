@@ -1,4 +1,6 @@
 import {
+  END_GAME,
+  END_SEQUENCE,
   MUSIC_BUTTON_ERROR,
   NEW_TONE,
   SET_MAX_TONES,
@@ -16,12 +18,11 @@ export default function tones(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case END_SEQUENCE:
     case MUSIC_BUTTON_ERROR:
-      return {
-        ...state,
-        player: [],
-        currentGame: ((payload.strict) ? [] : state.currentGame),
-      };
+      return { ...state, player: [] };
+    case END_GAME:
+      return { ...state, currentGame: [] };
     case NEW_TONE:
       return { ...state, currentGame: [...state.currentGame, payload] };
     case SET_MAX_TONES:

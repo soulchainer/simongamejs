@@ -8,12 +8,13 @@ class SimonButtonGroup extends Component {
   }
 
   render() {
-    const { onSimonButtonMouseDown,
+    const { allowUserInteraction,
+            onSimonButtonMouseDown,
             onSimonButtonMouseLeave,
             onSimonButtonMouseUp,
             simonButtons } = this.props;
     return (
-      <div className="board">
+      <div className={(allowUserInteraction) ? 'board' : 'board is-disabled-interaction'}>
         <div className="inner-board">
           {simonButtons.map(simonButton => (
             <SimonButton
@@ -46,6 +47,10 @@ class SimonButtonGroup extends Component {
             margin: auto;
             position: relative;
             width: 70vmin;
+          }
+
+          .is-disabled-interaction {
+            pointer-events: none;
           }
         `}</style>
       </div>
