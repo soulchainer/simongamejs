@@ -3,7 +3,7 @@ import { buttonBorder as border, colors } from '../constants';
 
 const SimonButton = ({ active, id, onMouseDown, onMouseLeave, onMouseUp }) => (
   <div
-    className={`${id} ${active}`}
+    className={`${id}${(active) ? ' active' : ''}`}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}
     onMouseUp={onMouseUp}
