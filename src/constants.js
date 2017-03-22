@@ -24,3 +24,10 @@ export const tones = {
   red: 110,
   yellow: 69.296,
 };
+
+// Durations in seconds
+export const CPU_TONE_DURATION = 1;
+export const ERROR_TONE_DURATION = 1;
+export const USER_TONE_FADE_DURATION = 0.5;
+// Durations in milliseconds
+export const NEXT_SEQUENCE_DELAY = 500;

@@ -1,6 +1,10 @@
 import audio from '../utils/audio';
 import createAction from '../utils/create-action';
 import randomTone from '../utils/get-random-music-button';
+import {
+  CPU_TONE_DURATION,
+  NEXT_SEQUENCE_DELAY,
+  USER_TONE_FADE_DURATION } from '../constants';
 
 export const END_GAME = 'END_GAME';
 export const END_SEQUENCE = 'END_SEQUENCE';
@@ -54,7 +58,7 @@ const playTones = (currentGame, time, dispatch) => {
 const playSequence = () => (dispatch, getState) => {
   const currentGame = getState().tones.currentGame;
   dispatch(startSequence());
-  setTimeout(() => playTones([...currentGame], 1, dispatch), 500);
+  setTimeout(() => playTones([...currentGame], CPU_TONE_DURATION, dispatch), NEXT_SEQUENCE_DELAY);
 };
 
 export const startGame = () => (dispatch) => {
@@ -75,7 +79,7 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
 
   if (active) {
     dispatch(musicButtonOff(id));
-    audio[id].stop(gain);
+    audio[id].stop(gain, USER_TONE_FADE_DURATION);
 
     const playerTones = state.tones.player.length;
     const lastTone = playerTones === state.tones.max;
@@ -93,11 +97,10 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
 
 const handleSimonButtonError = (id, strict) => (dispatch) => {
   dispatch(musicButtonError(id));
-  const time = audio[id].playError();
-  setTimeout(() => {
+  audio[id].playError(() => {
     dispatch(endSequence());
     if (strict) dispatch(endGame());
-  }, time * 1000);
+  });
 };
 
 export const handleSimonButton = id => (dispatch, getState) => {

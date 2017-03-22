@@ -1,4 +1,4 @@
-import { tones } from '../constants';
+import { tones, ERROR_TONE_DURATION } from '../constants';
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -22,16 +22,16 @@ const buttonSound = (button) => {
   const btn = button;
   let oscillator; // oscillator needs to be created each time
 
-  const start = (time = 0) => {
+  const start = () => {
     // A gain node for each sound, to avoid unwanted mix of the soundwaves
     const gainNode = createGainNode(audioCtx);
     gainNode.gain.value = 1;
     oscillator = createOscillator(btn, audioCtx, gainNode);
-    oscillator.start(audioCtx.currentTime + time);
+    oscillator.start();
     return gainNode;
   };
 
-  const stop = (gainNode, time = 0.5) => {
+  const stop = (gainNode, time) => {
     // This avoid the unpleasant ticking noise that happens if the oscillator
     // stops suddenly: gain (volume) decreases gradually, in the given time
     gainNode.gain.exponentialRampToValueAtTime(
@@ -41,13 +41,13 @@ const buttonSound = (button) => {
     return oscillator;
   };
 
-  const playError = (time = 1) => {
+  const playError = (onEnded) => {
     const gainNode = createGainNode(audioCtx);
     gainNode.gain.value = 0.5;
     oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
     oscillator.start();
-    oscillator.stop(audioCtx.currentTime + time);
-    return time;
+    oscillator.stop(audioCtx.currentTime + ERROR_TONE_DURATION);
+    oscillator.onended = () => onEnded();
   };
 
   return { start, stop, playError };
