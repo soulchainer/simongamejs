@@ -11,11 +11,11 @@ export const buttonIds = [
 ];
 
 export const colors = {
-  black: '#282828',
-  blue: '#1515cc',
-  green: '#12a712',
-  red: '#cd0f0f',
-  yellow: '#c9bc03',
+  black: '#393843',
+  blue: '#12a0eb',
+  green: '#00cb74',
+  red: '#fd2e13',
+  yellow: '#ece02f',
 };
 
 export const tones = {
