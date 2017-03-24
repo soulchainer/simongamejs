@@ -4,6 +4,7 @@ import randomTone from '../utils/get-random-music-button';
 import {
   CPU_TONE_DURATION,
   NEXT_SEQUENCE_DELAY,
+  NEXT_SEQUENCE_TONE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
 
 export const END_GAME = 'END_GAME';
@@ -21,6 +22,8 @@ export const SET_MAX_TONES = 'SET_MAX_TONES';
 
 export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
 export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
+export const CPU_MUSIC_BUTTON_ON = 'CPU_MUSIC_BUTTON_ON';
+export const CPU_MUSIC_BUTTON_OFF = 'CPU_MUSIC_BUTTON_OFF';
 export const MUSIC_BUTTON_ERROR = 'MUSIC_BUTTON_ERROR';
 
 export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
@@ -37,18 +40,22 @@ export const setMaxTones = createAction(SET_MAX_TONES);
 
 const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
+const cpuMusicButtonOn = createAction(CPU_MUSIC_BUTTON_ON);
+const cpuMusicButtonOff = createAction(CPU_MUSIC_BUTTON_OFF);
 const musicButtonError = createAction(MUSIC_BUTTON_ERROR);
 
 // Thunks
 
 const playTones = (currentGame, time, dispatch) => {
   const tone = currentGame.shift();
+  dispatch(cpuMusicButtonOn(tone));
   const gain = audio[tone].start();
   const oscillator = audio[tone].stop(gain, time);
 
   oscillator.onended = () => {
+    dispatch(cpuMusicButtonOff(tone));
     if (currentGame.length) {
-      playTones(currentGame, time, dispatch);
+      setTimeout(() => playTones(currentGame, time, dispatch), NEXT_SEQUENCE_TONE_DELAY);
     } else {
       dispatch(endSequence());
     }
@@ -99,7 +106,11 @@ const handleSimonButtonError = (id, strict) => (dispatch) => {
   dispatch(musicButtonError(id));
   audio[id].playError(() => {
     dispatch(endSequence());
-    if (strict) dispatch(endGame());
+    if (strict) {
+      dispatch(endGame());
+    } else {
+      dispatch(playSequence());
+    }
   });
 };
 

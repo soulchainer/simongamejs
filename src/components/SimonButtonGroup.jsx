@@ -15,42 +15,41 @@ class SimonButtonGroup extends Component {
             simonButtons } = this.props;
     return (
       <div className={(allowUserInteraction) ? 'board' : 'board is-disabled-interaction'}>
-        <div className="inner-board">
-          {simonButtons.map(simonButton => (
-            <SimonButton
-              active={simonButton.active}
-              id={simonButton.id}
-              key={simonButton.id}
-              onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
-              onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
-              onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
-            />
-          ))}
-        </div>
+        {simonButtons.map(simonButton => (
+          <SimonButton
+            active={simonButton.active}
+            cpuActive={simonButton.cpuActive}
+            id={simonButton.id}
+            key={simonButton.id}
+            onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
+            onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
+            onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
+          />
+        ))}
         <style jsx>{`
           .board {
-            background-color: ${colors.black};
             border-radius: 100%;
             box-sizing: border-box;
             display: flex;
-            height: 80vmin;
-            margin: auto;
-            top: 10vh;
-            width: 80vmin;
-          }
-
-          .inner-board {
-            border-radius: 100%;
-            display: flex;
             flex-wrap: wrap;
             height: 70vmin;
-            margin: auto;
-            position: relative;
             width: 70vmin;
           }
 
           .is-disabled-interaction {
             pointer-events: none;
+          }
+        `}</style>
+
+        <style jsx global>{`
+          body {
+            align-items: center;
+            background-color: ${colors.black};
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            width: 100vw;
           }
         `}</style>
       </div>
