@@ -14,7 +14,7 @@ class SimonButtonGroup extends Component {
             onSimonButtonMouseUp,
             simonButtons } = this.props;
     return (
-      <div className={(allowUserInteraction) ? 'board' : 'board is-disabled-interaction'}>
+      <div className={`SimonButtonGroup${(allowUserInteraction) ? '' : ' is-disabled-interaction'}`}>
         {simonButtons.map(simonButton => (
           <SimonButton
             active={simonButton.active}
@@ -27,7 +27,7 @@ class SimonButtonGroup extends Component {
           />
         ))}
         <style jsx>{`
-          .board {
+          .SimonButtonGroup {
             border-radius: 100%;
             box-sizing: border-box;
             display: flex;

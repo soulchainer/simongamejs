@@ -8,7 +8,7 @@ import {
 
 const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouseUp }) => (
   <div
-    className={`${id}${(active) ? ' active' : ''}${(cpuActive) ? ' cpu-active' : ''}`}
+    className={`SimonButton--${id}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}`}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}
     onMouseUp={onMouseUp}
@@ -21,41 +21,41 @@ const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouse
         width: 50%;
       }
 
-      .green {
+      .SimonButton--green {
         color: ${colors.green};
         background-color: currentcolor;
         border-top-left-radius: ${border.radius};
         border-width: 0 ${border.width} ${border.width} 0;
       }
 
-      .red {
+      .SimonButton--red {
         color: ${colors.red};
         background-color: currentcolor;
         border-top-right-radius: ${border.radius};
         border-width: 0 0 ${border.width} ${border.width};
       }
 
-      .yellow {
+      .SimonButton--yellow {
         color: ${colors.yellow};
         background-color: currentcolor;
         border-bottom-left-radius: ${border.radius};
         border-width: ${border.width} ${border.width} 0 0;
       }
 
-      .blue {
+      .SimonButton--blue {
         color: ${colors.blue};
         background-color: currentcolor;
         border-bottom-right-radius: ${border.radius};
         border-width: ${border.width} 0 0 ${border.width};
       }
 
-      .active {
+      .is-active {
         animation-name: user-activated;
         animation-duration: ${USER_TONE_FADE_DURATION}s;
         animation-fill-mode: forwards;
       }
 
-      .cpu-active {
+      .is-cpu-active {
         animation-name: cpu-activated;
         animation-duration: ${CPU_TONE_DURATION}s;
         animation-fill-mode: forwards;
