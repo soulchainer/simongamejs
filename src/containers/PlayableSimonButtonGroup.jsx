@@ -7,7 +7,8 @@ import SimonButtonGroup from '../components/SimonButtonGroup';
 const mapStateToProps = (state) => {
   console.log(state); // eslint-disable-line
   return {
-    allowUserInteraction: state.simonButtons.allowUserInteraction,
+    gameOver: state.game.gameOver,
+    playing: state.game.playing,
     simonButtons: state.simonButtons.buttons,
   };
 };

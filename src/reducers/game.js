@@ -1,6 +1,7 @@
 import {
   END_GAME,
   END_SEQUENCE,
+  MUSIC_BUTTON_ERROR,
   SET_GAME_MODE,
   START_GAME,
   START_SEQUENCE,
@@ -14,7 +15,8 @@ const initialState = {
   currentScore: 0, // score from the actual game
   gameOver: false, // the game has ended
   mode: 'classic', // game mode (classic/rewind/surprise/swipe/listen!)
-  playingSequence: false, // CPU playing a sequence (next turn/player win/player error)
+  // CPU playing null→none, 'sequence', 'error'→ player error, 'win'→ player won
+  playing: null,
   sound: true, // play sounds or not
   speed: 1, // game speed (changes pauses and sequence steps durations)
   strict: false, // repeat the last combination on error or reset the game
@@ -25,13 +27,15 @@ export default function game(state = initialState, action) {
     case END_GAME:
       return { ...state, gameOver: true };
     case END_SEQUENCE:
-      return { ...state, playingSequence: false };
+      return { ...state, playing: null };
+    case MUSIC_BUTTON_ERROR:
+      return { ...state, playing: 'error' };
     case SET_GAME_MODE:
       return { ...state, mode: action.mode };
     case START_GAME:
       return { ...state, currentScore: 0, gameOver: false };
     case START_SEQUENCE:
-      return { ...state, playingSequence: true };
+      return { ...state, playing: 'sequence' };
     case TOGGLE_SOUND:
       return { ...state, sound: !state.sound };
     case TOGGLE_STRICT_MODE:

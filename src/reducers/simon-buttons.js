@@ -1,15 +1,10 @@
 import {
-  END_GAME,
-  END_SEQUENCE,
-  MUSIC_BUTTON_ERROR,
   CPU_MUSIC_BUTTON_ON,
   CPU_MUSIC_BUTTON_OFF,
   MUSIC_BUTTON_ON,
-  MUSIC_BUTTON_OFF,
-  START_SEQUENCE } from '../actions/index';
+  MUSIC_BUTTON_OFF } from '../actions/index';
 
 const initialState = {
-  allowUserInteraction: false,
   buttons: [
     {
       id: 'green',
@@ -48,12 +43,6 @@ export default function simonButtons(state = initialState, action) {
         ...state,
         buttons: state.buttons.map(btn => ({ ...btn, cpuActive: false })),
       };
-    case END_SEQUENCE:
-      return { ...state, allowUserInteraction: true };
-    case END_GAME:
-    case MUSIC_BUTTON_ERROR:
-    case START_SEQUENCE:
-      return { ...state, allowUserInteraction: false };
     case MUSIC_BUTTON_ON:
       return {
         ...state,
