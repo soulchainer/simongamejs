@@ -18,10 +18,11 @@
       }
     },
     "presets": [
-      "neutrino-preset-airbnb",
       "neutrino-preset-react",
+      "neutrino-preset-airbnb",
       "custom_presets/styled-jsx-preset.js",
-      "custom_presets/named-modules-plugin.js"
+      "custom_presets/named-modules-plugin.js",
+      "custom_presets/set-eslint-envs.js"
     ]
   },
   "scripts": {

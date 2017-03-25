@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
   buttonBorder as border,
+  buttonIds as ids,
   colors,
   CPU_TONE_DURATION,
   USER_TONE_FADE_DURATION } from '../constants';
-// import createAnimations from '../utils/create-music-button-animations';
 
 const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouseUp }) => (
   <div
@@ -87,5 +87,14 @@ const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouse
     `}</style>
   </div>
 );
+
+SimonButton.propTypes = {
+  active: PropTypes.bool.isRequired,
+  cpuActive: PropTypes.bool.isRequired,
+  id: PropTypes.oneOf(ids).isRequired,
+  onMouseDown: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  onMouseUp: PropTypes.func.isRequired,
+};
 
 export default SimonButton;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { colors, ERROR_TONE_DURATION } from '../constants';
+import React, { Component, PropTypes } from 'react';
+import { buttonIds as ids, colors, ERROR_TONE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
 class SimonButtonGroup extends Component {
@@ -90,5 +90,24 @@ class SimonButtonGroup extends Component {
     );
   }
 }
+
+SimonButtonGroup.propTypes = {
+  startGame: PropTypes.func.isRequired,
+  gameOver: PropTypes.bool.isRequired,
+  playing: PropTypes.oneOf([null, 'sequence', 'error', 'win']),
+  simonButtons: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOf(ids).isRequired,
+    active: PropTypes.bool.isRequired,
+    cpuActive: PropTypes.bool.isRequired,
+  })).isRequired,
+  onSimonButtonMouseDown: PropTypes.func.isRequired,
+  onSimonButtonMouseLeave: PropTypes.func.isRequired,
+  onSimonButtonMouseUp: PropTypes.func.isRequired,
+};
+
+SimonButtonGroup.defaultProps = {
+  playing: null,
+};
+
 
 export default SimonButtonGroup;
