@@ -1,9 +1,10 @@
 module.exports = neutrino => {
   neutrino.config.module
     .rule('compile')
-      .loader('babel', ({ options }) => {
+    .use('babel')
+    .tap(options => {
         options.plugins = [...options.plugins, 'styled-jsx/babel'];
 
-        return { options };
+        return options;
       });
 };

@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "description": "My solution for the «Build a Simon Game» freeCodeCamp challenge",
   "author": "Juan Riquelme <juanriqgon@protonmail.com>",
-  "config": {
-    "neutrino": {
+  "neutrino": {
+    "config": {
       "entry": {
         "vendor": [
           "react",
@@ -17,11 +17,10 @@
         ]
       }
     },
-    "presets": [
+    "use": [
       "neutrino-preset-react",
       "neutrino-preset-airbnb",
       "custom_presets/styled-jsx-preset.js",
-      "custom_presets/named-modules-plugin.js",
       "custom_presets/set-eslint-envs.js"
     ]
   },
@@ -30,9 +29,9 @@
     "build": "neutrino build"
   },
   "devDependencies": {
-    "neutrino": "^4.3.1",
-    "neutrino-preset-airbnb": "^1.1.0",
-    "neutrino-preset-react": "^4.2.3"
+    "neutrino": "^5.0.0",
+    "neutrino-preset-airbnb": "https://github.com/soulchainer/neutrino-preset-airbnb#upgrade-to-neutrino-v5",
+    "neutrino-preset-react": "^5.0.0"
   },
   "dependencies": {
     "react": "^15.4.2",

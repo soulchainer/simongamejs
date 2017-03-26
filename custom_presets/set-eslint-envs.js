@@ -1,16 +1,10 @@
-const lint = require('neutrino-lint-base');
-const merge = require('deepmerge');
+const eslint = require('neutrino-middleware-eslint');
 
 module.exports = neutrino => {
-  lint(neutrino);
-  neutrino.config.module
-    .rule('lint')
-    .loader('eslint', props => merge(props, {
-      options: {
-        env: {
-          "browser": true,
-          "node": true
-        },
-      },
-    }));
+  neutrino.use(eslint, {
+    eslint: {
+      baseConfig: { extends: ['airbnb'] },
+      envs: ['browser', 'es6', 'node'],
+    },
+  });
 };
