@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { buttonIds as ids, colors, ERROR_TONE_DURATION } from '../constants';
+import { buttonIds as ids, ERROR_TONE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
 class SimonButtonGroup extends Component {
@@ -72,18 +72,6 @@ class SimonButtonGroup extends Component {
             20%, 40%, 60%, 80% {
               transform: translate3d(4vmin, 0, 0);
             }
-          }
-        `}</style>
-
-        <style jsx global>{`
-          body {
-            align-items: center;
-            background-color: ${colors.black};
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            width: 100vw;
           }
         `}</style>
       </div>

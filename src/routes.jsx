@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import App from './components/App';
+import Game from './components/Game';
 
 export default (
-  <Route path="/" component={App} />
+  <Route path="/game" component={Game} />
 );

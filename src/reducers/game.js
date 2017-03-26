@@ -7,6 +7,7 @@ import {
   START_SEQUENCE,
   TOGGLE_SOUND,
   TOGGLE_STRICT_MODE,
+  UPDATE_GAME_SCORE,
   UPDATE_GAME_SPEED,
 } from '../actions/index';
 
@@ -25,7 +26,7 @@ const initialState = {
 export default function game(state = initialState, action) {
   switch (action.type) {
     case END_GAME:
-      return { ...state, gameOver: true };
+      return { ...state, currentScore: 0, gameOver: true };
     case END_SEQUENCE:
       return { ...state, playing: null };
     case MUSIC_BUTTON_ERROR:
@@ -40,6 +41,8 @@ export default function game(state = initialState, action) {
       return { ...state, sound: !state.sound };
     case TOGGLE_STRICT_MODE:
       return { ...state, strict: !state.strict };
+    case UPDATE_GAME_SCORE:
+      return { ...state, currentScore: state.currentScore + 1 };
     case UPDATE_GAME_SPEED:
       return { ...state, speed: action.speed };
     default:

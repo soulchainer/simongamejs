@@ -1,9 +1,9 @@
 import React from 'react';
-import PlayableSimonButtonGroup from '../containers/PlayableSimonButtonGroup';
+import Game from './Game';
 
 const App = () => (
   <div>
-    <PlayableSimonButtonGroup />
+    <Game />
   </div>
 );
 

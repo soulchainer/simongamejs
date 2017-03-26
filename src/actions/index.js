@@ -16,6 +16,7 @@ export const TOGGLE_SOUND = 'TOGGLE_SOUND';
 export const UPDATE_GAME_SPEED = 'UPDATE_GAME_SPEED';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
 
+export const UPDATE_GAME_SCORE = 'UPDATE_GAME_SCORE';
 export const UPDATE_PLAYER_TONES = 'UPDATE_PLAYER_TONES';
 export const NEW_TONE = 'NEW_TONE';
 export const SET_MAX_TONES = 'SET_MAX_TONES';
@@ -37,6 +38,7 @@ export const updateGameSpeed = createAction(UPDATE_GAME_SPEED);
 export const toggleStrictMode = createAction(TOGGLE_STRICT_MODE);
 export const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
 export const setMaxTones = createAction(SET_MAX_TONES);
+const updateGameScore = createAction(UPDATE_GAME_SCORE);
 
 const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
@@ -92,6 +94,7 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
     const lastTone = playerTones === state.tones.max;
     if (playerTones === state.tones.currentGame.length) {
       if (!lastTone) {
+        dispatch(updateGameScore());
         dispatch(newTone());
         dispatch(playSequence());
       } else {
