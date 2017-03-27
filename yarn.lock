@@ -3437,20 +3437,11 @@ neutrino-middleware-style-loader@^5.0.0:
     css-loader "^0.27.3"
     style-loader "^0.16.0"
 
-"neutrino-preset-airbnb@file:/home/soulchainer/github/contributions/neutrino-preset-airbnb":
-  version "1.1.0"
+neutrino-preset-airbnb@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/neutrino-preset-airbnb/-/neutrino-preset-airbnb-2.0.0.tgz#230eb12315ad7e2b75ca474c0466872ab710c027"
   dependencies:
-    eslint "^3.18.0"
-    eslint-config-airbnb "^14.1.0"
-    eslint-plugin-import "^2.2.0"
-    eslint-plugin-jsx-a11y "^4.0.0"
-    eslint-plugin-react "^6.10.3"
-    neutrino-middleware-eslint "^5.0.0"
-
-"neutrino-preset-airbnb@https://github.com/soulchainer/neutrino-preset-airbnb#upgrade-to-neutrino-v5":
-  version "1.1.0"
-  resolved "https://github.com/soulchainer/neutrino-preset-airbnb#9d5f0335d9ba9b6211ebc7ed160204490b61948d"
-  dependencies:
+    deepmerge "^1.3.2"
     eslint "^3.18.0"
     eslint-config-airbnb "^14.1.0"
     eslint-plugin-import "^2.2.0"
