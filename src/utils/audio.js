@@ -50,7 +50,11 @@ const buttonSound = (button) => {
     oscillator.onended = () => onEnded();
   };
 
-  return { start, stop, playError };
+  const disconnect = (gainNode) => {
+    gainNode.disconnect(audioCtx.destination);
+  };
+
+  return { start, stop, playError, disconnect };
 };
 
 const oscillators = {

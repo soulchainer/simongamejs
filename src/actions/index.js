@@ -48,16 +48,32 @@ const musicButtonError = createAction(MUSIC_BUTTON_ERROR);
 
 // Thunks
 
-const playTones = (currentGame, time, dispatch) => {
+let sound;
+let soundGain;
+
+export const leaveGame = () => (dispatch, getstate) => {
+  const playing = getstate().game.playing;
+
+  if (playing) {
+    dispatch(endSequence());
+    sound.disconnect(soundGain);
+  }
+  dispatch(endGame());
+};
+
+const playTones = (currentGame, time, dispatch, getState) => {
+  const playing = getState().game.playing;
   const tone = currentGame.shift();
   dispatch(cpuMusicButtonOn(tone));
   const gain = audio[tone].start();
   const oscillator = audio[tone].stop(gain, time);
+  sound = oscillator;
+  soundGain = gain;
 
   oscillator.onended = () => {
     dispatch(cpuMusicButtonOff(tone));
-    if (currentGame.length) {
-      setTimeout(() => playTones(currentGame, time, dispatch), NEXT_SEQUENCE_TONE_DELAY);
+    if (playing && currentGame.length) {
+      setTimeout(() => playTones(currentGame, time, dispatch, getState), NEXT_SEQUENCE_TONE_DELAY);
     } else {
       dispatch(endSequence());
     }
@@ -67,7 +83,8 @@ const playTones = (currentGame, time, dispatch) => {
 const playSequence = () => (dispatch, getState) => {
   const currentGame = getState().tones.currentGame;
   dispatch(startSequence());
-  setTimeout(() => playTones([...currentGame], CPU_TONE_DURATION, dispatch), NEXT_SEQUENCE_DELAY);
+  setTimeout(() => playTones(
+    [...currentGame], CPU_TONE_DURATION, dispatch, getState), NEXT_SEQUENCE_DELAY);
 };
 
 export const startGame = () => (dispatch) => {

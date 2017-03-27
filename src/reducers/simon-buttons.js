@@ -1,6 +1,7 @@
 import {
   CPU_MUSIC_BUTTON_ON,
   CPU_MUSIC_BUTTON_OFF,
+  END_GAME,
   MUSIC_BUTTON_ON,
   MUSIC_BUTTON_OFF } from '../actions/index';
 
@@ -43,6 +44,8 @@ export default function simonButtons(state = initialState, action) {
         ...state,
         buttons: state.buttons.map(btn => ({ ...btn, cpuActive: false })),
       };
+    case END_GAME:
+      return initialState;
     case MUSIC_BUTTON_ON:
       return {
         ...state,

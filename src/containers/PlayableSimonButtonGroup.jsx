@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { handleSimonButton,
+         leaveGame,
          startGame,
          stopButtonSound } from '../actions/index';
 import SimonButtonGroup from '../components/SimonButtonGroup';
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   {
+    onLeaveGame: () => dispatch(leaveGame()),
     onSimonButtonMouseDown: (id) => {
       dispatch(handleSimonButton(id));
     },

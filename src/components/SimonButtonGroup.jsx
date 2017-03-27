@@ -7,6 +7,10 @@ class SimonButtonGroup extends Component {
     this.props.startGame();
   }
 
+  componentWillUnmount() {
+    this.props.onLeaveGame();
+  }
+
   render() {
     const { gameOver,
             onSimonButtonMouseDown,
@@ -80,6 +84,7 @@ class SimonButtonGroup extends Component {
 }
 
 SimonButtonGroup.propTypes = {
+  onLeaveGame: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
   gameOver: PropTypes.bool.isRequired,
   playing: PropTypes.oneOf([null, 'sequence', 'error', 'win']),
