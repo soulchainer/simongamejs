@@ -1,5 +1,5 @@
 import React from 'react';
-import WrappedLink from './WrappedLink';
+import WrappedLink from '../components/WrappedLink';
 
 const StartScreen = () => (
   <div>
