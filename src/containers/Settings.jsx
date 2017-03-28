@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SettingsOptions from '../components/SettingsOptions';
-import { changeGameMode,
-         changeGameSpeed,
+import { handleChangeGameMode,
+         handleChangeGameSpeed,
          toggleMaxTones,
          toggleSound,
          toggleStrictMode } from '../actions/index';
@@ -18,8 +18,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    onGameModeChange: mode => dispatch(changeGameMode(mode)),
-    onGameSpeedChange: speed => dispatch(changeGameSpeed(speed)),
+    onGameModeChange: mode => dispatch(handleChangeGameMode(mode)),
+    onGameSpeedChange: speed => dispatch(handleChangeGameSpeed(speed)),
     onMaxTonesChange: () => dispatch(toggleMaxTones()),
     onSoundChange: () => dispatch(toggleSound()),
     onStrictModeChange: () => dispatch(toggleStrictMode()),

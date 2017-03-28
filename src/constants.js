@@ -32,3 +32,10 @@ export const USER_TONE_FADE_DURATION = 0.5;
 // Durations in milliseconds
 export const NEXT_SEQUENCE_DELAY = 500;
 export const NEXT_SEQUENCE_TONE_DELAY = 50;
+
+export const gameModes = [
+  'classic',
+  'rewind', // user has to repeat sequence backwards
+  'surprise', // all Simon buttons have the same color
+  'listen', // there is any visual clue: just sound
+];

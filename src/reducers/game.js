@@ -10,12 +10,13 @@ import {
   TOGGLE_STRICT_MODE,
   UPDATE_GAME_SCORE,
 } from '../actions/index';
+import { gameModes as modes } from '../constants';
 
 const initialState = {
   highScore: 0, // best score ever
   currentScore: 0, // score from the actual game
   gameOver: false, // the game has ended
-  mode: 'classic', // game mode (classic/rewind/surprise/swipe/listen!)
+  mode: modes[0], // game mode (classic/rewind/surprise/swipe/listen)
   // CPU playing null→none, 'sequence', 'error'→ player error, 'win'→ player won
   playing: null,
   sound: true, // play sounds or not

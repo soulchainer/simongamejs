@@ -31,14 +31,14 @@ export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
 
 export const endGame = createAction(END_GAME);
 export const endSequence = createAction(END_SEQUENCE);
-export const changeGameMode = createAction(CHANGE_GAME_MODE);
 export const startSequence = createAction(START_SEQUENCE);
 export const toggleSound = createAction(TOGGLE_SOUND);
 export const toggleStrictMode = createAction(TOGGLE_STRICT_MODE);
 export const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
 export const toggleMaxTones = createAction(TOGGLE_MAX_TONES);
 
-const changeSpeed = createAction(CHANGE_GAME_SPEED);
+const changeGameMode = createAction(CHANGE_GAME_MODE);
+const changeGameSpeed = createAction(CHANGE_GAME_SPEED);
 const updateGameScore = createAction(UPDATE_GAME_SCORE);
 const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
@@ -145,6 +145,9 @@ export const handleSimonButton = id => (dispatch, getState) => {
   }
 };
 
-export const changeGameSpeed = event => (dispatch) => {
-  dispatch(changeSpeed(event.target.value));
+export const handleChangeGameSpeed = event => (dispatch) => {
+  dispatch(changeGameSpeed(event.target.value));
+};
+export const handleChangeGameMode = event => (dispatch) => {
+  dispatch(changeGameMode(event.target.value));
 };
