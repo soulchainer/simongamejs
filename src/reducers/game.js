@@ -1,14 +1,14 @@
 import {
+  CHANGE_GAME_MODE,
+  CHANGE_GAME_SPEED,
   END_GAME,
   END_SEQUENCE,
   MUSIC_BUTTON_ERROR,
-  SET_GAME_MODE,
   START_GAME,
   START_SEQUENCE,
   TOGGLE_SOUND,
   TOGGLE_STRICT_MODE,
   UPDATE_GAME_SCORE,
-  UPDATE_GAME_SPEED,
 } from '../actions/index';
 
 const initialState = {
@@ -25,14 +25,16 @@ const initialState = {
 
 export default function game(state = initialState, action) {
   switch (action.type) {
+    case CHANGE_GAME_MODE:
+      return { ...state, mode: action.payload };
+    case CHANGE_GAME_SPEED:
+      return { ...state, speed: action.payload };
     case END_GAME:
       return { ...state, currentScore: 0, gameOver: true };
     case END_SEQUENCE:
       return { ...state, playing: null };
     case MUSIC_BUTTON_ERROR:
       return { ...state, playing: 'error' };
-    case SET_GAME_MODE:
-      return { ...state, mode: action.mode };
     case START_GAME:
       return { ...state, currentScore: 0, gameOver: false };
     case START_SEQUENCE:
@@ -43,8 +45,6 @@ export default function game(state = initialState, action) {
       return { ...state, strict: !state.strict };
     case UPDATE_GAME_SCORE:
       return { ...state, currentScore: state.currentScore + 1 };
-    case UPDATE_GAME_SPEED:
-      return { ...state, speed: action.speed };
     default:
       return state;
   }
