@@ -16,21 +16,22 @@ const initialState = {
 
 export default function tones(state = initialState, action) {
   const { type, payload } = action;
+  const { player, currentGame, maxTones } = state;
 
   switch (type) {
     case TOGGLE_MAX_TONES:
-      return { ...state, maxTones: (state.maxTones === 20) ? Infinity : 20 };
+      return { ...state, maxTones: (maxTones === 20) ? Infinity : 20 };
     case END_SEQUENCE:
     case MUSIC_BUTTON_ERROR:
       return { ...state, player: [] };
     case END_GAME:
       return { ...state, currentGame: [] };
     case NEW_TONE:
-      return { ...state, currentGame: [...state.currentGame, payload] };
+      return { ...state, currentGame: [...currentGame, payload] };
     case START_SEQUENCE:
       return { ...state, player: [] };
     case UPDATE_PLAYER_TONES:
-      return { ...state, player: [...state.player, payload] };
+      return { ...state, player: [...player, payload] };
     default:
       return state;
   }

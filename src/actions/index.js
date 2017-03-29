@@ -7,44 +7,42 @@ import {
   NEXT_SEQUENCE_TONE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
 
+export const CHANGE_GAME_MODE = 'CHANGE_GAME_MODE';
+export const CHANGE_GAME_SPEED = 'CHANGE_GAME_SPEED';
 export const END_GAME = 'END_GAME';
 export const END_SEQUENCE = 'END_SEQUENCE';
 export const START_GAME = 'START_GAME';
-export const CHANGE_GAME_MODE = 'CHANGE_GAME_MODE';
 export const START_SEQUENCE = 'START_SEQUENCE';
 export const TOGGLE_SOUND = 'TOGGLE_SOUND';
-export const CHANGE_GAME_SPEED = 'CHANGE_GAME_SPEED';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
-
 export const UPDATE_GAME_SCORE = 'UPDATE_GAME_SCORE';
 export const UPDATE_PLAYER_TONES = 'UPDATE_PLAYER_TONES';
 export const NEW_TONE = 'NEW_TONE';
 export const TOGGLE_MAX_TONES = 'TOGGLE_MAX_TONES';
-
-export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
-export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
-export const CPU_MUSIC_BUTTON_ON = 'CPU_MUSIC_BUTTON_ON';
 export const CPU_MUSIC_BUTTON_OFF = 'CPU_MUSIC_BUTTON_OFF';
+export const CPU_MUSIC_BUTTON_ON = 'CPU_MUSIC_BUTTON_ON';
 export const MUSIC_BUTTON_ERROR = 'MUSIC_BUTTON_ERROR';
+export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
+export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
 
 export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
 
 export const endGame = createAction(END_GAME);
 export const endSequence = createAction(END_SEQUENCE);
 export const startSequence = createAction(START_SEQUENCE);
+export const toggleMaxTones = createAction(TOGGLE_MAX_TONES);
 export const toggleSound = createAction(TOGGLE_SOUND);
 export const toggleStrictMode = createAction(TOGGLE_STRICT_MODE);
-export const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
-export const toggleMaxTones = createAction(TOGGLE_MAX_TONES);
 
 const changeGameMode = createAction(CHANGE_GAME_MODE);
 const changeGameSpeed = createAction(CHANGE_GAME_SPEED);
-const updateGameScore = createAction(UPDATE_GAME_SCORE);
-const musicButtonOn = createAction(MUSIC_BUTTON_ON);
-const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
-const cpuMusicButtonOn = createAction(CPU_MUSIC_BUTTON_ON);
 const cpuMusicButtonOff = createAction(CPU_MUSIC_BUTTON_OFF);
+const cpuMusicButtonOn = createAction(CPU_MUSIC_BUTTON_ON);
 const musicButtonError = createAction(MUSIC_BUTTON_ERROR);
+const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
+const musicButtonOn = createAction(MUSIC_BUTTON_ON);
+const updateGameScore = createAction(UPDATE_GAME_SCORE);
+const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
 
 // Thunks
 
@@ -136,8 +134,18 @@ const handleSimonButtonError = (id, strict) => (dispatch) => {
 
 export const handleSimonButton = id => (dispatch, getState) => {
   const state = getState();
+  const currentGame = state.tones.currentGame;
+  const gameMode = state.game.mode;
+  const playerGame = state.tones.player;
 
-  if (id === state.tones.currentGame[state.tones.player.length]) {
+  // In game mode 'rewind', the user has to replay the sequence backwards
+  // Its better to just alter the comparation order than have to change the
+  // implementation deeply, being forced to pass more data in the action
+  // (full player array, after processing it in a thunk, for having different
+  // values according to the current game mode)
+  const userProgress = (gameMode !== 'rewind') ? playerGame.length : currentGame.length - playerGame.length - 1;
+
+  if (id === currentGame[userProgress]) {
     dispatch(updatePlayerTones(id));
     dispatch(playButtonSound(id));
   } else {
