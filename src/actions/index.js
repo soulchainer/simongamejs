@@ -4,6 +4,7 @@ import randomTone from '../utils/get-random-music-button';
 import shuffle from '../utils/shuffle-array';
 import {
   CPU_TONE_DURATION,
+  ERROR_TONE_DURATION,
   NEXT_SEQUENCE_DELAY,
   NEXT_SEQUENCE_TONE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
@@ -53,11 +54,13 @@ let sound;
 let soundGain;
 
 export const leaveGame = () => (dispatch, getstate) => {
-  const playing = getstate().game.playing;
+  const game = getstate().game;
+  const playing = game.playing;
+  const soundEnabled = game.sound;
 
   if (playing) {
     dispatch(endSequence());
-    sound.disconnect(soundGain);
+    if (soundEnabled) sound.disconnect(soundGain);
   }
   dispatch(endGame());
 };
@@ -67,15 +70,11 @@ const playTones = (currentGame, time, dispatch, getState) => {
   const buttonColors = state.simonButtons.buttonColors;
   const gameMode = state.game.mode;
   const playing = state.game.playing;
+  const soundEnabled = state.game.sound;
   const tone = currentGame.shift();
-  dispatch(cpuMusicButtonOn(tone));
-  const gain = audio[tone].start();
-  const oscillator = audio[tone].stop(gain, time);
-  sound = oscillator;
-  soundGain = gain;
-
-  oscillator.onended = () => {
+  const onPlayToneEnded = () => {
     dispatch(cpuMusicButtonOff(tone));
+
     if (playing && currentGame.length) {
       setTimeout(() => playTones(currentGame, time, dispatch, getState), NEXT_SEQUENCE_TONE_DELAY);
     } else {
@@ -84,10 +83,23 @@ const playTones = (currentGame, time, dispatch, getState) => {
       dispatch(endSequence());
     }
   };
+
+  dispatch(cpuMusicButtonOn(tone));
+
+  if (soundEnabled) { // Only play sound if sound is enabled, so obvious
+    const gain = audio[tone].start();
+    const oscillator = audio[tone].stop(gain, time);
+    sound = oscillator;
+    soundGain = gain;
+    oscillator.onended = onPlayToneEnded;
+  } else {
+    setTimeout(onPlayToneEnded, time * 1000);
+  }
 };
 
 const playSequence = () => (dispatch, getState) => {
   const currentGame = getState().tones.currentGame;
+
   dispatch(startSequence());
   setTimeout(() => playTones(
     [...currentGame], CPU_TONE_DURATION, dispatch, getState), NEXT_SEQUENCE_DELAY);
@@ -101,20 +113,26 @@ export const startGame = () => (dispatch) => {
 
 let gain;
 
-export const playButtonSound = id => (dispatch) => {
+export const playButtonSound = id => (dispatch, getState) => {
+  const soundEnabled = getState().game.sound;
+
   dispatch(musicButtonOn(id));
+  if (!soundEnabled) return;
+
   gain = audio[id].start();
 };
 
 export const stopButtonSound = (active, id) => (dispatch, getState) => {
   const state = getState();
+  const soundEnabled = state.game.sound;
 
   if (active) {
     dispatch(musicButtonOff(id));
-    audio[id].stop(gain, USER_TONE_FADE_DURATION);
+    if (soundEnabled) audio[id].stop(gain, USER_TONE_FADE_DURATION);
 
     const playerTones = state.tones.player.length;
     const lastTone = playerTones === state.tones.maxTones;
+
     if (playerTones === state.tones.currentGame.length) {
       if (!lastTone) {
         dispatch(updateGameScore());
@@ -128,16 +146,24 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
   }
 };
 
-const handleSimonButtonError = (id, strict) => (dispatch) => {
-  dispatch(musicButtonError(id));
-  audio[id].playError(() => {
+const handleSimonButtonError = (id, strict) => (dispatch, getState) => {
+  const soundEnabled = getState().game.sound;
+  const onPlayErrorEnded = () => {
     dispatch(endSequence());
     if (strict) {
       dispatch(endGame());
     } else {
       dispatch(playSequence());
     }
-  });
+  };
+
+  dispatch(musicButtonError(id));
+
+  if (!soundEnabled) {
+    setTimeout(onPlayErrorEnded, ERROR_TONE_DURATION * 1000);
+  } else {
+    audio[id].playError(onPlayErrorEnded);
+  }
 };
 
 export const handleSimonButton = id => (dispatch, getState) => {
