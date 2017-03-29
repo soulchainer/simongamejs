@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {
   buttonBorder as border,
   colors,
+  gameModes,
   CPU_TONE_DURATION,
   NEXT_SEQUENCE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
@@ -9,10 +10,17 @@ import {
 const colorTransition = `transition: color ${NEXT_SEQUENCE_DELAY}ms;`;
 
 const SimonButton = ({
-  active, color, cpuActive, position, onMouseDown, onMouseLeave, onMouseUp,
+  active,
+  color,
+  cpuActive,
+  gameMode,
+  position,
+  onMouseDown,
+  onMouseLeave,
+  onMouseUp,
 }) => (
   <div
-    className={`SimonButton--${position} u-${color}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}`}
+    className={`SimonButton--${position} u-${color}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}${(gameMode === 'listen') ? ' is-disabled-animation' : ''}`}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}
     onMouseUp={onMouseUp}
@@ -79,6 +87,10 @@ const SimonButton = ({
         animation-fill-mode: forwards;
       }
 
+      .is-cpu-active.is-disabled-animation {
+        animation: none;
+      }
+
       @keyframes cpu-activated {
         0%, 100% {
           transform: perspective(800px);
@@ -110,6 +122,7 @@ SimonButton.propTypes = {
   active: PropTypes.bool.isRequired,
   color: PropTypes.string.isRequired,
   cpuActive: PropTypes.bool.isRequired,
+  gameMode: PropTypes.oneOf(gameModes).isRequired,
   position: PropTypes.oneOf([
     'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   onMouseDown: PropTypes.func.isRequired,

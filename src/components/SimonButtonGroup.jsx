@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { buttonIds as ids, ERROR_TONE_DURATION } from '../constants';
+import { buttonIds as ids, gameModes, ERROR_TONE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
 class SimonButtonGroup extends Component {
@@ -13,6 +13,7 @@ class SimonButtonGroup extends Component {
 
   render() {
     const { colors,
+            gameMode,
             gameOver,
             onSimonButtonMouseDown,
             onSimonButtonMouseLeave,
@@ -30,6 +31,7 @@ class SimonButtonGroup extends Component {
             active={simonButton.active}
             color={colors[index]}
             cpuActive={simonButton.cpuActive}
+            gameMode={gameMode}
             key={simonButton.id}
             position={simonButton.position}
             onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
@@ -87,8 +89,7 @@ class SimonButtonGroup extends Component {
 
 SimonButtonGroup.propTypes = {
   colors: PropTypes.arrayOf(PropTypes.oneOf(ids)).isRequired,
-  onLeaveGame: PropTypes.func.isRequired,
-  startGame: PropTypes.func.isRequired,
+  gameMode: PropTypes.oneOf(gameModes).isRequired,
   gameOver: PropTypes.bool.isRequired,
   playing: PropTypes.oneOf([null, 'sequence', 'error', 'win']),
   simonButtons: PropTypes.arrayOf(PropTypes.shape({
@@ -98,9 +99,11 @@ SimonButtonGroup.propTypes = {
     position: PropTypes.oneOf([
       'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   })).isRequired,
+  onLeaveGame: PropTypes.func.isRequired,
   onSimonButtonMouseDown: PropTypes.func.isRequired,
   onSimonButtonMouseLeave: PropTypes.func.isRequired,
   onSimonButtonMouseUp: PropTypes.func.isRequired,
+  startGame: PropTypes.func.isRequired,
 };
 
 SimonButtonGroup.defaultProps = {
