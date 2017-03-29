@@ -3,6 +3,7 @@ import createAction from '../utils/create-action';
 import randomTone from '../utils/get-random-music-button';
 import shuffle from '../utils/shuffle-array';
 import {
+  buttonIds,
   CPU_TONE_DURATION,
   ERROR_TONE_DURATION,
   NEXT_SEQUENCE_DELAY,
@@ -54,14 +55,16 @@ let sound;
 let soundGain;
 
 export const leaveGame = () => (dispatch, getstate) => {
-  const game = getstate().game;
-  const playing = game.playing;
-  const soundEnabled = game.sound;
+  const state = getstate();
+  const gameMode = state.game.mode;
+  const playing = state.game.playing;
+  const soundEnabled = state.game.sound;
 
   if (playing) {
     dispatch(endSequence());
     if (soundEnabled) sound.disconnect(soundGain);
   }
+  if (gameMode === 'surprise') dispatch(changeButtonColors(buttonIds));
   dispatch(endGame());
 };
 

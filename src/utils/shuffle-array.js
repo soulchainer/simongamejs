@@ -1,7 +1,7 @@
 // Fisher-Yates Shuffle algorithm, from this StackOverflow answer
 // http://stackoverflow.com/a/6274398/1405004 (code adapted)
 export default function shuffle(array) {
-  const a = array;
+  const a = array.slice();
   let counter = a.length;
 
   // While there are elements in the array

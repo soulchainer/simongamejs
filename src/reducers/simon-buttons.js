@@ -1,5 +1,6 @@
 import { buttonIds } from '../constants';
 import {
+  CHANGE_BUTTON_COLORS,
   CPU_MUSIC_BUTTON_ON,
   CPU_MUSIC_BUTTON_OFF,
   END_GAME,
@@ -40,6 +41,8 @@ export default function simonButtons(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case CHANGE_BUTTON_COLORS:
+      return { ...state, buttonColors: payload };
     case CPU_MUSIC_BUTTON_ON:
       return {
         ...state,
