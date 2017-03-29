@@ -36,6 +36,6 @@ export const NEXT_SEQUENCE_TONE_DELAY = 50;
 export const gameModes = [
   'classic',
   'rewind', // user has to repeat sequence backwards
-  'surprise', // all Simon buttons have the same color
+  'surprise', // color of all Simon buttons change every turn, can't trust them!
   'listen', // there is any visual clue: just sound
 ];

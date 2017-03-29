@@ -12,7 +12,8 @@ class SimonButtonGroup extends Component {
   }
 
   render() {
-    const { gameOver,
+    const { colors,
+            gameOver,
             onSimonButtonMouseDown,
             onSimonButtonMouseLeave,
             onSimonButtonMouseUp,
@@ -24,12 +25,13 @@ class SimonButtonGroup extends Component {
 
     return (
       <div className={`SimonButtonGroup${disableButtons}${errorAnimation}`}>
-        {simonButtons.map(simonButton => (
+        {simonButtons.map((simonButton, index) => (
           <SimonButton
             active={simonButton.active}
+            color={colors[index]}
             cpuActive={simonButton.cpuActive}
-            id={simonButton.id}
             key={simonButton.id}
+            position={simonButton.position}
             onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
             onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
             onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
@@ -84,6 +86,7 @@ class SimonButtonGroup extends Component {
 }
 
 SimonButtonGroup.propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.oneOf(ids)).isRequired,
   onLeaveGame: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
   gameOver: PropTypes.bool.isRequired,
@@ -92,6 +95,8 @@ SimonButtonGroup.propTypes = {
     id: PropTypes.oneOf(ids).isRequired,
     active: PropTypes.bool.isRequired,
     cpuActive: PropTypes.bool.isRequired,
+    position: PropTypes.oneOf([
+      'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   })).isRequired,
   onSimonButtonMouseDown: PropTypes.func.isRequired,
   onSimonButtonMouseLeave: PropTypes.func.isRequired,

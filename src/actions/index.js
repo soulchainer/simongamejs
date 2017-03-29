@@ -1,12 +1,14 @@
 import audio from '../utils/audio';
 import createAction from '../utils/create-action';
 import randomTone from '../utils/get-random-music-button';
+import shuffle from '../utils/shuffle-array';
 import {
   CPU_TONE_DURATION,
   NEXT_SEQUENCE_DELAY,
   NEXT_SEQUENCE_TONE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
 
+export const CHANGE_BUTTON_COLORS = 'CHANGE_BUTTON_COLORS';
 export const CHANGE_GAME_MODE = 'CHANGE_GAME_MODE';
 export const CHANGE_GAME_SPEED = 'CHANGE_GAME_SPEED';
 export const END_GAME = 'END_GAME';
@@ -34,6 +36,7 @@ export const toggleMaxTones = createAction(TOGGLE_MAX_TONES);
 export const toggleSound = createAction(TOGGLE_SOUND);
 export const toggleStrictMode = createAction(TOGGLE_STRICT_MODE);
 
+const changeButtonColors = createAction(CHANGE_BUTTON_COLORS);
 const changeGameMode = createAction(CHANGE_GAME_MODE);
 const changeGameSpeed = createAction(CHANGE_GAME_SPEED);
 const cpuMusicButtonOff = createAction(CPU_MUSIC_BUTTON_OFF);
@@ -60,7 +63,10 @@ export const leaveGame = () => (dispatch, getstate) => {
 };
 
 const playTones = (currentGame, time, dispatch, getState) => {
-  const playing = getState().game.playing;
+  const state = getState();
+  const buttonColors = state.simonButtons.buttonColors;
+  const gameMode = state.game.mode;
+  const playing = state.game.playing;
   const tone = currentGame.shift();
   dispatch(cpuMusicButtonOn(tone));
   const gain = audio[tone].start();
@@ -73,6 +79,8 @@ const playTones = (currentGame, time, dispatch, getState) => {
     if (playing && currentGame.length) {
       setTimeout(() => playTones(currentGame, time, dispatch, getState), NEXT_SEQUENCE_TONE_DELAY);
     } else {
+      // colors of buttons must change every turn in 'surprise' mode
+      if (gameMode === 'surprise') dispatch(changeButtonColors(shuffle(buttonColors)));
       dispatch(endSequence());
     }
   };

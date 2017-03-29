@@ -1,3 +1,4 @@
+import { buttonIds } from '../constants';
 import {
   CPU_MUSIC_BUTTON_ON,
   CPU_MUSIC_BUTTON_OFF,
@@ -11,23 +12,28 @@ const initialState = {
       id: 'green',
       active: false,
       cpuActive: false,
+      position: 'top-left',
     },
     {
       id: 'red',
       active: false,
       cpuActive: false,
+      position: 'top-right',
     },
     {
       id: 'yellow',
       active: false,
       cpuActive: false,
+      position: 'bottom-left',
     },
     {
       id: 'blue',
       active: false,
       cpuActive: false,
+      position: 'bottom-right',
     },
   ],
+  buttonColors: buttonIds,
 };
 
 export default function simonButtons(state = initialState, action) {

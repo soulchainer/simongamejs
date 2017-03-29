@@ -1,50 +1,68 @@
 import React, { PropTypes } from 'react';
 import {
   buttonBorder as border,
-  buttonIds as ids,
   colors,
   CPU_TONE_DURATION,
+  NEXT_SEQUENCE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
 
-const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouseUp }) => (
+const colorTransition = `transition: color ${NEXT_SEQUENCE_DELAY}ms;`;
+
+const SimonButton = ({
+  active, color, cpuActive, position, onMouseDown, onMouseLeave, onMouseUp,
+}) => (
   <div
-    className={`SimonButton--${id}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}`}
+    className={`SimonButton--${position} u-${color}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}`}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}
     onMouseUp={onMouseUp}
   >
     <style jsx>{`
       div {
+        background-color: currentcolor;
         box-sizing: border-box;
         height: 50%;
         position: relative;
+        ${colorTransition}
         width: 50%;
       }
 
-      .SimonButton--green {
+      .u-green {
         color: ${colors.green};
-        background-color: currentcolor;
+        ${colorTransition}
+      }
+
+      .u-red {
+        color: ${colors.red};
+        ${colorTransition}
+      }
+
+      .u-yellow {
+        color: ${colors.yellow};
+        ${colorTransition}
+      }
+
+      .u-blue {
+        color: ${colors.blue};
+        ${colorTransition}
+      }
+
+      .SimonButton--top-left {
         border-top-left-radius: ${border.radius};
         border-width: 0 ${border.width} ${border.width} 0;
       }
 
-      .SimonButton--red {
-        color: ${colors.red};
-        background-color: currentcolor;
+      .SimonButton--top-right {
         border-top-right-radius: ${border.radius};
         border-width: 0 0 ${border.width} ${border.width};
       }
 
-      .SimonButton--yellow {
-        color: ${colors.yellow};
-        background-color: currentcolor;
+      .SimonButton--bottom-left {
         border-bottom-left-radius: ${border.radius};
         border-width: ${border.width} ${border.width} 0 0;
       }
 
-      .SimonButton--blue {
-        color: ${colors.blue};
-        background-color: currentcolor;
+      .SimonButton--bottom-right {
         border-bottom-right-radius: ${border.radius};
         border-width: ${border.width} 0 0 ${border.width};
       }
@@ -90,8 +108,10 @@ const SimonButton = ({ active, cpuActive, id, onMouseDown, onMouseLeave, onMouse
 
 SimonButton.propTypes = {
   active: PropTypes.bool.isRequired,
+  color: PropTypes.string.isRequired,
   cpuActive: PropTypes.bool.isRequired,
-  id: PropTypes.oneOf(ids).isRequired,
+  position: PropTypes.oneOf([
+    'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   onMouseDown: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   onMouseUp: PropTypes.func.isRequired,
