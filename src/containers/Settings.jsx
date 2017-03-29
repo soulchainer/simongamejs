@@ -11,7 +11,7 @@ const mapStateToProps = state => (
     gameMode: state.game.mode,
     maxTones: state.tones.maxTones,
     sound: state.game.sound,
-    gameSpeed: state.game.speed,
+    gameSpeed: `${state.game.speed}`,
     strictMode: state.game.strict,
   }
 );
