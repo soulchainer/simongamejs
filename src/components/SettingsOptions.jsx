@@ -6,6 +6,8 @@ import Toggle from './Toggle';
 const SettingsOptions = ({
   gameMode,
   gameSpeed,
+  sound,
+  strictMode,
   onGameModeChange,
   onGameSpeedChange,
   onMaxTonesChange,
@@ -14,8 +16,13 @@ const SettingsOptions = ({
 (
   <form>
     <SelectGameMode selected={gameMode} onChange={onGameModeChange} />
-    <Toggle id="strict" label="Strict Mode" onChange={onStrictModeChange} />
-    <Toggle id="sound" label="Sound" onChange={onSoundChange} />
+    <Toggle
+      id="strict"
+      label="Strict Mode"
+      checked={strictMode}
+      onChange={onStrictModeChange}
+    />
+    <Toggle id="sound" label="Sound" checked={sound} onChange={onSoundChange} />
     <Toggle id="max" label="No Limit Mode" onChange={onMaxTonesChange} />
     <Slider
       id="max"
@@ -32,6 +39,8 @@ const SettingsOptions = ({
 SettingsOptions.propTypes = {
   gameMode: PropTypes.string.isRequired,
   gameSpeed: PropTypes.string.isRequired,
+  sound: PropTypes.bool.isRequired,
+  strictMode: PropTypes.bool.isRequired,
   onGameModeChange: PropTypes.func.isRequired,
   onGameSpeedChange: PropTypes.func.isRequired,
   onMaxTonesChange: PropTypes.func.isRequired,
