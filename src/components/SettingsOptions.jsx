@@ -22,7 +22,13 @@ const SettingsOptions = ({
       checked={strictMode}
       onChange={onStrictModeChange}
     />
-    <Toggle id="sound" label="Sound" checked={sound} onChange={onSoundChange} />
+    <Toggle
+      id="sound"
+      label="Sound"
+      checked={sound}
+      disabled={gameMode === 'listen'}
+      onChange={onSoundChange}
+    />
     <Toggle id="max" label="No Limit Mode" onChange={onMaxTonesChange} />
     <Slider
       id="max"

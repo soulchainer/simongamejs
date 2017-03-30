@@ -17,19 +17,17 @@ export const END_GAME = 'END_GAME';
 export const END_SEQUENCE = 'END_SEQUENCE';
 export const START_GAME = 'START_GAME';
 export const START_SEQUENCE = 'START_SEQUENCE';
-export const TOGGLE_SOUND = 'TOGGLE_SOUND';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
 export const UPDATE_GAME_SCORE = 'UPDATE_GAME_SCORE';
 export const UPDATE_PLAYER_TONES = 'UPDATE_PLAYER_TONES';
 export const NEW_TONE = 'NEW_TONE';
 export const TOGGLE_MAX_TONES = 'TOGGLE_MAX_TONES';
+export const TOGGLE_SOUND = 'TOGGLE_SOUND';
 export const CPU_MUSIC_BUTTON_OFF = 'CPU_MUSIC_BUTTON_OFF';
 export const CPU_MUSIC_BUTTON_ON = 'CPU_MUSIC_BUTTON_ON';
 export const MUSIC_BUTTON_ERROR = 'MUSIC_BUTTON_ERROR';
 export const MUSIC_BUTTON_OFF = 'MUSIC_BUTTON_OFF';
 export const MUSIC_BUTTON_ON = 'MUSIC_BUTTON_ON';
-
-export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
 
 export const endGame = createAction(END_GAME);
 export const endSequence = createAction(END_SEQUENCE);
@@ -48,6 +46,8 @@ const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
 const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const updateGameScore = createAction(UPDATE_GAME_SCORE);
 const updatePlayerTones = createAction(UPDATE_PLAYER_TONES);
+
+export const newTone = () => ({ type: NEW_TONE, payload: randomTone() });
 
 // Thunks
 
@@ -196,6 +196,11 @@ export const handleSimonButton = id => (dispatch, getState) => {
 export const handleChangeGameSpeed = event => (dispatch) => {
   dispatch(changeGameSpeed(event.target.value));
 };
-export const handleChangeGameMode = event => (dispatch) => {
-  dispatch(changeGameMode(event.target.value));
+export const handleChangeGameMode = event => (dispatch, getState) => {
+  const gameMode = event.target.value;
+  dispatch(changeGameMode(gameMode));
+  if (gameMode === 'listen') {
+    const soundEnabled = getState().game.sound;
+    if (!soundEnabled) dispatch(toggleSound());
+  }
 };
