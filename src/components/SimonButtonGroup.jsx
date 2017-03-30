@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Redirect } from 'react-router-dom';
 import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
@@ -24,6 +25,12 @@ class SimonButtonGroup extends Component {
     const disabledInteraction = 'sequenceerror'.includes(playing) || gameOver;
     const disableButtons = disabledInteraction ? ' is-disabled-interaction' : '';
     const errorAnimation = (playing === 'error') ? ' is-playing-error' : '';
+
+    if (gameOver) {
+      return (
+        <Redirect to="/gameover" />
+      );
+    }
 
     return (
       <div className={`SimonButtonGroup${disableButtons}${errorAnimation}`}>

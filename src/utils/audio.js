@@ -47,7 +47,7 @@ const buttonSound = (button) => {
     oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
     oscillator.start();
     oscillator.stop(audioCtx.currentTime + ERROR_MOVE_DURATION);
-    oscillator.onended = () => onEnded();
+    oscillator.onended = onEnded;
   };
 
   const disconnect = (gainNode) => {

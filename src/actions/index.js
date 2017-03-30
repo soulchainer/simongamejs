@@ -15,6 +15,7 @@ export const CHANGE_GAME_MODE = 'CHANGE_GAME_MODE';
 export const CHANGE_GAME_SPEED = 'CHANGE_GAME_SPEED';
 export const END_GAME = 'END_GAME';
 export const END_SEQUENCE = 'END_SEQUENCE';
+export const RESET_GAME = 'RESET_GAME';
 export const START_GAME = 'START_GAME';
 export const START_SEQUENCE = 'START_SEQUENCE';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
@@ -57,6 +58,7 @@ let soundGain;
 export const leaveGame = () => (dispatch, getstate) => {
   const state = getstate();
   const gameMode = state.game.mode;
+  const gameOver = state.game.gameOver;
   const playing = state.game.playing;
   const soundEnabled = state.game.sound;
 
@@ -65,7 +67,17 @@ export const leaveGame = () => (dispatch, getstate) => {
     if (soundEnabled) sound.disconnect(soundGain);
   }
   if (gameMode === 'surprise') dispatch(changeButtonColors(buttonIds));
-  dispatch(endGame());
+  /*
+    Only dispatch a game over signal here if the game is left before it
+    naturally ends (when the user won the game or made a mistake in strict mode)
+  */
+  if (!gameOver) dispatch(endGame());
+  /*
+    After sending the game over signal, reset the game state.
+    If this isn't done, it won't be possible return to the game from the
+    game over screen.
+  */
+  dispatch({ type: RESET_GAME });
 };
 
 const playMoves = (currentGame, time, dispatch, getState) => {

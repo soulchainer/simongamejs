@@ -4,6 +4,7 @@ import {
   END_GAME,
   END_SEQUENCE,
   MUSIC_BUTTON_ERROR,
+  RESET_GAME,
   START_GAME,
   START_SEQUENCE,
   TOGGLE_SOUND,
@@ -31,13 +32,15 @@ export default function game(state = initialState, action) {
     case CHANGE_GAME_SPEED:
       return { ...state, speed: action.payload };
     case END_GAME:
-      return { ...state, currentScore: 0, gameOver: true };
+      return { ...state, gameOver: true };
     case END_SEQUENCE:
       return { ...state, playing: null };
     case MUSIC_BUTTON_ERROR:
       return { ...state, playing: 'error' };
+    case RESET_GAME:
+      return { ...state, gameOver: false };
     case START_GAME:
-      return { ...state, currentScore: 0, gameOver: false };
+      return { ...state, currentScore: 0 };
     case START_SEQUENCE:
       return { ...state, playing: 'sequence' };
     case TOGGLE_SOUND:
