@@ -7,7 +7,7 @@ import {
   NEXT_SEQUENCE_DELAY,
   USER_TONE_FADE_DURATION } from '../constants';
 
-const colorTransition = `transition: color ${NEXT_SEQUENCE_DELAY}ms;`;
+const colorTransition = `transition: color ${NEXT_SEQUENCE_DELAY * 1000}s;`;
 
 const SimonButton = ({
   active,

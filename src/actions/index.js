@@ -79,7 +79,10 @@ const playTones = (currentGame, time, dispatch, getState) => {
     dispatch(cpuMusicButtonOff(tone));
 
     if (playing && currentGame.length) {
-      setTimeout(() => playTones(currentGame, time, dispatch, getState), NEXT_SEQUENCE_TONE_DELAY);
+      setTimeout(
+        () => playTones(currentGame, time, dispatch, getState),
+        NEXT_SEQUENCE_TONE_DELAY * 1000,
+      );
     } else {
       // colors of buttons must change every turn in 'surprise' mode
       if (gameMode === 'surprise') dispatch(changeButtonColors(shuffle(buttonColors)));
@@ -105,7 +108,7 @@ const playSequence = () => (dispatch, getState) => {
 
   dispatch(startSequence());
   setTimeout(() => playTones(
-    [...currentGame], CPU_TONE_DURATION, dispatch, getState), NEXT_SEQUENCE_DELAY);
+    [...currentGame], CPU_TONE_DURATION, dispatch, getState), NEXT_SEQUENCE_DELAY * 1000);
 };
 
 export const startGame = () => (dispatch) => {

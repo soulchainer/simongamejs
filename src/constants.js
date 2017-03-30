@@ -25,13 +25,12 @@ export const tones = {
   yellow: 69.296,
 };
 
-// Durations in seconds
+// All durations in seconds, for consistency
 export const CPU_TONE_DURATION = 1;
 export const ERROR_TONE_DURATION = 1;
+export const NEXT_SEQUENCE_DELAY = 0.5;
+export const NEXT_SEQUENCE_TONE_DELAY = 0.05;
 export const USER_TONE_FADE_DURATION = 0.5;
-// Durations in milliseconds
-export const NEXT_SEQUENCE_DELAY = 500;
-export const NEXT_SEQUENCE_TONE_DELAY = 50;
 
 export const gameModes = [
   'classic',
