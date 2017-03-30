@@ -38,3 +38,5 @@ export const gameModes = [
   'surprise', // color of all Simon buttons change every turn, can't trust them!
   'listen', // there is any visual clue: just sound
 ];
+
+export const MAX_MOVES = 20;
