@@ -20,7 +20,7 @@ const initialState = {
   // CPU playing null→none, 'sequence', 'error'→ player error, 'win'→ player won
   playing: null,
   sound: true, // play sounds or not
-  speed: 1, // game speed (changes pauses and sequence steps durations)
+  speed: '1', // game speed (changes pauses and sequence steps durations)
   strict: false, // repeat the last combination on error or reset the game
 };
 

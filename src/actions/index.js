@@ -74,6 +74,7 @@ const playMoves = (currentGame, time, dispatch, getState) => {
   const gameMode = state.game.mode;
   const playing = state.game.playing;
   const soundEnabled = state.game.sound;
+  const speed = state.game.speed;
   const move = currentGame.shift();
   const onPlayMoveEnded = () => {
     dispatch(cpuMusicButtonOff(move));
@@ -94,7 +95,7 @@ const playMoves = (currentGame, time, dispatch, getState) => {
 
   if (soundEnabled) { // Only play sound if sound is enabled, so obvious
     const gain = audio[move].start();
-    const oscillator = audio[move].stop(gain, time);
+    const oscillator = audio[move].stop(gain, time / speed);
     sound = oscillator;
     soundGain = gain;
     oscillator.onended = onPlayMoveEnded;

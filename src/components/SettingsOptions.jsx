@@ -34,7 +34,7 @@ const SettingsOptions = ({
       id="max"
       label="Game Speed"
       onChange={speed => onGameSpeedChange(speed)}
-      min="0.25"
+      min="1"
       max="3"
       value={gameSpeed}
       step="0.25"

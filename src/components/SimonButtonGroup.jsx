@@ -19,7 +19,8 @@ class SimonButtonGroup extends Component {
             onSimonButtonMouseLeave,
             onSimonButtonMouseUp,
             playing,
-            simonButtons } = this.props;
+            simonButtons,
+            speed } = this.props;
     const disabledInteraction = 'sequenceerror'.includes(playing) || gameOver;
     const disableButtons = disabledInteraction ? ' is-disabled-interaction' : '';
     const errorAnimation = (playing === 'error') ? ' is-playing-error' : '';
@@ -34,6 +35,7 @@ class SimonButtonGroup extends Component {
             gameMode={gameMode}
             key={simonButton.id}
             position={simonButton.position}
+            speed={speed}
             onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
             onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
             onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
@@ -99,6 +101,7 @@ SimonButtonGroup.propTypes = {
     position: PropTypes.oneOf([
       'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   })).isRequired,
+  speed: PropTypes.string.isRequired,
   onLeaveGame: PropTypes.func.isRequired,
   onSimonButtonMouseDown: PropTypes.func.isRequired,
   onSimonButtonMouseLeave: PropTypes.func.isRequired,

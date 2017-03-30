@@ -15,12 +15,14 @@ const SimonButton = ({
   cpuActive,
   gameMode,
   position,
+  speed,
   onMouseDown,
   onMouseLeave,
   onMouseUp,
 }) => (
   <div
     className={`SimonButton--${position} u-${color}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}${(gameMode === 'listen') ? ' is-disabled-animation' : ''}`}
+    style={(cpuActive) ? { animationDuration: `${CPU_MOVE_DURATION / speed}s` } : {}}
     onMouseDown={onMouseDown}
     onMouseLeave={onMouseLeave}
     onMouseUp={onMouseUp}
@@ -83,7 +85,6 @@ const SimonButton = ({
 
       .is-cpu-active {
         animation-name: cpu-activated;
-        animation-duration: ${CPU_MOVE_DURATION}s;
         animation-fill-mode: forwards;
       }
 
@@ -125,6 +126,7 @@ SimonButton.propTypes = {
   gameMode: PropTypes.oneOf(gameModes).isRequired,
   position: PropTypes.oneOf([
     'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
+  speed: PropTypes.number.isRequired,
   onMouseDown: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   onMouseUp: PropTypes.func.isRequired,

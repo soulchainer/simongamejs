@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
     gameOver: state.game.gameOver,
     playing: state.game.playing,
     simonButtons: state.simonButtons.buttons,
+    speed: Number(state.game.speed),
   };
 };
 
