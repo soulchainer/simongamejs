@@ -3,9 +3,9 @@ import {
   buttonBorder as border,
   colors,
   gameModes,
-  CPU_TONE_DURATION,
+  CPU_MOVE_DURATION,
   NEXT_SEQUENCE_DELAY,
-  USER_TONE_FADE_DURATION } from '../constants';
+  USER_MOVE_FADE_DURATION } from '../constants';
 
 const colorTransition = `transition: color ${NEXT_SEQUENCE_DELAY * 1000}s;`;
 
@@ -77,13 +77,13 @@ const SimonButton = ({
 
       .is-active {
         animation-name: user-activated;
-        animation-duration: ${USER_TONE_FADE_DURATION}s;
+        animation-duration: ${USER_MOVE_FADE_DURATION}s;
         animation-fill-mode: forwards;
       }
 
       .is-cpu-active {
         animation-name: cpu-activated;
-        animation-duration: ${CPU_TONE_DURATION}s;
+        animation-duration: ${CPU_MOVE_DURATION}s;
         animation-fill-mode: forwards;
       }
 

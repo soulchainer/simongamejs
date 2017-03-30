@@ -10,7 +10,7 @@ const SettingsOptions = ({
   strictMode,
   onGameModeChange,
   onGameSpeedChange,
-  onMaxTonesChange,
+  onMaxMovesChange,
   onStrictModeChange,
   onSoundChange }) =>
 (
@@ -29,7 +29,7 @@ const SettingsOptions = ({
       disabled={gameMode === 'listen'}
       onChange={onSoundChange}
     />
-    <Toggle id="max" label="No Limit Mode" onChange={onMaxTonesChange} />
+    <Toggle id="max" label="No Limit Mode" onChange={onMaxMovesChange} />
     <Slider
       id="max"
       label="Game Speed"
@@ -49,7 +49,7 @@ SettingsOptions.propTypes = {
   strictMode: PropTypes.bool.isRequired,
   onGameModeChange: PropTypes.func.isRequired,
   onGameSpeedChange: PropTypes.func.isRequired,
-  onMaxTonesChange: PropTypes.func.isRequired,
+  onMaxMovesChange: PropTypes.func.isRequired,
   onSoundChange: PropTypes.func.isRequired,
   onStrictModeChange: PropTypes.func.isRequired,
 };

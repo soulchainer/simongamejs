@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { buttonIds as ids, gameModes, ERROR_TONE_DURATION } from '../constants';
+import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
 class SimonButtonGroup extends Component {
@@ -54,7 +54,7 @@ class SimonButtonGroup extends Component {
           }
 
           .is-playing-error {
-            animation-duration: ${ERROR_TONE_DURATION}s;
+            animation-duration: ${ERROR_MOVE_DURATION}s;
             animation-fill-mode: forwards;
             animation-name: shake;
             animation-timing-function: cubic-bezier(.175, .885, .32, 1.275);

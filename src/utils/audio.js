@@ -1,4 +1,4 @@
-import { tones, ERROR_TONE_DURATION } from '../constants';
+import { tones, ERROR_MOVE_DURATION } from '../constants';
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -46,7 +46,7 @@ const buttonSound = (button) => {
     gainNode.gain.value = 0.5;
     oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
     oscillator.start();
-    oscillator.stop(audioCtx.currentTime + ERROR_TONE_DURATION);
+    oscillator.stop(audioCtx.currentTime + ERROR_MOVE_DURATION);
     oscillator.onended = () => onEnded();
   };
 

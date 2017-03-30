@@ -26,11 +26,11 @@ export const tones = {
 };
 
 // All durations in seconds, for consistency
-export const CPU_TONE_DURATION = 1;
-export const ERROR_TONE_DURATION = 1;
+export const CPU_MOVE_DURATION = 1;
+export const ERROR_MOVE_DURATION = 1;
 export const NEXT_SEQUENCE_DELAY = 0.5;
-export const NEXT_SEQUENCE_TONE_DELAY = 0.05;
-export const USER_TONE_FADE_DURATION = 0.5;
+export const NEXT_SEQUENCE_MOVE_DELAY = 0.05;
+export const USER_MOVE_FADE_DURATION = 0.5;
 
 export const gameModes = [
   'classic',
