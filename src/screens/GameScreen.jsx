@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import GameScoreboard from '../containers/GameScoreboard';
 import PlayableSimonButtonGroup from '../containers/PlayableSimonButtonGroup';
 
-const Game = () => (
+const GameScreen = () => (
   <div>
     <GameScoreboard />
     <PlayableSimonButtonGroup />
-    <Link to="/">Home</Link>
+    <Link to="/">Main menu</Link>
   </div>
 );
 
-export default Game;
+export default GameScreen;
