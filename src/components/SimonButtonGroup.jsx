@@ -25,6 +25,20 @@ class SimonButtonGroup extends Component {
     const disabledInteraction = 'sequenceerror'.includes(playing) || gameOver;
     const disableButtons = disabledInteraction ? ' is-disabled-interaction' : '';
     const errorAnimation = (playing === 'error') ? ' is-playing-error' : '';
+    const buttons = simonButtons.map((simonButton, index) => (
+      <SimonButton
+        active={simonButton.active}
+        color={colors[index]}
+        cpuActive={simonButton.cpuActive}
+        gameMode={gameMode}
+        key={simonButton.id}
+        position={simonButton.position}
+        speed={speed}
+        onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
+        onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
+        onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
+      />
+    ));
 
     if (gameOver) {
       return (
@@ -34,20 +48,7 @@ class SimonButtonGroup extends Component {
 
     return (
       <div className={`SimonButtonGroup${disableButtons}${errorAnimation}`}>
-        {simonButtons.map((simonButton, index) => (
-          <SimonButton
-            active={simonButton.active}
-            color={colors[index]}
-            cpuActive={simonButton.cpuActive}
-            gameMode={gameMode}
-            key={simonButton.id}
-            position={simonButton.position}
-            speed={speed}
-            onMouseDown={() => onSimonButtonMouseDown(simonButton.id)}
-            onMouseLeave={() => onSimonButtonMouseLeave(simonButton.active, simonButton.id)}
-            onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
-          />
-        ))}
+        {buttons}
         <style jsx>{`
           .SimonButtonGroup {
             border-radius: 100%;
