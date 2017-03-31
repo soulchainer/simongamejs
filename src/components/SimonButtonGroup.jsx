@@ -108,7 +108,7 @@ SimonButtonGroup.propTypes = {
     position: PropTypes.oneOf([
       'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   })).isRequired,
-  speed: PropTypes.string.isRequired,
+  speed: PropTypes.number.isRequired,
   onLeaveGame: PropTypes.func.isRequired,
   onSimonButtonMouseDown: PropTypes.func.isRequired,
   onSimonButtonMouseLeave: PropTypes.func.isRequired,
