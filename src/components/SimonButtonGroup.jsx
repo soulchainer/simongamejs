@@ -1,14 +1,20 @@
 import React, { Component, PropTypes } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 
 class SimonButtonGroup extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.startGame();
   }
 
+  componentWillReceiveProps(nextState) {
+    const { gameOver } = nextState;
+    if (gameOver) this.props.onLeaveGame(this.props.history);
+  }
+
   componentWillUnmount() {
+    // The route is left with the game unended
     this.props.onLeaveGame();
   }
 
@@ -16,12 +22,12 @@ class SimonButtonGroup extends Component {
     const { colors,
             gameMode,
             gameOver,
-            onSimonButtonMouseDown,
-            onSimonButtonMouseLeave,
-            onSimonButtonMouseUp,
             playing,
             simonButtons,
-            speed } = this.props;
+            speed,
+            onSimonButtonMouseDown,
+            onSimonButtonMouseLeave,
+            onSimonButtonMouseUp } = this.props;
     const disabledInteraction = 'sequenceerror'.includes(playing) || gameOver;
     const disableButtons = disabledInteraction ? ' is-disabled-interaction' : '';
     const errorAnimation = (playing === 'error') ? ' is-playing-error' : '';
@@ -39,12 +45,6 @@ class SimonButtonGroup extends Component {
         onMouseUp={() => onSimonButtonMouseUp(simonButton.active, simonButton.id)}
       />
     ));
-
-    if (gameOver) {
-      return (
-        <Redirect to="/gameover" />
-      );
-    }
 
     return (
       <div className={`SimonButtonGroup${disableButtons}${errorAnimation}`}>
@@ -98,6 +98,7 @@ class SimonButtonGroup extends Component {
 }
 
 SimonButtonGroup.propTypes = {
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   colors: PropTypes.arrayOf(PropTypes.oneOf(ids)).isRequired,
   gameMode: PropTypes.oneOf(gameModes).isRequired,
   gameOver: PropTypes.bool.isRequired,
@@ -121,5 +122,4 @@ SimonButtonGroup.defaultProps = {
   playing: null,
 };
 
-
-export default SimonButtonGroup;
+export default withRouter(SimonButtonGroup);

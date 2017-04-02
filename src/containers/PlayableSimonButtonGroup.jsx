@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   {
-    onLeaveGame: () => dispatch(leaveGame()),
+    onLeaveGame: history => dispatch(leaveGame(history)),
     onSimonButtonMouseDown: (id) => {
       dispatch(handleSimonButton(id));
     },
