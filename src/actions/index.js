@@ -64,7 +64,7 @@ export const leaveGame = () => (dispatch, getstate) => {
 
   if (playing) {
     dispatch(endSequence());
-    if (soundEnabled) sound.disconnect(soundGain);
+    if (soundEnabled && sound) sound.disconnect(soundGain);
   }
   if (gameMode === 'surprise') dispatch(changeButtonColors(buttonIds));
   /*

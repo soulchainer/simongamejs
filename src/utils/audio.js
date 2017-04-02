@@ -1,4 +1,4 @@
-import { tones, ERROR_MOVE_DURATION } from '../constants';
+import { buttonIds as buttons, tones, ERROR_MOVE_DURATION } from '../constants';
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -57,15 +57,9 @@ const buttonSound = (button) => {
   return { start, stop, playError, disconnect };
 };
 
-const oscillators = {
-  blue: null,
-  green: null,
-  red: null,
-  yellow: null,
-};
-
-Object.keys(oscillators).forEach((button) => {
-  oscillators[button] = buttonSound(button);
-});
-
-export default oscillators;
+/*
+  Return an object with button colors as keys and a function to generate and
+  manage that sound as value
+*/
+const oscillators = buttons.map(button => ({ [button]: buttonSound(button) }));
+export default Object.assign({}, ...oscillators);
