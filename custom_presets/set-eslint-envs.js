@@ -1,10 +1,6 @@
-const eslint = require('neutrino-middleware-eslint');
-
 module.exports = neutrino => {
-  neutrino.use(eslint, {
-    eslint: {
-      baseConfig: { extends: ['airbnb'] },
-      envs: ['browser', 'es6', 'node'],
-    },
-  });
+  neutrino.config.module
+    .rule('lint')
+    .use('eslint')
+    .tap(options => Object.assign(options, { envs: ['browser', 'es6', 'node'] }));
 };

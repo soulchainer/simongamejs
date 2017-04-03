@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "neutrino": "^5.0.0",
-    "neutrino-preset-airbnb": "^2.0.0",
+    "neutrino-preset-airbnb": "^2.1.0",
     "neutrino-preset-react": "^5.0.0"
   },
   "dependencies": {
