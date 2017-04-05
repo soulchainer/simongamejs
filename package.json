@@ -7,6 +7,8 @@
     "config": {
       "entry": {
         "vendor": [
+          "mo-js",
+          "mojs-player",
           "react",
           "react-dom",
           "react-redux",
@@ -35,6 +37,8 @@
     "neutrino-preset-react": "^5.0.0"
   },
   "dependencies": {
+    "mo-js": "^0.288.1",
+    "mojs-player": "^0.43.16",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
