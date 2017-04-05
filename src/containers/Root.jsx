@@ -12,7 +12,7 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
       <div>
-        <div>
+        <div className="Root">
           <Route exact path="/" render={StartScreen} />
           <Route exact path="/game" render={GameScreen} />
           <Route path="/gameover" render={GameOverScreen} />

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import mojs from 'mo-js';
-import MojsPlayer from 'mojs-player';
 import { colors } from '../constants';
 
 class AnimatedTitle extends Component {
@@ -110,8 +109,7 @@ class AnimatedTitle extends Component {
     /* eslint-disable no-unused-vars */
     const timeline = new mojs.Timeline({}).add(
       sLetter, iLetter, mLetter, simon, nLetter,
-    );
-    const mojsPlayer = new MojsPlayer({ add: timeline });
+    ).play();
     /* eslint-enable no-unused-vars */
   }
 
@@ -192,9 +190,16 @@ class AnimatedTitle extends Component {
           {AnimatedTitle.nPaths(['N-line1', 'N-line2', 'N-line3', 'N-line4'])}
         </svg>
         <style jsx>{`
+          .AnimatedTitle {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 100%; /* If the width isn't setted, the SVG won't scale */
+          }
+
           /* Put some space between the letters */
           svg {
-            padding-left: 2vmin;
+            margin-left: 2vmin;
           }
         `}</style>
       </div>
