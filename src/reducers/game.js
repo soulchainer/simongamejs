@@ -15,7 +15,8 @@ import { gameModes as modes } from '../constants';
 
 const initialState = {
   highScore: 0, // best score ever
-  currentScore: 0, // score from the actual game
+  currentScore: 0, // actual score from the game
+  lastEndScore: 0, // total score from the last game won/lost
   gameOver: false, // the game has ended
   mode: modes[0], // game mode (classic/rewind/surprise/swipe/listen)
   // CPU playing null→none, 'sequence', 'error'→ player error, 'win'→ player won
@@ -38,9 +39,9 @@ export default function game(state = initialState, action) {
     case MUSIC_BUTTON_ERROR:
       return { ...state, playing: 'error' };
     case RESET_GAME:
-      return { ...state, gameOver: false };
+      return { ...state, currentScore: 0, lastEndScore: state.currentScore, gameOver: false };
     case START_GAME:
-      return { ...state, currentScore: 0 };
+      return { ...state, currentScore: 0, lastEndScore: 0 };
     case START_SEQUENCE:
       return { ...state, playing: 'sequence' };
     case TOGGLE_SOUND:

@@ -55,7 +55,7 @@ export const newMove = () => ({ type: NEW_MOVE, payload: randomMove() });
 let sound;
 let soundGain;
 
-export const leaveGame = history => (dispatch, getstate) => {
+export const leaveGame = () => (dispatch, getstate) => {
   const state = getstate();
   const gameMode = state.game.mode;
   const gameOver = state.game.gameOver;
@@ -72,13 +72,6 @@ export const leaveGame = history => (dispatch, getstate) => {
     naturally ends (when the user won the game or made a mistake in strict mode)
   */
   if (!gameOver) dispatch(endGame());
-  // Redirect to /gameover
-  if (history) {
-    history.push({
-      pathname: '/gameover',
-      // state: variable extra de dirección, a game o a main menu
-    });
-  }
   /*
     After sending the game over signal, reset the game state.
     If this isn't done, it won't be possible return to the game from the

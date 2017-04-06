@@ -12,12 +12,12 @@ class SimonButtonGroup extends Component {
   }
 
   componentWillReceiveProps(nextState) {
-    const { gameOver } = nextState;
-    if (gameOver) this.props.onLeaveGame(this.props.history);
+    // If gameOver, redirect to /gameover
+    if (nextState.gameOver) this.props.history.push({ pathname: '/gameover' });
   }
 
   componentWillUnmount() {
-    // The route is left with the game unended
+    // The game route is left (the game ended or user hit Link to StartScreen)
     this.props.onLeaveGame();
   }
 
