@@ -7,7 +7,7 @@ import { colors } from '../constants';
 import getTransitionAnimation from '../utils/animation';
 import shuffle from '../utils/shuffle-array';
 
-class MenuLink extends Component {
+class ElasticButtonLink extends Component {
   constructor(props) {
     super(props);
     this.state = { redirect: null };
@@ -17,7 +17,7 @@ class MenuLink extends Component {
   componentDidMount() {
     const button = new mojs.Html({
       duration: 0,
-      color: MenuLink.randomColor(),
+      color: ElasticButtonLink.randomColor(),
       el: `#${this.props.id}`,
       isShowStart: true,
     });
@@ -45,18 +45,18 @@ class MenuLink extends Component {
     const { id, label, to } = this.props;
     if (this.state.redirect) return <Redirect push to={to} />;
     return (
-      <div className="MenuLink" id={`${id}`}>
+      <div className="ElasticButtonLink" id={`${id}`}>
         <Link
           to={to}
           id={`${id}-link`}
           onClick={this.onClickLink}
-          onMouseEnter={MenuLink.onMouseEnter}
-          onMouseLeave={MenuLink.onMouseLeave}
+          onMouseEnter={ElasticButtonLink.onMouseEnter}
+          onMouseLeave={ElasticButtonLink.onMouseLeave}
         >
           {label}
         </Link>
         <style jsx>{`
-          .MenuLink {
+          .ElasticButtonLink {
             background-color: transparent;
             font-size: 1.4rem;
             line-height: 1.8;
@@ -64,7 +64,7 @@ class MenuLink extends Component {
             width: 8rem;
           }
 
-          .MenuLink>a {
+          .ElasticButtonLink>a {
             border-color: currentcolor;
             border-radius: 5px;
             border-style: solid;
@@ -82,22 +82,22 @@ class MenuLink extends Component {
   }
 }
 
-MenuLink.propTypes = {
+ElasticButtonLink.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
 
-MenuLink.randomColor = function randomColor() {
+ElasticButtonLink.randomColor = function randomColor() {
   return colors[shuffle(Object.values(['blue', 'green', 'yellow']))[0]];
 };
 
-MenuLink.onMouseEnter = function onMouseEnter(event) {
+ElasticButtonLink.onMouseEnter = function onMouseEnter(event) {
   const id = `#${event.target.id.split('-')[0]}`;
-  MenuLink.onMouseEnterAnimation(id);
+  ElasticButtonLink.onMouseEnterAnimation(id);
 };
 
-MenuLink.onMouseEnterAnimation = function onMouseEnterAnimation(id) {
+ElasticButtonLink.onMouseEnterAnimation = function onMouseEnterAnimation(id) {
   const mouseEnterAnimation = new mojs.Html({
     duration: 400,
     el: id,
@@ -109,12 +109,12 @@ MenuLink.onMouseEnterAnimation = function onMouseEnterAnimation(id) {
   mouseEnterAnimation.play();
 };
 
-MenuLink.onMouseLeave = function onMouseLeave(event) {
+ElasticButtonLink.onMouseLeave = function onMouseLeave(event) {
   const id = `#${event.target.id.split('-')[0]}`;
-  MenuLink.onMouseLeaveAnimation(id);
+  ElasticButtonLink.onMouseLeaveAnimation(id);
 };
 
-MenuLink.onMouseLeaveAnimation = function OnMouseLeaveAnimation(id) {
+ElasticButtonLink.onMouseLeaveAnimation = function OnMouseLeaveAnimation(id) {
   const mouseLeaveAnimation = new mojs.Html({
     duration: 300,
     el: id,
@@ -132,4 +132,4 @@ MenuLink.onMouseLeaveAnimation = function OnMouseLeaveAnimation(id) {
   mouseLeaveAnimation.play();
 };
 
-export default MenuLink;
+export default ElasticButtonLink;

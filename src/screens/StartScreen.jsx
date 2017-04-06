@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimatedTitle from '../components/AnimatedTitle';
-import MenuLink from '../components/MenuLink';
+import ElasticButtonLink from '../components/ElasticButtonLink';
 
 const StartScreen = () => (
   <div className="StartScreen">
@@ -9,9 +9,9 @@ const StartScreen = () => (
     </header>
     <nav>
       <ul>
-        <li><MenuLink id="play" label="Play" to="/game" /></li>
-        <li><MenuLink id="settings" label="Settings" to="/settings" /></li>
-        <li><MenuLink id="credits" label="Credits" to="/credits" /></li>
+        <li><ElasticButtonLink id="play" label="Play" to="/game" /></li>
+        <li><ElasticButtonLink id="settings" label="Settings" to="/settings" /></li>
+        <li><ElasticButtonLink id="credits" label="Credits" to="/credits" /></li>
       </ul>
     </nav>
     <style jsx>{`

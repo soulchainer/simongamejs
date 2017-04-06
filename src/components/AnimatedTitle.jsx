@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import mojs from 'mo-js';
 import { colors } from '../constants';
+import getTransitionAnimation from '../utils/animation';
 
 class AnimatedTitle extends Component {
   componentDidMount() {
@@ -106,11 +107,13 @@ class AnimatedTitle extends Component {
       x: { '-100vw': 0 },
     });
 
-    /* eslint-disable no-unused-vars */
     const timeline = new mojs.Timeline({}).add(
       sLetter, iLetter, mLetter, simon, nLetter,
-    ).play();
-    /* eslint-enable no-unused-vars */
+    );
+
+    function onTransitionEnd() { timeline.play(); }
+    const onLoadAnimation = getTransitionAnimation(onTransitionEnd);
+    onLoadAnimation.playBackward();
   }
 
   shouldComponentUpdate() {
