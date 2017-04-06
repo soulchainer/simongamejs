@@ -6,8 +6,7 @@ export default function getTransitionAnimation(onTransitionEnd = () => null) {
     el: '#root',
     easing: 'ease.in',
     isShowStart: true,
-    angleZ: { 0: 360 },
-    scale: { 1: 0 },
+    opacity: { 1: 0 },
     onRepeatComplete() { onTransitionEnd(); },
   });
 
