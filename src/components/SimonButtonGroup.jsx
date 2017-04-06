@@ -2,10 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
+import getTransitionAnimation from '../utils/animation';
 
 class SimonButtonGroup extends Component {
-  componentWillMount() {
-    this.props.startGame();
+  componentDidMount() {
+    function onTransitionEnd() { this.props.startGame(); }
+    const onLoadAnimation = getTransitionAnimation(onTransitionEnd.bind(this));
+    onLoadAnimation.playBackward();
   }
 
   componentWillReceiveProps(nextState) {
