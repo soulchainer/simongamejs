@@ -60,6 +60,7 @@ class ElasticButtonLink extends Component {
             background-color: transparent;
             font-size: 1.4rem;
             line-height: 1.8;
+            max-width: 85%;
             text-align: center;
             width: 8rem;
           }
@@ -69,10 +70,12 @@ class ElasticButtonLink extends Component {
             border-radius: 5px;
             border-style: solid;
             border-width: 2px;
+            box-sizing: content-box;
             color: inherit;
             display: inline-block;
             height: 100%;
             overflow: hidden;
+            padding: 5px;
             text-decoration: none;
             width: 100%;
           }

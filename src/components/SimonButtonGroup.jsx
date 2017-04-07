@@ -5,15 +5,15 @@ import SimonButton from './SimonButton';
 import getTransitionAnimation from '../utils/animation';
 
 class SimonButtonGroup extends Component {
-  componentDidMount() {
-    function onTransitionEnd() { this.props.startGame(); }
-    const onLoadAnimation = getTransitionAnimation(onTransitionEnd.bind(this));
-    onLoadAnimation.playBackward();
-  }
-
-  componentWillReceiveProps(nextState) {
-    // If gameOver, redirect to /gameover
-    if (nextState.gameOver) this.props.history.push({ pathname: '/gameover' });
+  componentWillReceiveProps(nextProps) {
+    const { history, transitionComplete, startGame } = this.props;
+    // Start the game only when transition ends
+    if (transitionComplete !== nextProps.transitionComplete) startGame();
+    // If gameOver, play the transition animation and redirect to /gameover
+    function onTransitionEnd() { history.push({ pathname: '/gameover' }); }
+    if (nextProps.gameOver) {
+      getTransitionAnimation(onTransitionEnd.bind(this)).play();
+    }
   }
 
   componentWillUnmount() {
@@ -114,6 +114,7 @@ SimonButtonGroup.propTypes = {
       'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   })).isRequired,
   speed: PropTypes.number.isRequired,
+  transitionComplete: PropTypes.bool.isRequired,
   onLeaveGame: PropTypes.func.isRequired,
   onSimonButtonMouseDown: PropTypes.func.isRequired,
   onSimonButtonMouseLeave: PropTypes.func.isRequired,

@@ -5,7 +5,7 @@ import { handleSimonButton,
          stopButtonSound } from '../actions/index';
 import SimonButtonGroup from '../components/SimonButtonGroup';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log(state); // eslint-disable-line
   return {
     colors: state.simonButtons.buttonColors,
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     playing: state.game.playing,
     simonButtons: state.simonButtons.buttons,
     speed: Number(state.game.speed),
+    transitionComplete: ownProps.transitionComplete,
   };
 };
 

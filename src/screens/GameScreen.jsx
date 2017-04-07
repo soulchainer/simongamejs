@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ElasticButtonLink from '../components/ElasticButtonLink';
 import GameScoreboard from '../containers/GameScoreboard';
 import PlayableSimonButtonGroup from '../containers/PlayableSimonButtonGroup';
+import Transition from '../components/Transition';
 
 const GameScreen = () => (
-  <div>
+  <Transition playBackwards>
     <GameScoreboard />
     <PlayableSimonButtonGroup />
-    <Link to="/">Main menu</Link>
-  </div>
+    <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+  </Transition>
 );
 
 export default GameScreen;

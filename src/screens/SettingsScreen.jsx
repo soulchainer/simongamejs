@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ElasticButtonLink from '../components/ElasticButtonLink';
 import Settings from '../containers/Settings';
+import Transition from '../components/Transition';
 
 const SettingsScreen = () => (
-  <div>
+  <Transition playBackwards>
     <Settings />
-    <Link to="/">Home</Link>
-  </div>
+    <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+  </Transition>
 );
 
 export default SettingsScreen;
