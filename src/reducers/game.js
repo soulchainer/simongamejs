@@ -10,11 +10,15 @@ import {
   TOGGLE_SOUND,
   TOGGLE_STRICT_MODE,
   UPDATE_GAME_SCORE,
+  UPDATE_GAME_HIGH_SCORES,
 } from '../actions/index';
 import { gameModes as modes } from '../constants';
 
+const highScores = {};
+modes.forEach((key) => { highScores[key] = 0; });
+
 const initialState = {
-  highScore: 0, // best score ever
+  highScores, // best scores ever
   currentScore: 0, // actual score from the game
   lastEndScore: 0, // total score from the last game won/lost
   gameOver: false, // the game has ended
@@ -27,30 +31,44 @@ const initialState = {
 };
 
 export default function game(state = initialState, action) {
+  const baseState = { ...initialState, ...state };
   switch (action.type) {
     case CHANGE_GAME_MODE:
-      return { ...state, mode: action.payload };
+      return { ...baseState, mode: action.payload };
     case CHANGE_GAME_SPEED:
-      return { ...state, speed: action.payload };
+      return { ...baseState, speed: action.payload };
     case END_GAME:
-      return { ...state, gameOver: true };
+      return { ...baseState, gameOver: true };
     case END_SEQUENCE:
-      return { ...state, playing: null };
+      return { ...baseState, playing: null };
     case MUSIC_BUTTON_ERROR:
-      return { ...state, playing: 'error' };
+      return { ...baseState, playing: 'error' };
     case RESET_GAME:
-      return { ...state, currentScore: 0, lastEndScore: state.currentScore, gameOver: false };
+      return {
+        ...baseState,
+        currentScore: 0,
+        lastEndScore: baseState.currentScore,
+        gameOver: false,
+      };
     case START_GAME:
-      return { ...state, currentScore: 0, lastEndScore: 0 };
+      return { ...baseState, currentScore: 0, lastEndScore: 0 };
     case START_SEQUENCE:
-      return { ...state, playing: 'sequence' };
+      return { ...baseState, playing: 'sequence' };
     case TOGGLE_SOUND:
-      return { ...state, sound: !state.sound };
+      return { ...baseState, sound: !baseState.sound };
     case TOGGLE_STRICT_MODE:
-      return { ...state, strict: !state.strict };
+      return { ...baseState, strict: !baseState.strict };
     case UPDATE_GAME_SCORE:
-      return { ...state, currentScore: state.currentScore + 1 };
+      return { ...baseState, currentScore: baseState.currentScore + 1 };
+    case UPDATE_GAME_HIGH_SCORES:
+      return {
+        ...baseState,
+        highScores: {
+          ...baseState.highScores,
+          [baseState.mode]: baseState.lastEndScore,
+        },
+      };
     default:
-      return state;
+      return baseState;
   }
 }

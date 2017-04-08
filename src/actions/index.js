@@ -20,6 +20,7 @@ export const START_GAME = 'START_GAME';
 export const START_SEQUENCE = 'START_SEQUENCE';
 export const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
 export const UPDATE_GAME_SCORE = 'UPDATE_GAME_SCORE';
+export const UPDATE_GAME_HIGH_SCORES = 'UPDATE_GAME_HIGH_SCORES';
 export const UPDATE_PLAYER_MOVES = 'UPDATE_PLAYER_MOVES';
 export const NEW_MOVE = 'NEW_MOVE';
 export const TOGGLE_MAX_MOVES = 'TOGGLE_MAX_MOVES';
@@ -46,7 +47,9 @@ const musicButtonError = createAction(MUSIC_BUTTON_ERROR);
 const musicButtonOff = createAction(MUSIC_BUTTON_OFF);
 const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const updateGameScore = createAction(UPDATE_GAME_SCORE);
+const updateGameHighScores = createAction(UPDATE_GAME_HIGH_SCORES);
 const updatePlayerMoves = createAction(UPDATE_PLAYER_MOVES);
+const resetGame = createAction(RESET_GAME);
 
 export const newMove = () => ({ type: NEW_MOVE, payload: randomMove() });
 
@@ -57,8 +60,10 @@ let soundGain;
 
 export const leaveGame = () => (dispatch, getstate) => {
   const state = getstate();
+  const currentScore = state.game.currentScore;
   const gameMode = state.game.mode;
   const gameOver = state.game.gameOver;
+  const highScores = state.game.highScores;
   const playing = state.game.playing;
   const soundEnabled = state.game.sound;
 
@@ -77,7 +82,8 @@ export const leaveGame = () => (dispatch, getstate) => {
     If this isn't done, it won't be possible return to the game from the
     game over screen.
   */
-  dispatch({ type: RESET_GAME });
+  dispatch(resetGame());
+  if (currentScore > highScores[gameMode]) dispatch(updateGameHighScores());
 };
 
 const playMoves = (currentGame, time, dispatch, getState) => {

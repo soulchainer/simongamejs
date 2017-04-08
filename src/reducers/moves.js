@@ -16,24 +16,25 @@ const initialState = {
 };
 
 export default function moves(state = initialState, action) {
+  const baseState = { ...initialState, ...state };
   const { type, payload } = action;
-  const { player, currentGame, maxMoves } = state;
+  const { player, currentGame, maxMoves } = baseState;
 
   switch (type) {
     case TOGGLE_MAX_MOVES:
-      return { ...state, maxMoves: (maxMoves === MAX_MOVES) ? 'Infinity' : MAX_MOVES };
+      return { ...baseState, maxMoves: (maxMoves === MAX_MOVES) ? 'Infinity' : MAX_MOVES };
     case END_SEQUENCE:
     case MUSIC_BUTTON_ERROR:
-      return { ...state, player: [] };
+      return { ...baseState, player: [] };
     case END_GAME:
-      return { ...state, currentGame: [] };
+      return { ...baseState, currentGame: [] };
     case NEW_MOVE:
-      return { ...state, currentGame: [...currentGame, payload] };
+      return { ...baseState, currentGame: [...currentGame, payload] };
     case START_SEQUENCE:
-      return { ...state, player: [] };
+      return { ...baseState, player: [] };
     case UPDATE_PLAYER_MOVES:
-      return { ...state, player: [...player, payload] };
+      return { ...baseState, player: [...player, payload] };
     default:
-      return state;
+      return baseState;
   }
 }

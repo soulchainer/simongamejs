@@ -38,34 +38,41 @@ const initialState = {
 };
 
 export default function simonButtons(state = initialState, action) {
+  const baseState = { ...initialState, ...state };
   const { type, payload } = action;
 
   switch (type) {
     case CHANGE_BUTTON_COLORS:
-      return { ...state, buttonColors: payload };
+      return { ...baseState, buttonColors: payload };
     case CPU_MUSIC_BUTTON_ON:
       return {
-        ...state,
-        buttons: state.buttons.map(btn => ({ ...btn, cpuActive: payload === btn.id })),
+        ...baseState,
+        buttons: baseState.buttons.map(btn => ({
+          ...btn,
+          cpuActive: payload === btn.id,
+        })),
       };
     case CPU_MUSIC_BUTTON_OFF:
       return {
-        ...state,
-        buttons: state.buttons.map(btn => ({ ...btn, cpuActive: false })),
+        ...baseState,
+        buttons: baseState.buttons.map(btn => ({ ...btn, cpuActive: false })),
       };
     case END_GAME:
       return initialState;
     case MUSIC_BUTTON_ON:
       return {
-        ...state,
-        buttons: state.buttons.map(btn => ({ ...btn, active: payload === btn.id })),
+        ...baseState,
+        buttons: baseState.buttons.map(btn => ({
+          ...btn,
+          active: payload === btn.id,
+        })),
       };
     case MUSIC_BUTTON_OFF:
       return {
-        ...state,
-        buttons: state.buttons.map(btn => ({ ...btn, active: false })),
+        ...baseState,
+        buttons: baseState.buttons.map(btn => ({ ...btn, active: false })),
       };
     default:
-      return state;
+      return baseState;
   }
 }

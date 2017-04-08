@@ -26,7 +26,7 @@ store.subscribe(throttle(() => {
   const state = store.getState();
   saveState({
     game: {
-      highScore: state.game.highScore,
+      highScores: state.game.highScores,
       mode: state.game.mode,
       sound: state.game.sound,
       speed: state.game.speed,
