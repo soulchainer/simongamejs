@@ -12,7 +12,7 @@ import { MAX_MOVES } from '../constants';
 const initialState = {
   player: [],
   currentGame: [],
-  maxMoves: MAX_MOVES, // A number or Infinity for «No limit» «mode»
+  maxMoves: MAX_MOVES, // A number or 'Infinity' for «No limit» «mode»
 };
 
 export default function moves(state = initialState, action) {
@@ -21,7 +21,7 @@ export default function moves(state = initialState, action) {
 
   switch (type) {
     case TOGGLE_MAX_MOVES:
-      return { ...state, maxMoves: (maxMoves === MAX_MOVES) ? Infinity : MAX_MOVES };
+      return { ...state, maxMoves: (maxMoves === MAX_MOVES) ? 'Infinity' : MAX_MOVES };
     case END_SEQUENCE:
     case MUSIC_BUTTON_ERROR:
       return { ...state, player: [] };

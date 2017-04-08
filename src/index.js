@@ -4,19 +4,37 @@ import { render } from 'react-dom';
 import thunk from 'redux-thunk';
 import { AppContainer } from 'react-hot-loader';
 import { createStore, applyMiddleware, compose } from 'redux';
+import throttle from 'lodash.throttle';
 import Root from './containers/Root';
 import rootReducer from './reducers/index';
+import { loadState, saveState } from './utils/localStorage';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-/* eslint-enable */
+/* eslint-enable no-underscore-dangle */
 
+const persistedState = loadState();
 const store = createStore(
-  rootReducer, /* preloadedState, */
+  rootReducer,
+  persistedState, // our preloaded state
   composeEnhancers(
     applyMiddleware(thunk),
   ),
 );
+
+store.subscribe(throttle(() => {
+  const state = store.getState();
+  saveState({
+    game: {
+      highScore: state.game.highScore,
+      mode: state.game.mode,
+      sound: state.game.sound,
+      speed: state.game.speed,
+      strict: state.game.strict,
+    },
+    moves: { maxMoves: state.moves.maxMoves },
+  });
+}, 1000));
 
 const load = () => render((
   <AppContainer>

@@ -7,6 +7,7 @@
     "config": {
       "entry": {
         "vendor": [
+          "lodash.throttle",
           "mo-js",
           "mojs-player",
           "react",
@@ -37,6 +38,7 @@
     "neutrino-preset-react": "^5.0.0"
   },
   "dependencies": {
+    "lodash.throttle": "^4.1.1",
     "mo-js": "^0.288.1",
     "mojs-player": "^0.43.16",
     "react": "^15.4.2",
