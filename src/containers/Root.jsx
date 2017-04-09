@@ -15,7 +15,7 @@ const Root = ({ store }) => (
         <div className="Root">
           <Route exact path="/" component={StartScreen} />
           <Route exact path="/game" component={GameScreen} />
-          <Route path="/gameover" component={GameOverScreen} />
+          <Route path="/game#gameover" component={GameOverScreen} />
           <Route path="/settings" component={SettingsScreen} />
         </div>
         <style jsx global>{`${GlobalCSS}`}</style>

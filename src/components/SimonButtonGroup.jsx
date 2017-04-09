@@ -10,7 +10,9 @@ class SimonButtonGroup extends Component {
     // Start the game only when transition ends
     if (transitionComplete !== nextProps.transitionComplete) startGame();
     // If gameOver, play the transition animation and redirect to /gameover
-    function onTransitionEnd() { history.push({ pathname: '/gameover' }); }
+    function onTransitionEnd() {
+      history.push({ pathname: '/game#gameover' });
+    }
     if (nextProps.gameOver) {
       getTransitionAnimation(onTransitionEnd.bind(this)).play();
     }
