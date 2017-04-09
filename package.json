@@ -1,7 +1,7 @@
 {
   "name": "simon-game",
-  "version": "0.0.2",
-  "description": "My solution for the «Build a Simon Game» freeCodeCamp challenge",
+  "version": "0.2.0",
+  "description": "A React Simon Game",
   "author": "Juan Riquelme <juanriqgon@protonmail.com>",
   "neutrino": {
     "config": {
@@ -9,7 +9,6 @@
         "vendor": [
           "lodash.throttle",
           "mo-js",
-          "mojs-player",
           "react",
           "react-dom",
           "react-redux",
@@ -40,7 +39,6 @@
   "dependencies": {
     "lodash.throttle": "^4.1.1",
     "mo-js": "^0.288.1",
-    "mojs-player": "^0.43.16",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",

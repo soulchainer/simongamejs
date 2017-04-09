@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import mojs from 'mo-js';
-// import MojsPlayer from 'mojs-player';
 import { colors } from '../constants';
 import getTransitionAnimation from '../utils/animation';
 import shuffle from '../utils/shuffle-array';
@@ -22,11 +21,6 @@ class ElasticButtonLink extends Component {
       isShowStart: true,
     });
     button.play();
-
-    /* eslint-disable no-unused-vars */
-    // const timeline = new mojs.Timeline({}).add(button);
-    // const mojsPlayer = new MojsPlayer({ add: button });
-    /* eslint-enable no-unused-vars */
   }
 
   shouldComponentUpdate(nextProps, nextState) {
