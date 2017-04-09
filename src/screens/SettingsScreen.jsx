@@ -9,6 +9,14 @@ class SettingsScreen extends Component { // eslint-disable-line react/prefer-sta
       <div className="SettingsScreen">
         <Settings />
         <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+        <style jsx>{`
+          .SettingsScreen {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+        `}</style>
       </div>
     );
   }

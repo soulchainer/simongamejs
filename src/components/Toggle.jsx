@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const Toggle = ({ id, label, checked, disabled, onChange }) => (
-  <div>
+const Toggle = ({ className, id, label, checked, disabled, onChange }) => (
+  <div className={`Toggle ${className}`}>
     <label htmlFor={id}>{label}</label>
     <input
       type="checkbox"
@@ -10,11 +10,17 @@ const Toggle = ({ id, label, checked, disabled, onChange }) => (
       disabled={disabled}
       onChange={onChange}
     />
+    <style jsx>{`
+      .SettingsOptions-option {
+        margin-bottom: 1rem;
+      }
+    `}</style>
   </div>
 );
 
 Toggle.propTypes = {
   checked: PropTypes.bool,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -23,6 +29,7 @@ Toggle.propTypes = {
 
 Toggle.defaultProps = {
   checked: null,
+  className: '',
   disabled: null,
 };
 

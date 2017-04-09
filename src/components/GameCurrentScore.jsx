@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 
 const GameCurrentScore = ({ currentScore }) => (
-  <div>{ currentScore }</div>
+  <div className="GameCurrentScore">
+    { currentScore }
+  </div>
 );
 
 GameCurrentScore.propTypes = {

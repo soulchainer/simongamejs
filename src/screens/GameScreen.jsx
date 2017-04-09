@@ -12,6 +12,15 @@ class GameScreen extends Component { // eslint-disable-line react/prefer-statele
         <GameCurrentScoreboard />
         <PlayableSimonButtonGroup transitionComplete={transitionComplete} />
         <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+        <style jsx>{`
+          .GameScreen {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+          }
+        `}</style>
       </div>
     );
   }

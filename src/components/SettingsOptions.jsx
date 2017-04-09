@@ -16,15 +16,21 @@ const SettingsOptions = ({
   onStrictModeChange,
   onSoundChange }) =>
 (
-  <form>
-    <SelectGameMode selected={gameMode} onChange={onGameModeChange} />
+  <form className="SettingsOptions">
+    <SelectGameMode
+      className="SettingsOptions-option"
+      selected={gameMode}
+      onChange={onGameModeChange}
+    />
     <Toggle
+      className="SettingsOptions-option"
       id="strict"
       label="Strict Mode"
       checked={strictMode}
       onChange={onStrictModeChange}
     />
     <Toggle
+      className="SettingsOptions-option"
       id="sound"
       label="Sound"
       checked={sound}
@@ -32,12 +38,14 @@ const SettingsOptions = ({
       onChange={onSoundChange}
     />
     <Toggle
+      className="SettingsOptions-option"
       id="max"
       label="No Limit Mode"
       checked={maxMoves === 'Infinity'}
       onChange={onMaxMovesChange}
     />
     <Slider
+      className="SettingsOptions-option"
       id="max"
       label="Game Speed"
       onChange={speed => onGameSpeedChange(speed)}
@@ -46,6 +54,13 @@ const SettingsOptions = ({
       value={gameSpeed}
       step="0.25"
     />
+    <style jsx>{`
+      .SettingsOptions {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+      }
+    `}</style>
   </form>
 );
 

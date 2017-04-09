@@ -7,7 +7,7 @@ const StartScreen = () => (
     <header>
       <AnimatedTitle />
     </header>
-    <nav>
+    <nav className="StartScreen-menu">
       <ul>
         <li><ElasticButtonLink id="play" label="Play" to="/game" /></li>
         <li><ElasticButtonLink id="settings" label="Settings" to="/settings" /></li>
@@ -28,7 +28,7 @@ const StartScreen = () => (
         width: 90%;
       }
 
-      nav {
+      .StartScreen-menu {
         align-items: center;
         display: flex;
         justify-content: center;

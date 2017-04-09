@@ -61,6 +61,7 @@ class SimonButtonGroup extends Component {
             display: flex;
             flex-wrap: wrap;
             height: 70vmin;
+            margin: 5vh 0;
             width: 70vmin;
           }
 

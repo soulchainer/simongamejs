@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 
 const GameEndScore = ({ highScore, lastEndScore }) => (
-  <div>
-    <div>{ lastEndScore }</div>
-    <div>{ highScore }</div>
+  <div className="GameEndScore">
+    <div className="GameEndScore-totalScore">{ lastEndScore }</div>
+    <div className="GameEndScore-highScore">{ highScore }</div>
   </div>
 );
 
