@@ -13,10 +13,10 @@ const Root = ({ store }) => (
     <Router>
       <div>
         <div className="Root">
-          <Route exact path="/" render={StartScreen} />
-          <Route exact path="/game" render={GameScreen} />
-          <Route path="/gameover" render={GameOverScreen} />
-          <Route path="/settings" render={SettingsScreen} />
+          <Route exact path="/" component={StartScreen} />
+          <Route exact path="/game" component={GameScreen} />
+          <Route path="/gameover" component={GameOverScreen} />
+          <Route path="/settings" component={SettingsScreen} />
         </div>
         <style jsx global>{`${GlobalCSS}`}</style>
       </div>
