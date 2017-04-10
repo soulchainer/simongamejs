@@ -5,8 +5,8 @@ import { handleSimonButton,
          stopButtonSound } from '../actions/index';
 import SimonButtonGroup from '../components/SimonButtonGroup';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
+const mapStateToProps = (state, ownProps) => (
+  {
     colors: state.simonButtons.buttonColors,
     gameMode: state.game.mode,
     gameOver: state.game.gameOver,
@@ -14,8 +14,8 @@ const mapStateToProps = (state, ownProps) => {
     simonButtons: state.simonButtons.buttons,
     speed: Number(state.game.speed),
     transitionComplete: ownProps.transitionComplete,
-  };
-};
+  }
+);
 
 const mapDispatchToProps = dispatch => (
   {
