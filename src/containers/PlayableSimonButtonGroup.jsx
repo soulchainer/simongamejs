@@ -6,7 +6,6 @@ import { handleSimonButton,
 import SimonButtonGroup from '../components/SimonButtonGroup';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state); // eslint-disable-line
   return {
     colors: state.simonButtons.buttonColors,
     gameMode: state.game.mode,
