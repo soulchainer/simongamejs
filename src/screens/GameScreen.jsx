@@ -30,4 +30,4 @@ GameScreen.propTypes = {
   transitionComplete: PropTypes.bool.isRequired,
 };
 
-export default withTransition(GameScreen, { playBackwards: true });
+export default withTransition(GameScreen);

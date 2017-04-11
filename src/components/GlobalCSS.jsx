@@ -15,6 +15,7 @@ const GlobalCSS = `
     align-items: center;
     display: flex;
     justify-content: center;
+    opacity: 0;
   }
 
   .Root {

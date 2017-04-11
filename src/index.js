@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import thunk from 'redux-thunk';
 import { AppContainer } from 'react-hot-loader';
 import { createStore, applyMiddleware, compose } from 'redux';
-import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 import Root from './containers/Root';
 import rootReducer from './reducers/index';
 import { loadState, saveState } from './utils/localStorage';
@@ -22,7 +22,7 @@ const store = createStore(
   ),
 );
 
-store.subscribe(throttle(() => {
+store.subscribe(debounce(() => {
   const state = store.getState();
   saveState({
     game: {

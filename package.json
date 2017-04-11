@@ -7,8 +7,8 @@
     "config": {
       "entry": {
         "vendor": [
-          "lodash.throttle",
-          "mo-js",
+          "animejs",
+          "lodash.debounce",
           "react",
           "react-dom",
           "react-redux",
@@ -37,8 +37,8 @@
     "neutrino-preset-react": "^5.4.0"
   },
   "dependencies": {
-    "lodash.throttle": "^4.1.1",
-    "mo-js": "^0.288.1",
+    "animejs": "^2.0.2",
+    "lodash.debounce": "^4.0.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",

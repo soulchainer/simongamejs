@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
-import getTransitionAnimation from '../utils/animation';
+import { getTransitionAnimation } from '../utils/animation';
 
 class SimonButtonGroup extends Component {
   componentWillReceiveProps(nextProps) {

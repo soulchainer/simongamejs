@@ -23,4 +23,4 @@ class GameOverScreen extends Component { // eslint-disable-line react/prefer-sta
   }
 }
 
-export default withTransition(GameOverScreen, { playBackwards: true });
+export default withTransition(GameOverScreen);

@@ -22,4 +22,4 @@ class SettingsScreen extends Component { // eslint-disable-line react/prefer-sta
   }
 }
 
-export default withTransition(SettingsScreen, { playBackwards: true });
+export default withTransition(SettingsScreen);

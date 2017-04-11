@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import mojs from 'mo-js';
+import anime from 'animejs';
+import debounce from 'lodash.debounce';
 import { colors } from '../constants';
-import getTransitionAnimation from '../utils/animation';
+import { getTransitionAnimation } from '../utils/animation';
 import shuffle from '../utils/shuffle-array';
 
 class ElasticButtonLink extends Component {
@@ -14,13 +15,13 @@ class ElasticButtonLink extends Component {
   }
 
   componentDidMount() {
-    const button = new mojs.Html({
-      duration: 0,
-      color: ElasticButtonLink.randomColor(),
-      el: `#${this.props.id}`,
-      isShowStart: true,
-    });
-    button.play();
+    const button = document.querySelector(`#${this.props.id}`);
+    const className = shuffle(['blue', 'green', 'yellow'])[0];
+    if (button.classList) {
+      button.classList.add(className);
+    } else {
+      button.className = `${button.className} ${className}`;
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -31,7 +32,8 @@ class ElasticButtonLink extends Component {
     event.preventDefault();
     // const id = event.target.id.split('-')[0];
     function onTransitionEnd() { this.setState({ redirect: true }); }
-    const mouseClickAnimation = getTransitionAnimation(onTransitionEnd.bind(this));
+    const mouseClickAnimation = getTransitionAnimation(
+      onTransitionEnd.bind(this), 'reverse');
     mouseClickAnimation.play();
   }
 
@@ -57,6 +59,18 @@ class ElasticButtonLink extends Component {
             max-width: 85%;
             text-align: center;
             width: 8rem;
+          }
+
+          .blue {
+            color: ${colors.blue}
+          }
+
+          .green {
+            color: ${colors.green}
+          }
+
+          .yellow {
+            color: ${colors.yellow}
           }
 
           .ElasticButtonLink>a {
@@ -85,48 +99,40 @@ ElasticButtonLink.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-ElasticButtonLink.randomColor = function randomColor() {
-  return colors[shuffle(Object.values(['blue', 'green', 'yellow']))[0]];
-};
-
 ElasticButtonLink.onMouseEnter = function onMouseEnter(event) {
   const id = `#${event.target.id.split('-')[0]}`;
   ElasticButtonLink.onMouseEnterAnimation(id);
 };
 
-ElasticButtonLink.onMouseEnterAnimation = function onMouseEnterAnimation(id) {
-  const mouseEnterAnimation = new mojs.Html({
+ElasticButtonLink.onMouseEnterAnimation = debounce((id) => {
+  const mouseEnterAnimation = anime({
     duration: 400,
-    el: id,
-    easing: 'elastic.out',
-    isShowStart: true,
-    scale: { 1: 1.1 },
-    scaleY: { 1: 0.8 },
+    targets: id,
+    easing: 'easeOutElastic',
+    scaleX: { value: [1, 1.1], elasticity: 500 },
+    scaleY: { value: [1, 0.8], elasticity: 500 },
   });
   mouseEnterAnimation.play();
-};
+}, 400);
 
 ElasticButtonLink.onMouseLeave = function onMouseLeave(event) {
   const id = `#${event.target.id.split('-')[0]}`;
   ElasticButtonLink.onMouseLeaveAnimation(id);
 };
 
-ElasticButtonLink.onMouseLeaveAnimation = function OnMouseLeaveAnimation(id) {
-  const mouseLeaveAnimation = new mojs.Html({
+ElasticButtonLink.onMouseLeaveAnimation = debounce((id) => {
+  const mouseLeaveAnimation = anime({
     duration: 300,
-    el: id,
-    easing: 'elastic.in',
-    isShowStart: true,
-    scale: { 1.1: 0.7 },
-    scaleY: { 0.8: 1.2 },
-  }).then({
-    scale: { to: 1.05 },
-    scaleY: { to: 0.9 },
-  }).then({
-    scale: { to: 1 },
-    scaleY: { to: 1 },
+    targets: id,
+    easing: 'easeOutElastic',
+    scaleX: [
+      { value: [1.1, 1], elasticity: 1000 },
+    ],
+    scaleY: [
+      { value: [0.8, 1], elasticity: 1000 },
+    ],
   });
   mouseLeaveAnimation.play();
-};
+}, 400);
 
 export default ElasticButtonLink;

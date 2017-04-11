@@ -13,7 +13,7 @@ I learnt, at least, a bit about the
 
 Apart from that, I also use on it, for now:
 
-- [mojs](http://mojs.io/). A pretty **AWESOME** declarative animation library.
+- [ANIME.JS](http://anime-js.com). A pretty **AWESOME** animation library.
   I barely use it, but I wanted to use it pretty hard, so I just did.
 - [Neutrino](https://neutrino.js.org/). A very clever development by Mozilla.
   It abstracts the usage of Webpack and makes dealing with it a pretty
