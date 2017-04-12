@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "neutrino start",
-    "build": "neutrino build"
+    "build": "neutrino build",
+    "deploy": "surge --project ./build --domain reactsimon.surge.sh"
   },
   "devDependencies": {
     "neutrino": "^5.4.0",
