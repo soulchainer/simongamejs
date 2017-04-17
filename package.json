@@ -23,7 +23,7 @@
     "use": [
       "neutrino-preset-react",
       "neutrino-preset-airbnb",
-      "custom_presets/styled-jsx-preset.js",
+      "neutrino-preset-styled-jsx",
       "custom_presets/set-eslint-envs.js"
     ]
   },
@@ -35,7 +35,8 @@
   "devDependencies": {
     "neutrino": "^5.4.0",
     "neutrino-preset-airbnb": "^2.1.0",
-    "neutrino-preset-react": "^5.4.0"
+    "neutrino-preset-react": "^5.4.0",
+    "neutrino-preset-styled-jsx": "^0.0.1"
   },
   "dependencies": {
     "animejs": "^2.0.2",

@@ -3601,7 +3601,7 @@ neutrino-middleware-image-loader@^5.4.0:
     svg-url-loader "^2.0.2"
     url-loader "^0.5.8"
 
-neutrino-middleware-loader-merge@^5.4.0:
+neutrino-middleware-loader-merge@^5.0.0, neutrino-middleware-loader-merge@^5.4.0:
   version "5.4.0"
   resolved "https://registry.npmjs.org/neutrino-middleware-loader-merge/-/neutrino-middleware-loader-merge-5.4.0.tgz#3c733fba1760e4d6e9a919bd21af45fe9f37e78f"
   dependencies:
@@ -3648,6 +3648,12 @@ neutrino-preset-react@^5.4.0:
     neutrino-middleware-loader-merge "^5.4.0"
     neutrino-preset-web "^5.4.0"
     react-hot-loader "^3.0.0-beta.6"
+
+neutrino-preset-styled-jsx@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/neutrino-preset-styled-jsx/-/neutrino-preset-styled-jsx-0.0.1.tgz#67214d896c1862691d2d726357cd2b047b6d50c2"
+  dependencies:
+    neutrino-middleware-loader-merge "^5.0.0"
 
 neutrino-preset-web@^5.4.0:
   version "5.4.0"
