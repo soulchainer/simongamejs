@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';

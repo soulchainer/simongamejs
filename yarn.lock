@@ -819,7 +819,7 @@ babel-plugin-transform-undefined-to-void@^6.8.0:
   dependencies:
     babel-runtime "^6.0.0"
 
-babel-polyfill@^6.23.0:
+babel-polyfill@6.23.0:
   version "6.23.0"
   resolved "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
   dependencies:
@@ -1489,6 +1489,13 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
   dependencies:
     create-hash "^1.1.0"
     inherits "^2.0.1"
+
+create-react-class@^15.5.1:
+  version "15.5.2"
+  resolved "https://registry.npmjs.org/create-react-class/-/create-react-class-15.5.2.tgz#6a8758348df660b88326a0e764d569f274aad681"
+  dependencies:
+    fbjs "^0.8.9"
+    object-assign "^4.1.1"
 
 cryptiles@2.x.x:
   version "2.0.5"
@@ -2242,9 +2249,9 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
-  version "0.8.11"
-  resolved "https://registry.npmjs.org/fbjs/-/fbjs-0.8.11.tgz#340b590b8a2278a01ef7467c07a16da9b753db24"
+fbjs@^0.8.9:
+  version "0.8.12"
+  resolved "https://registry.npmjs.org/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
     core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
@@ -2641,7 +2648,7 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.npmjs.org/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@^1.0.3:
+hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
@@ -3518,37 +3525,37 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-neutrino-middleware-chunk@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-chunk/-/neutrino-middleware-chunk-5.4.0.tgz#9a37d9c22becc2012379998c513c8986d64a40cb"
+neutrino-middleware-chunk@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-chunk/-/neutrino-middleware-chunk-5.6.0.tgz#53757c33aff2a5570364d8148bcb521c697b7e82"
   dependencies:
     deepmerge "^1.3.2"
     webpack "^2.3.1"
 
-neutrino-middleware-clean@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-clean/-/neutrino-middleware-clean-5.4.0.tgz#434b7092548dbec4c9a40c7298fcc42c4ff0f6a2"
+neutrino-middleware-clean@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-clean/-/neutrino-middleware-clean-5.6.0.tgz#0e340b651aa130a6e90f22b7b6c98aeb6cf9424e"
   dependencies:
     clean-webpack-plugin "^0.1.16"
     deepmerge "^1.3.2"
 
-neutrino-middleware-compile-loader@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-compile-loader/-/neutrino-middleware-compile-loader-5.4.0.tgz#2aed7fc299d7a1a04183bf27de256526c3da1be5"
+neutrino-middleware-compile-loader@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-compile-loader/-/neutrino-middleware-compile-loader-5.6.0.tgz#b9b7a5eeb149a1821a5fad405ce7ff9c7fed1884"
   dependencies:
     babel-core "^6.24.0"
     babel-loader "^6.4.1"
 
-neutrino-middleware-copy@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-copy/-/neutrino-middleware-copy-5.4.0.tgz#65f48d4762b953f8635f29f907075948565f189e"
+neutrino-middleware-copy@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-copy/-/neutrino-middleware-copy-5.6.0.tgz#8632d7c710f2867d26c8ccd289e401bb45f7b29a"
   dependencies:
     copy-webpack-plugin "^4.0.1"
     deepmerge "^1.3.2"
 
-neutrino-middleware-env@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-env/-/neutrino-middleware-env-5.4.0.tgz#49ad12f5ab6ee20b1fb882f6a734f3420d409a2b"
+neutrino-middleware-env@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-env/-/neutrino-middleware-env-5.6.0.tgz#fc112e77cbbde338066f199f7292343a9f3909c6"
   dependencies:
     webpack "^2.3.1"
 
@@ -3564,64 +3571,65 @@ neutrino-middleware-eslint@^5.0.0:
     eslint-plugin-import "^2.2.0"
     lodash.clonedeep "^4.5.0"
 
-neutrino-middleware-font-loader@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-font-loader/-/neutrino-middleware-font-loader-5.4.0.tgz#1cbd4e0c6608700587896ebb077a5f8812939d27"
+neutrino-middleware-font-loader@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-font-loader/-/neutrino-middleware-font-loader-5.6.0.tgz#dc2b7132bc4cabfd58e334985003bdd0c61ecc61"
   dependencies:
     deepmerge "^1.3.2"
     file-loader "^0.10.1"
     url-loader "^0.5.8"
 
-neutrino-middleware-hot@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-hot/-/neutrino-middleware-hot-5.4.0.tgz#3184190c0effbba7c8698bde4b8ea6deb7ec8569"
+neutrino-middleware-hot@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-hot/-/neutrino-middleware-hot-5.6.0.tgz#498eda895f932776bfe5af690e0f7ec9dfde5bf6"
   dependencies:
     webpack "^2.3.1"
 
-neutrino-middleware-html-loader@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-html-loader/-/neutrino-middleware-html-loader-5.4.0.tgz#de53bb32356e7dae63552ee77a9e55f1afcec01d"
+neutrino-middleware-html-loader@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-html-loader/-/neutrino-middleware-html-loader-5.6.0.tgz#dbe7aa6a09c89c675a64b902101f0734b2ca28b6"
   dependencies:
+    deepmerge "^1.3.2"
     file-loader "^0.10.1"
 
-neutrino-middleware-html-template@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-html-template/-/neutrino-middleware-html-template-5.4.0.tgz#dce4c11d102b6b4e25d703446c94feadeb5bd6d4"
+neutrino-middleware-html-template@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-html-template/-/neutrino-middleware-html-template-5.6.0.tgz#ff59b5a77f0f9238d87378d1426a6abdbe2631d3"
   dependencies:
     deepmerge "^1.3.2"
     html-webpack-plugin "^2.28.0"
     html-webpack-template "^6.0.1"
 
-neutrino-middleware-image-loader@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-image-loader/-/neutrino-middleware-image-loader-5.4.0.tgz#cdafa75b57ddc740b8c90263fb4e3879d3b0f9f7"
+neutrino-middleware-image-loader@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-image-loader/-/neutrino-middleware-image-loader-5.6.0.tgz#3bd44271e11c1beee0b6b6bd78e7f373e90cc054"
   dependencies:
     deepmerge "^1.3.2"
     file-loader "^0.10.1"
     svg-url-loader "^2.0.2"
     url-loader "^0.5.8"
 
-neutrino-middleware-loader-merge@^5.0.0, neutrino-middleware-loader-merge@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-loader-merge/-/neutrino-middleware-loader-merge-5.4.0.tgz#3c733fba1760e4d6e9a919bd21af45fe9f37e78f"
+neutrino-middleware-loader-merge@^5.0.0, neutrino-middleware-loader-merge@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-loader-merge/-/neutrino-middleware-loader-merge-5.6.0.tgz#647d06fd4928e34c0c2a662542b743fea2eb7cda"
   dependencies:
     deepmerge "^1.3.2"
 
-neutrino-middleware-minify@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-minify/-/neutrino-middleware-minify-5.4.0.tgz#64dd321f71d4fde011c09622f582aaad0a8cafdd"
+neutrino-middleware-minify@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-minify/-/neutrino-middleware-minify-5.6.0.tgz#8da9f94f6c194e7390b501c4e870de2a2827fb78"
   dependencies:
     babili-webpack-plugin "^0.0.11"
 
-neutrino-middleware-named-modules@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-named-modules/-/neutrino-middleware-named-modules-5.4.0.tgz#a2e681136ebf6f3985549680d288dda3897bdf2f"
+neutrino-middleware-named-modules@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-named-modules/-/neutrino-middleware-named-modules-5.6.0.tgz#5a1fd329c50b9f325434a4c0cc743aa51450157a"
   dependencies:
     webpack "^2.3.1"
 
-neutrino-middleware-style-loader@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-middleware-style-loader/-/neutrino-middleware-style-loader-5.4.0.tgz#a81562caaa51397aec09a3b7bb4f5b287fe1e472"
+neutrino-middleware-style-loader@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-middleware-style-loader/-/neutrino-middleware-style-loader-5.6.0.tgz#e73a393e0c732dc177728d98e88bcb624c8855f0"
   dependencies:
     css-loader "^0.27.3"
     style-loader "^0.16.0"
@@ -3638,15 +3646,15 @@ neutrino-preset-airbnb@^2.1.0:
     eslint-plugin-react "^6.10.3"
     neutrino-middleware-eslint "^5.0.0"
 
-neutrino-preset-react@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-preset-react/-/neutrino-preset-react-5.4.0.tgz#0265b5223ad1197151b9bc79af9f965935b0a754"
+neutrino-preset-react@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-preset-react/-/neutrino-preset-react-5.6.0.tgz#295bb60846d70898de48d1e3c2dac1b445eedf11"
   dependencies:
     babel-plugin-transform-object-rest-spread "^6.23.0"
     babel-preset-react "^6.23.0"
     eslint-plugin-react "^6.10.3"
-    neutrino-middleware-loader-merge "^5.4.0"
-    neutrino-preset-web "^5.4.0"
+    neutrino-middleware-loader-merge "^5.6.0"
+    neutrino-preset-web "^5.6.0"
     react-hot-loader "^3.0.0-beta.6"
 
 neutrino-preset-styled-jsx@^0.0.1:
@@ -3655,37 +3663,38 @@ neutrino-preset-styled-jsx@^0.0.1:
   dependencies:
     neutrino-middleware-loader-merge "^5.0.0"
 
-neutrino-preset-web@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino-preset-web/-/neutrino-preset-web-5.4.0.tgz#dbf3d8d8c8e9b09166b8113c8e36e9baf8957b5d"
+neutrino-preset-web@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino-preset-web/-/neutrino-preset-web-5.6.0.tgz#9bf76ec539432fa47d8e8aa471a282923b4dca8f"
   dependencies:
     babel-plugin-syntax-dynamic-import "^6.18.0"
-    babel-polyfill "^6.23.0"
+    babel-polyfill "6.23.0"
     babel-preset-env "^1.2.2"
+    core-js "^2.4.0"
     exports-loader "^0.6.4"
     imports-loader "^0.7.1"
-    neutrino-middleware-chunk "^5.4.0"
-    neutrino-middleware-clean "^5.4.0"
-    neutrino-middleware-compile-loader "^5.4.0"
-    neutrino-middleware-copy "^5.4.0"
-    neutrino-middleware-env "^5.4.0"
-    neutrino-middleware-font-loader "^5.4.0"
-    neutrino-middleware-hot "^5.4.0"
-    neutrino-middleware-html-loader "^5.4.0"
-    neutrino-middleware-html-template "^5.4.0"
-    neutrino-middleware-image-loader "^5.4.0"
-    neutrino-middleware-loader-merge "^5.4.0"
-    neutrino-middleware-minify "^5.4.0"
-    neutrino-middleware-named-modules "^5.4.0"
-    neutrino-middleware-style-loader "^5.4.0"
+    neutrino-middleware-chunk "^5.6.0"
+    neutrino-middleware-clean "^5.6.0"
+    neutrino-middleware-compile-loader "^5.6.0"
+    neutrino-middleware-copy "^5.6.0"
+    neutrino-middleware-env "^5.6.0"
+    neutrino-middleware-font-loader "^5.6.0"
+    neutrino-middleware-hot "^5.6.0"
+    neutrino-middleware-html-loader "^5.6.0"
+    neutrino-middleware-html-template "^5.6.0"
+    neutrino-middleware-image-loader "^5.6.0"
+    neutrino-middleware-loader-merge "^5.6.0"
+    neutrino-middleware-minify "^5.6.0"
+    neutrino-middleware-named-modules "^5.6.0"
+    neutrino-middleware-style-loader "^5.6.0"
     ramda "^0.23.0"
     webpack "^2.3.1"
     webpack-dev-server "^2.4.1"
     worker-loader "^0.8.0"
 
-neutrino@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/neutrino/-/neutrino-5.4.0.tgz#d1a68cae51fe42107bb9fab608a4eaeb535470c7"
+neutrino@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/neutrino/-/neutrino-5.6.0.tgz#b12d49f877d11f5a0302086b745c9a4328399900"
   dependencies:
     deep-sort-object "^1.0.1"
     deepmerge "^1.3.2"
@@ -3699,7 +3708,7 @@ neutrino@^5.4.0:
     ramda "^0.23.0"
     ramda-fantasy "^0.7.0"
     webpack "^2.3.1"
-    webpack-chain "^3.1.0"
+    webpack-chain "^3.2.0"
     webpack-dev-server "^2.4.2"
     yargs "^7.0.2"
 
@@ -3828,7 +3837,7 @@ object-assign@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
 
-object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4366,6 +4375,12 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+prop-types@^15.0.0, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
+  version "15.5.8"
+  resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
+  dependencies:
+    fbjs "^0.8.9"
+
 proxy-addr@~1.1.3:
   version "1.1.4"
   resolved "https://registry.npmjs.org/proxy-addr/-/proxy-addr-1.1.4.tgz#27e545f6960a44a627d9b44467e35c1b6b4ce2f3"
@@ -4460,13 +4475,14 @@ react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-dom@^15.4.2:
-  version "15.4.2"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
+react-dom@^15.5.4:
+  version "15.5.4"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:
-    fbjs "^0.8.1"
+    fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "~15.5.7"
 
 react-hot-loader@^3.0.0-beta.6, react-hot-loader@next:
   version "3.0.0-beta.6"
@@ -4485,40 +4501,47 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-redux@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/react-redux/-/react-redux-5.0.3.tgz#86c3b68d56e74294a42e2a740ab66117ef6c019f"
+react-redux@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.npmjs.org/react-redux/-/react-redux-5.0.4.tgz#1563babadcfb2672f57f9ceaa439fb16bf85d55b"
   dependencies:
+    create-react-class "^15.5.1"
     hoist-non-react-statics "^1.0.3"
     invariant "^2.0.0"
     lodash "^4.2.0"
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
+    prop-types "^15.0.0"
 
-react-router-dom@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-4.0.0.tgz#4fa4418e14b8cfc5bcc0bdea0c4083fb8c2aef10"
+react-router-dom@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-4.1.1.tgz#3021ade1f2c160af97cf94e25594c5f294583025"
   dependencies:
     history "^4.5.1"
-    react-router "^4.0.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.4"
+    react-router "^4.1.1"
 
-react-router@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/react-router/-/react-router-4.0.0.tgz#6532075231f0bb5077c2005c1d417ad6165b3997"
+react-router@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-4.1.1.tgz#d448f3b7c1b429a6fbb03395099949c606b1fe95"
   dependencies:
     history "^4.6.0"
+    hoist-non-react-statics "^1.2.0"
     invariant "^2.2.2"
     loose-envify "^1.3.1"
     path-to-regexp "^1.5.3"
+    prop-types "^15.5.4"
     warning "^3.0.0"
 
-react@^15.4.2:
-  version "15.4.2"
-  resolved "https://registry.npmjs.org/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
+react@^15.5.4:
+  version "15.5.4"
+  resolved "https://registry.npmjs.org/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:
-    fbjs "^0.8.4"
+    fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "^15.5.7"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -5443,9 +5466,9 @@ wbuf@^1.1.0, wbuf@^1.4.0:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webpack-chain@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/webpack-chain/-/webpack-chain-3.1.0.tgz#53e82857624d48794443238db99248e598550e03"
+webpack-chain@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/webpack-chain/-/webpack-chain-3.2.0.tgz#110d88291d6157b8cad02be1689c4b1e53bce8f6"
   dependencies:
     deepmerge "^1.3.2"
 

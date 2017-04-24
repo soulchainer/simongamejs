@@ -9,6 +9,7 @@
         "vendor": [
           "animejs",
           "lodash.debounce",
+          "prop-types",
           "react",
           "react-dom",
           "react-redux",
@@ -33,20 +34,21 @@
     "deploy": "surge --project ./build --domain reactsimon.surge.sh"
   },
   "devDependencies": {
-    "neutrino": "^5.4.0",
+    "neutrino": "^5.6.0",
     "neutrino-preset-airbnb": "^2.1.0",
-    "neutrino-preset-react": "^5.4.0",
+    "neutrino-preset-react": "^5.6.0",
     "neutrino-preset-styled-jsx": "^0.0.1"
   },
   "dependencies": {
     "animejs": "^2.0.2",
     "lodash.debounce": "^4.0.8",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "react-hot-loader": "next",
-    "react-redux": "^5.0.3",
-    "react-router": "^4.0.0",
-    "react-router-dom": "^4.0.0",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "styled-jsx": "^0.5.7"

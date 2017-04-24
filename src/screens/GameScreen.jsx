@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import ElasticButtonLink from '../components/ElasticButtonLink';
 import GameCurrentScoreboard from '../containers/GameCurrentScoreboard';
 import PlayableSimonButtonGroup from '../containers/PlayableSimonButtonGroup';

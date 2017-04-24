@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import SelectGameMode from './SelectGameMode';
 import Slider from './Slider';
 import Toggle from './Toggle';

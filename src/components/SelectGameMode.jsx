@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { gameModes as modes } from '../constants';
 
 const SelectGameMode = ({ className, onChange, selected }) => (

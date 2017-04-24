@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Slider = ({ className, id, label, onChange, min, max, value, step }) => (
   <div className={`Slider ${className}`}>
