@@ -52,5 +52,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "styled-jsx": "^0.5.7"
-  }
+  },
+  "private": true,
+  "license": "GPL-3.0"
 }
