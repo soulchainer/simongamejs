@@ -21,6 +21,9 @@
         ]
       }
     },
+    "options": {
+      "entry": "./index.jsx"
+    },
     "use": [
       "neutrino-preset-react",
       "neutrino-preset-airbnb",
