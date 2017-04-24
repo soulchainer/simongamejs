@@ -1,9 +1,15 @@
-build
+# Build directory
+build/
 
-## Node ##
+# Dependency directories
+node_modules/
 
-*.log
-node_modules
-npm-debug.log*
+# Logs
+*.log*
+
+# Visual Studio Code
+.vscode/
+
+# Yarn
 yarn*
 !yarn.lock
