@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import CreditsScreen from '../screens/CreditsScreen';
 import GameScreen from '../screens/GameScreen';
 import GameOverScreen from '../screens/GameOverScreen';
 import GlobalCSS from '../components/GlobalCSS';
@@ -18,6 +19,7 @@ const Root = ({ store }) => (
           <Route exact path="/game" component={GameScreen} />
           <Route path="/game#gameover" component={GameOverScreen} />
           <Route path="/settings" component={SettingsScreen} />
+          <Route path="/credits" component={CreditsScreen} />
         </div>
         <style jsx global>{`${GlobalCSS}`}</style>
       </div>

@@ -39,4 +39,13 @@ export const gameModes = [
   'listen', // there is any visual clue: just sound
 ];
 
+export const projectURL = 'https://github.com/soulchainer/simongamejs/';
+
+export const socialURLs = {
+  twitter: 'https://twitter.com/juanriqgon/',
+  facebook: 'https://www.facebook.com/juanriqgon/',
+  github: 'https://github.com/soulchainer/',
+  codepen: 'http://codepen.io/soulchainer/',
+};
+
 export const MAX_MOVES = 20;
