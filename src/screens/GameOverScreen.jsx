@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ElasticButtonLink from '../components/ElasticButtonLink';
+import ButtonLink from '../components/ButtonLink';
 import GameEndScoreboard from '../containers/GameEndScoreboard';
 import withTransition from '../hocs/withTransition';
 
@@ -7,8 +7,8 @@ class GameOverScreen extends Component { // eslint-disable-line react/prefer-sta
   render() {
     return (
       <div className="GameOverScreen">
-        <ElasticButtonLink id="play" label="Retry" to="/game" />
-        <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+        <ButtonLink id="play" label="Retry" to="/game" />
+        <ButtonLink id="mainmenu" label="Main menu" to="/" />
         <GameEndScoreboard />
         <style jsx>{`
           .GameOverScreen {

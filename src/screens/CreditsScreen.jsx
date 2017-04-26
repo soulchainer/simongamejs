@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SocialIconList from '../components/SocialIconList';
-import ElasticButtonLink from '../components/ElasticButtonLink';
+import ButtonLink from '../components/ButtonLink';
 import withTransition from '../hocs/withTransition';
-import { projectURL } from '../constants';
+import { colors, projectURL } from '../constants';
 
 class CreditsScreen extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -32,7 +32,7 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
           </p>
           <SocialIconList />
         </div>
-        <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+        <ButtonLink id="mainmenu" label="Main menu" to="/" />
         <style jsx>{`
           .CreditsScreen {
             align-items: center;
@@ -66,10 +66,11 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
           .CreditsScreen-githubButton {
             border: .25rem solid rgba(255, 255, 255, .6);
             box-sizing: content-box;
-            color: white;
+            color: ${colors.white};
             font-family: 'Francois One', sans-serif;
             font-size: 1.4rem;
             font-weight: bold;
+            letter-spacing: .1em;
             line-height: 2rem;
             max-width: 90%;
             padding: .5rem 1rem;
@@ -78,9 +79,9 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
           }
 
           .CreditsScreen-githubButton:hover {
-            background-color: #ff8026;
-            border-color: #ff8026;
-            color: #282828;
+            background-color: ${colors.green};
+            border-color: ${colors.green};
+            color: ${colors.black};
             transition: border-color .1s, background-color .4s .1s;
           }
         `}</style>

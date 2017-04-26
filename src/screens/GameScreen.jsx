@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import ElasticButtonLink from '../components/ElasticButtonLink';
+import ButtonLink from '../components/ButtonLink';
 import GameCurrentScoreboard from '../containers/GameCurrentScoreboard';
 import PlayableSimonButtonGroup from '../containers/PlayableSimonButtonGroup';
 import withTransition from '../hocs/withTransition';
@@ -12,7 +12,7 @@ class GameScreen extends Component { // eslint-disable-line react/prefer-statele
       <div className="GameScreen">
         <GameCurrentScoreboard />
         <PlayableSimonButtonGroup transitionComplete={transitionComplete} />
-        <ElasticButtonLink id="mainmenu" label="Main menu" to="/" />
+        <ButtonLink id="mainmenu" label="Main menu" to="/" />
         <style jsx>{`
           .GameScreen {
             align-items: center;
