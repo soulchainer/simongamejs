@@ -1,0 +1,12 @@
+/* TEAM */
+
+  Developer: Juan Riquelme González (a.k.a. Soulchainer)
+  Site: soulchainer[at]protonmail[dot]com
+  Twitter: juanriqgon
+  Location: Murcia, Spain
+
+/* SITE */
+
+  Language: English
+  Software: Visual Studio Code, GIMP, Inkscape
+  Source code: https://github.com/soulchainer/simongamejs
