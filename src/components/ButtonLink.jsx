@@ -36,7 +36,6 @@ class ButtonLink extends Component {
           .ButtonLink {
             font-family: 'Francois One', sans-serif;
             font-size: 1.4rem;
-            font-weight: bold;
             letter-spacing: .1em;
             max-width: 90%;
             text-align: center;

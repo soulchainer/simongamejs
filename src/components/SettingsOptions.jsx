@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SelectGameMode from './SelectGameMode';
 import Slider from './Slider';
-import Toggle from './Toggle';
+import ToggleButton from './ToggleButton';
 import { MAX_MOVES } from '../constants';
 
 const SettingsOptions = ({
@@ -19,36 +19,31 @@ const SettingsOptions = ({
 (
   <form className="SettingsOptions">
     <SelectGameMode
-      className="SettingsOptions-option"
       selected={gameMode}
       onChange={onGameModeChange}
     />
-    <Toggle
-      className="SettingsOptions-option"
+    <ToggleButton
       id="strict"
       label="Strict Mode"
       checked={strictMode}
       onChange={onStrictModeChange}
     />
-    <Toggle
-      className="SettingsOptions-option"
+    <ToggleButton
       id="sound"
       label="Sound"
       checked={sound}
       disabled={gameMode === 'listen'}
       onChange={onSoundChange}
     />
-    <Toggle
-      className="SettingsOptions-option"
+    <ToggleButton
       id="max"
-      label="No Limit Mode"
+      label="Endless Mode"
       checked={maxMoves === 'Infinity'}
       onChange={onMaxMovesChange}
     />
     <Slider
-      className="SettingsOptions-option"
       id="max"
-      label="Game Speed"
+      label="Speed"
       onChange={speed => onGameSpeedChange(speed)}
       min="1"
       max="3"
@@ -60,6 +55,11 @@ const SettingsOptions = ({
         display: flex;
         flex-direction: column;
         margin-bottom: 2rem;
+        max-width: 90vw;
+      }
+
+      .SettingsOptions>* {
+        margin-bottom: 1rem;
       }
     `}</style>
   </form>

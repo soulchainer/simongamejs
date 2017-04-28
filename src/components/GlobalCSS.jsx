@@ -21,6 +21,7 @@ const GlobalCSS = `
   .Root {
     align-items: center;
     display: flex;
+    font-family: 'Titillium Web', sans-serif;
     height: 100vh;
     justify-content: center;
     width: 100vw;

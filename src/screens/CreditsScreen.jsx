@@ -69,7 +69,6 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
             color: ${colors.white};
             font-family: 'Francois One', sans-serif;
             font-size: 1.4rem;
-            font-weight: bold;
             letter-spacing: .1em;
             line-height: 2rem;
             max-width: 90%;
