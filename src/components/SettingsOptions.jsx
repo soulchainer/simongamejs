@@ -3,7 +3,7 @@ import React from 'react';
 import SelectGameMode from './SelectGameMode';
 import Slider from './Slider';
 import ToggleButton from './ToggleButton';
-import { MAX_MOVES } from '../constants';
+import { colors, MAX_MOVES } from '../constants';
 
 const SettingsOptions = ({
   gameMode,
@@ -43,13 +43,16 @@ const SettingsOptions = ({
     />
     <Slider
       id="max"
-      label="Speed"
       onChange={speed => onGameSpeedChange(speed)}
       min="1"
       max="3"
       value={gameSpeed}
       step="0.25"
-    />
+    >
+      <span className="Slider-text">
+        Speed <span className="Slider-speedFactor">x{gameSpeed}</span>
+      </span>
+    </Slider>
     <style jsx>{`
       .SettingsOptions {
         display: flex;
@@ -60,6 +63,16 @@ const SettingsOptions = ({
 
       .SettingsOptions>* {
         margin-bottom: 1rem;
+      }
+
+      .Slider-text {
+        color: ${colors.yellow};
+        font-weight: 700;
+        letter-spacing: .1em;
+      }
+
+      .Slider-speedFactor {
+        color: ${colors.white};
       }
     `}</style>
   </form>
