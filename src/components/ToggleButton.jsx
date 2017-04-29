@@ -45,6 +45,7 @@ const ToggleButton = ({ id, label, checked, disabled, onChange }) => (
 
       .face {
         backface-visibility: hidden;
+        box-shadow: .3rem .3rem 0 rgba(0,0,0,.1);
         display: inline-block;
         left: 0;
         line-height: 2rem;

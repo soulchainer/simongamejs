@@ -58,6 +58,7 @@ class SimonButtonGroup extends Component {
         <style jsx>{`
           .SimonButtonGroup {
             border-radius: 100%;
+            box-shadow: .6rem .4rem .4rem rgba(0,0,0,.1);
             box-sizing: border-box;
             display: flex;
             flex-wrap: wrap;

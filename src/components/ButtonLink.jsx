@@ -34,6 +34,7 @@ class ButtonLink extends Component {
         </Link>
         <style jsx>{`
           .ButtonLink {
+            box-shadow: .3rem .3rem 0 rgba(0,0,0,.1);
             font-family: 'Francois One', sans-serif;
             font-size: 1.4rem;
             letter-spacing: .1em;
