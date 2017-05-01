@@ -15,7 +15,7 @@ class SimonButtonGroup extends Component {
       history.push({ pathname: '/game#gameover' });
     }
     if (nextProps.gameOver) {
-      getTransitionAnimation(onTransitionEnd.bind(this)).play();
+      getTransitionAnimation(onTransitionEnd.bind(this), 'reverse').play();
     }
   }
 
