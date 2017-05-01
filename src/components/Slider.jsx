@@ -24,6 +24,7 @@ const Slider = ({ id, children, onChange, min, max, value, step }) => (
         -webkit-appearance: none;
         background-color: transparent; /* remove Chrome ugly background color */
         cursor: pointer;
+        height: 20px;
         margin: 0;
         width: 100%;
       }
@@ -63,6 +64,10 @@ const Slider = ({ id, children, onChange, min, max, value, step }) => (
         width: 20px;
       }
 
+      input::-ms-thumb {
+        margin: 1px;
+      }
+
       /* style the track of the range input */
       input::-moz-range-track {
         background-color: ${colors.white};
@@ -88,6 +93,15 @@ const Slider = ({ id, children, onChange, min, max, value, step }) => (
         height: 5px;
       }
 
+      input::-ms-track {
+        background-color: ${colors.white};
+        border: 1px solid transparent;
+        border-radius: 5px;
+        color: transparent;
+        height: 5px;
+        padding: 0;
+      }
+
       /* style the progress of the range input */
       input::-moz-range-progress {
         background-image: linear-gradient(
@@ -101,6 +115,25 @@ const Slider = ({ id, children, onChange, min, max, value, step }) => (
           ${colors.blue} 75%
         );
         border-radius: 5px;
+      }
+
+      input::-ms-fill-lower {
+        background-image: linear-gradient(
+          to right,
+          ${colors.green},
+          ${colors.green} 20%,
+          ${colors.red} 25%,
+          ${colors.red} 45%,
+          ${colors.yellow} 50%,
+          ${colors.yellow} 70%,
+          ${colors.blue} 75%
+        );
+        border-radius: 5px;
+      }
+
+      /* hide the native tooltip in IE/Edge */
+      input::-ms-tooltip {
+        display: none;
       }
     `}</style>
   </div>
