@@ -66,9 +66,9 @@ class SimonButtonGroup extends Component {
             box-sizing: border-box;
             display: flex;
             flex-wrap: wrap;
-            height: 70vmin;
+            height: 50vmin;
             margin: 5vh 0;
-            width: 70vmin;
+            width: 50vmin;
           }
 
           .is-disabled-interaction {

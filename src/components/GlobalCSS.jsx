@@ -6,8 +6,9 @@ const GlobalCSS = `
   body {
     background-color: ${colors.black};
     margin: 0;
-    height: 100%;
+    max-width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
     width: 100vw;
   }
 
@@ -15,6 +16,7 @@ const GlobalCSS = `
     align-items: center;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
     opacity: 0;
   }
 
@@ -22,7 +24,7 @@ const GlobalCSS = `
     align-items: center;
     display: flex;
     font-family: 'Titillium Web', sans-serif;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     width: 100vw;
   }
