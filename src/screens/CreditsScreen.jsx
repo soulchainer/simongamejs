@@ -44,7 +44,7 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
 
           .CreditsScreen-avatar {
             border-radius: 50%;
-            box-shadow: 0 .25rem .5rem rgba(28,28,28,.6);
+            box-shadow: .3rem .3rem ${colors.shadow};
             height: 300px;
             max-height: 50vmin;
             max-width: 50vmin;
@@ -64,7 +64,8 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
           }
 
           .CreditsScreen-githubButton {
-            border: .25rem solid rgba(255, 255, 255, .6);
+            border: .25rem solid ${colors.shadowWhite};
+            box-shadow: .3rem .3rem ${colors.shadow};
             box-sizing: content-box;
             color: ${colors.white};
             font-family: 'Francois One', sans-serif;

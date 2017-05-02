@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import { buttonIds as ids, gameModes, ERROR_MOVE_DURATION } from '../constants';
+import {
+  buttonIds as ids,
+  colors as colours,
+  gameModes,
+  ERROR_MOVE_DURATION } from '../constants';
 import SimonButton from './SimonButton';
 import { getTransitionAnimation } from '../utils/animation';
 
@@ -58,7 +62,7 @@ class SimonButtonGroup extends Component {
         <style jsx>{`
           .SimonButtonGroup {
             border-radius: 100%;
-            box-shadow: .6rem .4rem .4rem rgba(0,0,0,.1);
+            box-shadow: .3rem .4rem ${colours.shadow};
             box-sizing: border-box;
             display: flex;
             flex-wrap: wrap;

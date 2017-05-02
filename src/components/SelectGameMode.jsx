@@ -18,7 +18,7 @@ const SelectGameMode = ({ onChange, selected }) => (
         background-repeat: no-repeat;
         background-size: 1.4rem;
         border: none;
-        box-shadow: .3rem .3rem 0 rgba(0,0,0,.1);
+        box-shadow: .3rem .3rem ${colors.shadow};
         color: ${colors.black};
         font-family: 'Titillium Web', sans-serif;
         font-size: 1rem;

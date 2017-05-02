@@ -34,7 +34,7 @@ class ButtonLink extends Component {
         </Link>
         <style jsx>{`
           .ButtonLink {
-            box-shadow: .3rem .3rem 0 rgba(0,0,0,.1);
+            box-shadow: .3rem .3rem ${colors.shadow};
             font-family: 'Francois One', sans-serif;
             font-size: 1.4rem;
             letter-spacing: .1em;
@@ -44,7 +44,7 @@ class ButtonLink extends Component {
           }
 
           .ButtonLink>a {
-            border: .25rem solid rgba(255, 255, 255, .6);
+            border: .25rem solid ${colors.shadowWhite};
             color: ${colors.white};
             display: inline-block;
             height: 100%;
