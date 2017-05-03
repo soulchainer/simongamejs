@@ -141,12 +141,6 @@
           {
             "href": "favicon.ico?v=bOvwlJ27zA",
             "rel": "shortcut icon"
-          },
-          {
-            "href": "/static/images/favicon-96x96.png",
-            "type": "image/png",
-            "sizes": "96x96",
-            "rel": "icon"
           }
         ],
         "title": "React Simon"
