@@ -124,7 +124,7 @@ SimonButton.propTypes = {
   active: PropTypes.bool.isRequired,
   color: PropTypes.string.isRequired,
   cpuActive: PropTypes.bool.isRequired,
-  gameMode: PropTypes.oneOf(gameModes).isRequired,
+  gameMode: PropTypes.oneOf(Object.keys(gameModes)).isRequired,
   position: PropTypes.oneOf([
     'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   speed: PropTypes.number.isRequired,

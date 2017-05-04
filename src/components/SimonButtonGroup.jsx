@@ -112,7 +112,7 @@ class SimonButtonGroup extends Component {
 SimonButtonGroup.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   colors: PropTypes.arrayOf(PropTypes.oneOf(ids)).isRequired,
-  gameMode: PropTypes.oneOf(gameModes).isRequired,
+  gameMode: PropTypes.oneOf(Object.keys(gameModes)).isRequired,
   gameOver: PropTypes.bool.isRequired,
   playing: PropTypes.oneOf([null, 'sequence', 'error', 'win']),
   simonButtons: PropTypes.arrayOf(PropTypes.shape({

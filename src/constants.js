@@ -35,12 +35,12 @@ export const NEXT_SEQUENCE_DELAY = 0.5;
 export const NEXT_SEQUENCE_MOVE_DELAY = 0.05;
 export const USER_MOVE_FADE_DURATION = 0.5;
 
-export const gameModes = [
-  'classic',
-  'rewind', // user has to repeat sequence backwards
-  'surprise', // color of all Simon buttons change every turn, can't trust them!
-  'listen', // there is any visual clue: just sound
-];
+export const gameModes = {
+  classic: 'Repeat the sequence of buttons played by the CPU',
+  rewind: 'As classic mode, but repeating the sequence backwards',
+  surprise: 'Like classic mode, but button colors are shuffled each turn',
+  listen: 'Audio only: classic mode with no visual clues',
+};
 
 export const projectURL = 'https://github.com/soulchainer/simongamejs/';
 

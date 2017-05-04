@@ -12,8 +12,9 @@ import {
   UPDATE_GAME_SCORE,
   UPDATE_GAME_HIGH_SCORES,
 } from '../actions/index';
-import { gameModes as modes } from '../constants';
+import { gameModes } from '../constants';
 
+const modes = Object.keys(gameModes);
 const highScores = {};
 modes.forEach((key) => { highScores[key] = 0; });
 

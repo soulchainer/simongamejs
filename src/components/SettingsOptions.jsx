@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import GameModeDesc from './GameModeDesc';
 import SelectGameMode from './SelectGameMode';
 import Slider from './Slider';
 import ToggleButton from './ToggleButton';
-import { colors, MAX_MOVES } from '../constants';
+import { colors, gameModes, MAX_MOVES } from '../constants';
 
 const SettingsOptions = ({
   gameMode,
@@ -22,6 +23,7 @@ const SettingsOptions = ({
       selected={gameMode}
       onChange={onGameModeChange}
     />
+    <GameModeDesc gameMode={gameMode} />
     <ToggleButton
       id="strict"
       label="Strict Mode"
@@ -79,7 +81,7 @@ const SettingsOptions = ({
 );
 
 SettingsOptions.propTypes = {
-  gameMode: PropTypes.string.isRequired,
+  gameMode: PropTypes.oneOf(Object.keys(gameModes)).isRequired,
   gameSpeed: PropTypes.string.isRequired,
   maxMoves: PropTypes.oneOf([MAX_MOVES, 'Infinity']).isRequired,
   sound: PropTypes.bool.isRequired,
