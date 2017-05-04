@@ -17,16 +17,17 @@ const SimonButton = ({
   gameMode,
   position,
   speed,
-  onMouseDown,
-  onMouseLeave,
-  onMouseUp,
+  onSimonButtonPressed,
+  onSimonButtonReleased,
 }) => (
   <div
     className={`SimonButton--${position} u-${color}${(active) ? ' is-active' : ''}${(cpuActive) ? ' is-cpu-active' : ''}${(gameMode === 'listen') ? ' is-disabled-animation' : ''}`}
     style={(cpuActive) ? { animationDuration: `${CPU_MOVE_DURATION / speed}s` } : {}}
-    onMouseDown={onMouseDown}
-    onMouseLeave={onMouseLeave}
-    onMouseUp={onMouseUp}
+    onMouseDown={onSimonButtonPressed}
+    onMouseLeave={onSimonButtonReleased}
+    onMouseUp={onSimonButtonReleased}
+    onTouchEnd={onSimonButtonReleased}
+    onTouchStart={onSimonButtonPressed}
   >
     <style jsx>{`
       div {
@@ -128,9 +129,8 @@ SimonButton.propTypes = {
   position: PropTypes.oneOf([
     'top-left', 'top-right', 'bottom-left', 'bottom-right']).isRequired,
   speed: PropTypes.number.isRequired,
-  onMouseDown: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-  onMouseUp: PropTypes.func.isRequired,
+  onSimonButtonPressed: PropTypes.func.isRequired,
+  onSimonButtonReleased: PropTypes.func.isRequired,
 };
 
 export default SimonButton;

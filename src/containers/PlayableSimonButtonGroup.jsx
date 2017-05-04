@@ -20,13 +20,11 @@ const mapStateToProps = (state, ownProps) => (
 const mapDispatchToProps = dispatch => (
   {
     onLeaveGame: () => dispatch(leaveGame()),
-    onSimonButtonMouseDown: (id) => {
+    onSimonButtonPressed: (e, id) => {
       dispatch(handleSimonButton(id));
     },
-    onSimonButtonMouseLeave: (active, id) => {
-      dispatch(stopButtonSound(active, id));
-    },
-    onSimonButtonMouseUp: (active, id) => {
+    onSimonButtonReleased: (e, active, id) => {
+      e.preventDefault();
       dispatch(stopButtonSound(active, id));
     },
     startGame: () => dispatch(startGame()),
