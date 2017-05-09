@@ -49,7 +49,7 @@ const musicButtonOn = createAction(MUSIC_BUTTON_ON);
 const updateGameScore = createAction(UPDATE_GAME_SCORE);
 const updateGameHighScores = createAction(UPDATE_GAME_HIGH_SCORES);
 const updatePlayerMoves = createAction(UPDATE_PLAYER_MOVES);
-const resetGame = createAction(RESET_GAME);
+export const resetGame = createAction(RESET_GAME);
 
 export const newMove = () => ({ type: NEW_MOVE, payload: randomMove() });
 
@@ -63,6 +63,7 @@ export const leaveGame = () => (dispatch, getstate) => {
   const currentScore = state.game.currentScore;
   const gameMode = state.game.mode;
   const gameOver = state.game.gameOver;
+  const gameWon = state.game.gameWon;
   const highScores = state.game.highScores;
   const playing = state.game.playing;
   const soundEnabled = state.game.sound;
@@ -76,13 +77,7 @@ export const leaveGame = () => (dispatch, getstate) => {
     Only dispatch a game over signal here if the game is left before it
     naturally ends (when the user won the game or made a mistake in strict mode)
   */
-  if (!gameOver) dispatch(endGame());
-  /*
-    After sending the game over signal, reset the game state.
-    If this isn't done, it won't be possible return to the game from the
-    game over screen.
-  */
-  dispatch(resetGame());
+  if (!gameWon && !gameOver) dispatch(endGame('gameover'));
   if (currentScore > highScores[gameMode]) dispatch(updateGameHighScores());
 };
 
@@ -159,13 +154,13 @@ export const stopButtonSound = (active, id) => (dispatch, getState) => {
     const lastMove = playerMoves === state.moves.maxMoves;
 
     if (playerMoves === state.moves.currentGame.length) {
+      dispatch(updateGameScore());
       if (!lastMove) {
-        dispatch(updateGameScore());
         dispatch(newMove());
         dispatch(playSequence());
-      } else {
+      } else { // user won the game
         dispatch(endSequence());
-        dispatch(endGame());
+        dispatch(endGame('gamewon'));
       }
     }
   }
@@ -176,7 +171,7 @@ const handleSimonButtonError = (id, strict) => (dispatch, getState) => {
   const onPlayErrorEnded = () => {
     dispatch(endSequence());
     if (strict) {
-      dispatch(endGame());
+      dispatch(endGame('gameover'));
     } else {
       dispatch(playSequence());
     }
@@ -197,11 +192,13 @@ export const handleSimonButton = id => (dispatch, getState) => {
   const gameMode = state.game.mode;
   const playerGame = state.moves.player;
 
-  // In game mode 'rewind', the user has to replay the sequence backwards
-  // Its better to just alter the comparation order than have to change the
-  // implementation deeply, being forced to pass more data in the action
-  // (full player array, after processing it in a thunk, for having different
-  // values according to the current game mode)
+  /*
+    In game mode 'rewind', the user has to replay the sequence backwards
+    Its better to just alter the comparation order than have to change the
+    implementation deeply, being forced to pass more data in the action
+    (full player array, after processing it in a thunk, for having different
+    values according to the current game mode)
+   */
   const userProgress = (gameMode !== 'rewind') ? playerGame.length : currentGame.length - playerGame.length - 1;
 
   if (id === currentGame[userProgress]) {

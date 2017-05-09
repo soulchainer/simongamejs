@@ -10,16 +10,22 @@ import SimonButton from './SimonButton';
 import { getTransitionAnimation } from '../utils/animation';
 
 class SimonButtonGroup extends Component {
+  componentWillMount() {
+    this.props.resetGame();
+  }
+
   componentWillReceiveProps(nextProps) {
     const { history, transitionComplete, startGame } = this.props;
     // Start the game only when transition ends
     if (transitionComplete !== nextProps.transitionComplete) startGame();
-    // If gameOver, play the transition animation and redirect to /gameover
-    function onTransitionEnd() {
-      history.push({ pathname: '/game#gameover' });
+    // If gameOver, play the transition animation and redirect to /game#gameover
+    function onTransitionEnd(finalState) {
+      history.push({ pathname: `/game#${finalState}` });
     }
-    if (nextProps.gameOver) {
-      getTransitionAnimation(onTransitionEnd.bind(this), 'reverse').play();
+    if (nextProps.gameWon) {
+      getTransitionAnimation(onTransitionEnd.bind(this, 'gamewon'), 'reverse').play();
+    } else if (nextProps.gameOver) {
+      getTransitionAnimation(onTransitionEnd.bind(this, 'gameover'), 'reverse').play();
     }
   }
 
@@ -32,12 +38,14 @@ class SimonButtonGroup extends Component {
     const { colors,
             gameMode,
             gameOver,
+            gameWon,
             playing,
             simonButtons,
             speed,
             onSimonButtonPressed,
             onSimonButtonReleased } = this.props;
-    const disabledInteraction = 'sequenceerror'.includes(playing) || gameOver;
+    const gameEnded = gameOver || gameWon;
+    const disabledInteraction = 'sequenceerror'.includes(playing) || gameEnded;
     const disableButtons = disabledInteraction ? ' is-disabled-interaction' : '';
     const errorAnimation = (playing === 'error') ? ' is-playing-error' : '';
     const buttons = simonButtons.map((simonButton, index) => (
@@ -112,6 +120,7 @@ SimonButtonGroup.propTypes = {
   colors: PropTypes.arrayOf(PropTypes.oneOf(ids)).isRequired,
   gameMode: PropTypes.oneOf(Object.keys(gameModes)).isRequired,
   gameOver: PropTypes.bool.isRequired,
+  gameWon: PropTypes.bool.isRequired,
   playing: PropTypes.oneOf([null, 'sequence', 'error', 'win']),
   simonButtons: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOf(ids).isRequired,
@@ -125,6 +134,7 @@ SimonButtonGroup.propTypes = {
   onLeaveGame: PropTypes.func.isRequired,
   onSimonButtonPressed: PropTypes.func.isRequired,
   onSimonButtonReleased: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
 };
 

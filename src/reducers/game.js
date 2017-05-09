@@ -22,7 +22,8 @@ const initialState = {
   highScores, // best scores ever
   currentScore: 0, // actual score from the game
   lastEndScore: 0, // total score from the last game won/lost
-  gameOver: false, // the game has ended
+  gameOver: false, // the user left/lost the game
+  gameWon: false, // the user won the game
   mode: modes[0], // game mode (classic/rewind/surprise/swipe/listen)
   // CPU playing null→none, 'sequence', 'error'→ player error, 'win'→ player won
   playing: null,
@@ -39,7 +40,12 @@ export default function game(state = initialState, action) {
     case CHANGE_GAME_SPEED:
       return { ...baseState, speed: action.payload };
     case END_GAME:
-      return { ...baseState, gameOver: true };
+      return {
+        ...baseState,
+        gameOver: action.payload === 'gameover',
+        gameWon: action.payload === 'gamewon',
+        lastEndScore: baseState.currentScore,
+      };
     case END_SEQUENCE:
       return { ...baseState, playing: null };
     case MUSIC_BUTTON_ERROR:
@@ -48,8 +54,8 @@ export default function game(state = initialState, action) {
       return {
         ...baseState,
         currentScore: 0,
-        lastEndScore: baseState.currentScore,
         gameOver: false,
+        gameWon: false,
       };
     case START_GAME:
       return { ...baseState, currentScore: 0, lastEndScore: 0 };

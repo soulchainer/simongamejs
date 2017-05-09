@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import CreditsScreen from '../screens/CreditsScreen';
 import GameScreen from '../screens/GameScreen';
-import GameOverScreen from '../screens/GameOverScreen';
+import GameEndScreen from '../screens/GameEndScreen';
 import GlobalCSS from '../components/GlobalCSS';
 import StartScreen from '../screens/StartScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -17,7 +17,8 @@ const Root = ({ store }) => (
         <div className="Root">
           <Route exact path="/" component={StartScreen} />
           <Route exact path="/game" component={GameScreen} />
-          <Route path="/game#gameover" component={GameOverScreen} />
+          <Route path="/game#gameover" component={GameEndScreen} />
+          <Route path="/game#gamewon" component={GameEndScreen} />
           <Route path="/settings" component={SettingsScreen} />
           <Route path="/credits" component={CreditsScreen} />
         </div>
