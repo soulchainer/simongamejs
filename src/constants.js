@@ -22,10 +22,11 @@ export const colors = {
 };
 
 export const tones = {
-  blue: 82.407,
-  green: 41.203,
-  red: 110,
-  yellow: 69.296,
+  blue: 329.6,
+  error: 261.6,
+  green: 164.8,
+  red: 220,
+  yellow: 277.2,
 };
 
 // All durations in seconds, for consistency

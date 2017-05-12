@@ -2,7 +2,7 @@ import { buttonIds as buttons, tones, ERROR_MOVE_DURATION } from '../constants';
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-const createOscillator = (button, ctx, gain, type = 'sine') => {
+const createOscillator = (button, ctx, gain, type = 'triangle') => {
   const oscillator = ctx.createOscillator();
   oscillator.connect(gain);
   oscillator.type = type;
@@ -44,7 +44,7 @@ const buttonSound = (button) => {
   const playError = (onEnded) => {
     const gainNode = createGainNode(audioCtx);
     gainNode.gain.value = 0.5;
-    oscillator = createOscillator(btn, audioCtx, gainNode, 'sawtooth');
+    oscillator = createOscillator('error', audioCtx, gainNode, 'sawtooth');
     oscillator.start();
     oscillator.stop(audioCtx.currentTime + ERROR_MOVE_DURATION);
     oscillator.onended = onEnded;
