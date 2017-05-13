@@ -25,7 +25,7 @@ const buttonSound = (button) => {
   const start = () => {
     // A gain node for each sound, to avoid unwanted mix of the soundwaves
     const gainNode = createGainNode(audioCtx);
-    gainNode.gain.value = 1;
+    gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
     oscillator = createOscillator(btn, audioCtx, gainNode);
     oscillator.start();
     return gainNode;
