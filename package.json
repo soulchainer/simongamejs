@@ -157,7 +157,7 @@
   "scripts": {
     "start": "neutrino start",
     "build": "neutrino build",
-    "deploy": "surge --project ./build --domain reactsimon.surge.sh"
+    "deploy": "cp build/index.html build/200.html && surge --project ./build --domain reactsimon.surge.sh"
   },
   "devDependencies": {
     "neutrino": "^5.6.0",
