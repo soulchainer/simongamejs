@@ -52,4 +52,5 @@ export const socialURLs = {
   codepen: 'http://codepen.io/soulchainer/',
 };
 
+export const APP_TITLE = 'React Simon';
 export const MAX_MOVES = 20;

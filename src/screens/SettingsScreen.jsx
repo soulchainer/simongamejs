@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import ButtonLink from '../components/ButtonLink';
 import Settings from '../containers/Settings';
+import { APP_TITLE } from '../constants';
 import withTransition from '../hocs/withTransition';
 
-class SettingsScreen extends Component { // eslint-disable-line react/prefer-stateless-function
+class SettingsScreen extends Component {
+  componentDidMount() {
+    document.title = `${APP_TITLE} | Settings `;
+  }
+
   render() {
     return (
       <div className="SettingsScreen">

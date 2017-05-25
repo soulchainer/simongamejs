@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import SocialIconList from '../components/SocialIconList';
 import ButtonLink from '../components/ButtonLink';
 import withTransition from '../hocs/withTransition';
-import { colors, projectURL } from '../constants';
+import { APP_TITLE, colors, projectURL } from '../constants';
 
-class CreditsScreen extends Component { // eslint-disable-line react/prefer-stateless-function
+class CreditsScreen extends Component {
+  componentDidMount() {
+    document.title = `${APP_TITLE} | Credits `;
+  }
+
   render() {
     return (
       <div className="CreditsScreen">
