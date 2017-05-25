@@ -164,7 +164,8 @@
     "neutrino-middleware-copy": "^5.8.0",
     "neutrino-preset-airbnb": "^2.1.0",
     "neutrino-preset-react": "^5.6.0",
-    "neutrino-preset-styled-jsx": "^0.0.1"
+    "neutrino-preset-styled-jsx": "^0.0.1",
+    "surge": "^0.19.0"
   },
   "dependencies": {
     "animejs": "^2.0.2",
