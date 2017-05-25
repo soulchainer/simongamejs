@@ -20,6 +20,7 @@ class GameScreen extends Component { // eslint-disable-line react/prefer-statele
             flex-direction: column;
             height: 100%;
             justify-content: center;
+            padding: 2rem 0;
           }
         `}</style>
       </div>

@@ -15,6 +15,7 @@ class SettingsScreen extends Component { // eslint-disable-line react/prefer-sta
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 2rem 0;
           }
         `}</style>
       </div>

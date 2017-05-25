@@ -25,6 +25,7 @@ const GameEndScreen = ({ gameStateTitle, gameWon, playButtonLabel }) => (
         align-items: center;
         display: flex;
         flex-direction: column;
+        padding: 2rem 0;
         width: 90vw;
       }
 

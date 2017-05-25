@@ -39,6 +39,7 @@ class CreditsScreen extends Component { // eslint-disable-line react/prefer-stat
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 2rem 0;
             width: 90vmin;
           }
 
