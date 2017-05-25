@@ -53,9 +53,8 @@ class AnimatedTitle extends Component {
     });
 
     const simonDiameter = document.querySelector('#simon').width.baseVal.value;
-    const simonTurns = Math.floor(
-      window.screen.width / (3.1416 * simonDiameter) / 2,
-    );
+    const simonTurns = Math.max(1,
+    Math.floor(window.screen.width / (3.1416 * simonDiameter) / 2));
 
     const simon = anime({
       targets: ['#simon'],
