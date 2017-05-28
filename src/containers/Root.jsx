@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreditsScreen from '../screens/CreditsScreen';
 import GameScreen from '../screens/GameScreen';
 import GameEndScreen from '../screens/GameEndScreen';
-import GlobalCSS from '../components/GlobalCSS';
+import globalCSS from '../styles/global';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import StartScreen from '../screens/StartScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -24,7 +24,7 @@ const Root = ({ store }) => (
           <Route path="/credits" component={CreditsScreen} />
           <Route component={NotFoundScreen} />
         </Switch>
-        <style jsx global>{`${GlobalCSS}`}</style>
+        <style jsx global>{globalCSS}</style>
       </div>
     </Router>
   </Provider>

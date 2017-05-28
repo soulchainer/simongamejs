@@ -63,7 +63,7 @@ const SettingsOptions = ({
         max-width: 90vw;
       }
 
-      .SettingsOptions>* {
+      .SettingsOptions > :global(*) {
         margin-bottom: 1rem;
       }
 

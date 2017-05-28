@@ -29,7 +29,7 @@ class ButtonLink extends Component {
     if (this.state.redirect) return <Redirect push to={to} />;
     return (
       <div className="ButtonLink">
-        <Link to={to} onClick={this.onClickLink}>
+        <Link className="ButtonLink-link" to={to} onClick={this.onClickLink}>
           {label}
         </Link>
         <style jsx>{`
@@ -43,7 +43,7 @@ class ButtonLink extends Component {
             min-width: 8rem;
           }
 
-          .ButtonLink>a {
+          :global(.ButtonLink-link) {
             border: .25rem solid ${colors.shadowWhite};
             color: ${colors.white};
             display: inline-block;
@@ -55,7 +55,7 @@ class ButtonLink extends Component {
             width: 100%;
           }
 
-          .ButtonLink>a:hover {
+          :global(.ButtonLink-link:hover) {
             background-color: ${colors.yellow};
             border-color: ${colors.yellow};
             color: ${colors.black};

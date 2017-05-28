@@ -164,7 +164,7 @@
     "neutrino-middleware-copy": "^5.8.0",
     "neutrino-preset-airbnb": "^2.1.0",
     "neutrino-preset-react": "^5.6.0",
-    "neutrino-preset-styled-jsx": "^0.0.1",
+    "neutrino-preset-styled-jsx": "^1.0.0",
     "surge": "^0.19.0"
   },
   "dependencies": {
@@ -179,7 +179,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "styled-jsx": "^0.5.7"
+    "styled-jsx": "^1.0.1"
   },
   "private": true,
   "license": "GPL-3.0"
