@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import anime from 'animejs';
 import { colors } from '../constants';
+import { AnimatedTitleCSS } from '../styles/animatedTitle';
 import {
   animeBatch,
   playBatch,
@@ -205,20 +206,7 @@ class AnimatedTitle extends Component {
             {AnimatedTitle.nPaths(['N-line1', 'N-line2', 'N-line3', 'N-line4'])}
           </g>
         </svg>
-        <style jsx>{`
-          .AnimatedTitle {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            width: 100%; /* If the width isn't setted, the SVG won't scale */
-          }
-
-          /* Put some space between the letters */
-          svg {
-            margin-left: 2vmin;
-            top: 10vmin;
-          }
-        `}</style>
+        <style jsx>{AnimatedTitleCSS}</style>
       </div>
     );
   }

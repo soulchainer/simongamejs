@@ -4,7 +4,8 @@ import GameModeDesc from './GameModeDesc';
 import SelectGameMode from './SelectGameMode';
 import Slider from './Slider';
 import ToggleButton from './ToggleButton';
-import { colors, gameModes, MAX_MOVES } from '../constants';
+import { gameModes, MAX_MOVES } from '../constants';
+import { SettingsOptionsCSS } from '../styles/settingsOptions';
 
 const SettingsOptions = ({
   gameMode,
@@ -55,28 +56,7 @@ const SettingsOptions = ({
         Speed <span className="Slider-speedFactor">x{gameSpeed}</span>
       </span>
     </Slider>
-    <style jsx>{`
-      .SettingsOptions {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 2rem;
-        max-width: 90vw;
-      }
-
-      .SettingsOptions > :global(*) {
-        margin-bottom: 1rem;
-      }
-
-      .Slider-text {
-        color: ${colors.yellow};
-        font-weight: 700;
-        letter-spacing: .1em;
-      }
-
-      .Slider-speedFactor {
-        color: ${colors.white};
-      }
-    `}</style>
+    <style jsx>{SettingsOptionsCSS}</style>
   </form>
 );
 

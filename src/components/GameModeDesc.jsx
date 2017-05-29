@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { colors, gameModes } from '../constants';
+import { gameModes } from '../constants';
+import { GameModeDescCSS } from '../styles/gameModeDesc';
 
 const modes = Object.keys(gameModes);
 
@@ -25,40 +26,7 @@ const GameModeDesc = ({ gameMode }) => (
       <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z" />
       <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z" />
     </svg> {gameModes[gameMode]}
-    <style jsx>{`
-      .GameModeDesc {
-        background-color: ${colors.white};
-        box-shadow: .3rem .3rem ${colors.shadow};
-        color: ${colors.black};
-        cursor: help;
-        font-family: 'Titillium Web', sans-serif;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: .1em;
-        line-height: 2rem;
-        max-width: 90vw;
-        overflow: hidden;
-        padding: .5rem;
-        text-overflow: ellipsis;
-        width: 250px;
-        white-space: nowrap;
-      }
-
-      .GameModeDesc.is-expanded {
-        white-space: normal;
-      }
-
-      .icon {
-        color: ${colors.black};
-        display: inline-block;
-        fill: currentColor;
-        height: 1em;
-        pointer-events: none;
-        stroke-width: 0;
-        stroke: currentColor;
-        width: 1em;
-      }
-    `}</style>
+    <style jsx>{GameModeDescCSS}</style>
   </div>
   /* eslint-enable jsx-a11y/no-static-element-interactions */
 );

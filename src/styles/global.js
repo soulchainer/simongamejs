@@ -1,6 +1,6 @@
 import { colors } from '../constants';
 
-const GlobalCSS = `
+export default `
   * { box-sizing: border-box; }
 
   body {
@@ -29,5 +29,3 @@ const GlobalCSS = `
     width: 100vw;
   }
 `;
-
-export default GlobalCSS;
