@@ -1,4 +1,4 @@
-import { htmlHead, entryVendor } from './.neutrinorcConstants';
+const { htmlHead, entryVendor } = require('./.neutrinorcConstants');
 
 module.exports = {
   use: [

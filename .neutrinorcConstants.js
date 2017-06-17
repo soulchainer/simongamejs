@@ -1,5 +1,5 @@
 // HTML <head> customization
-export const htmlHead = {
+const htmlHead = {
   meta: [
     {
       name: 'description',
@@ -123,7 +123,7 @@ export const htmlHead = {
 };
 
 // function to get a «vendor» chunk
-export const entryVendor = (neutrino) => neutrino.config
+const entryVendor = (neutrino) => neutrino.config
   .entry('vendor')
     .add('animejs')
     .add('lodash.debounce')
@@ -136,3 +136,5 @@ export const entryVendor = (neutrino) => neutrino.config
     .add('redux')
     .add('redux-thunk')
     .add('styled-jsx/style');
+
+module.exports = { htmlHead, entryVendor };
