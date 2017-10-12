@@ -4,7 +4,7 @@ module.exports = {
   use: [
     'neutrino-preset-react',
     entryVendor,
-    (neutrino) => neutrino.config.resolve('extensions').add('.jsx'),
+    (neutrino) => neutrino.config.resolve.extensions.add('.jsx'),
     'neutrino-preset-airbnb',
     'neutrino-preset-styled-jsx',
     'custom_presets/set-eslint-envs.js',
