@@ -53,6 +53,7 @@ class SimonButtonGroup extends Component {
         gameMode={gameMode}
         key={simonButton.id}
         position={simonButton.position}
+        tabIndex={index + 1}
         speed={speed}
         onSimonButtonPressed={e => onSimonButtonPressed(e, simonButton.id)}
         onSimonButtonReleased={e => onSimonButtonReleased(e, simonButton.active, simonButton.id)}
